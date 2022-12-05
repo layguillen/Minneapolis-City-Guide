@@ -47,10 +47,6 @@ public class AuthenticationController {
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add(JWTFilter.AUTHORIZATION_HEADER, "Bearer " + jwt);
 
-        //login info
-        //  LoginResponse loginResponse = new ResponseEntity<>(new LoginResponse(jwt, user), httpHeaders, HttpStatus.OK).getBody();
-        //  loginResponse.getToken();
-
         return new ResponseEntity<>(new LoginResponseDto(jwt, user), httpHeaders, HttpStatus.OK);
     }
 
