@@ -74,3 +74,12 @@ export default {
   }
 };
 </script>
+<style>
+body{
+  background-color: #F3FCED;
+}
+div#login.text-center{
+  display: flex;
+  flex-direction: row-reverse;
+}
+</style>
