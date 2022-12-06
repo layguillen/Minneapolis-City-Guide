@@ -83,6 +83,11 @@ export default {
 body{
   background-color: #F3FCED;
 }
+div#login.text-center{
+  display: flex;
+  flex-direction: row-reverse;
+}
+
 img{
   display: block;
   height: 600px;
