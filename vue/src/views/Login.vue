@@ -1,38 +1,35 @@
 <template>
   <div id="login" class="text-center">
-    <form class="form-signin" @submit.prevent="login">
-      <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
+    <form id="form-signin" class="form-signin" @submit.prevent="login">
       <div
-        class="alert alert-danger"
+        class="alert alert-danger form-element"
         role="alert"
         v-if="invalidCredentials"
       >Invalid username and password!</div>
       <div
-        class="alert alert-success"
+        class="alert alert-success form-element"
         role="alert"
         v-if="this.$route.query.registration"
       >Thank you for registering, please sign in.</div>
-      <label for="username" class="sr-only">Username</label>
       <input
         type="text"
         id="username"
-        class="form-control"
+        class="form-control form-element"
         placeholder="Username"
         v-model="user.username"
         required
         autofocus
       />
-      <label for="password" class="sr-only">Password</label>
       <input
         type="password"
         id="password"
-        class="form-control"
+        class="form-control form-element"
         placeholder="Password"
         v-model="user.password"
         required
       />
-      <router-link :to="{ name: 'register' }">Need an account?</router-link>
-      <button type="submit">Sign in</button>
+      <button class="form-element" type="submit">Sign in</button>
+      <router-link id="register" class="form-element" :to="{ name: 'register' }">Need an account?</router-link>
     </form>
      
     <img class="logo" src="../assets/Glider-1.png">
@@ -84,15 +81,40 @@ body{
   background-color: #F3FCED;
 }
 div#login.text-center{
-  display: flex;
-  flex-direction: row-reverse;
+  height: 90vh;
+  width: 90vw;
+  margin: 0;
+  display: grid;
+  grid-template-areas: 
+  "img login";
+  grid-template-rows: 1fr 1fr;
 }
 
 img{
-  display: block;
-  height: 600px;
-  width: auto;
-  margin-left: 25%;
-  margin-right: 75%;
+  grid-area: img;
+  height: 90vh;
+  justify-self: center;
+}
+
+#form-signin{
+  grid-area: login;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+  border: 1px black solid;
+  border-radius: 10%;
+  padding: 10%;
+
+  background: white;
+}
+
+.form-element {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+#register {
+  text-align: center;
 }
 </style>
