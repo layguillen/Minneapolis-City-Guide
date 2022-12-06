@@ -38,9 +38,10 @@ public class JdbcLandmarkDao implements LandmarkDao{
 
         Landmark landmark = new Landmark();
 
-        String sql = "SELECT id, address_id, name, type, description, likes, img_URL " +
+        String sql = "SELECT landmarks.id, address_id, landmarks.name, types.name AS type, description, likes, img_URL " +
                     " FROM landmarks " +
-                    " WHERE id = ?; ";
+                    " JOIN types ON landmarks.type = types.id " +
+                    " WHERE landmarks.id = ?; ";
 
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql, landmarkId);
         if (result.next()){
