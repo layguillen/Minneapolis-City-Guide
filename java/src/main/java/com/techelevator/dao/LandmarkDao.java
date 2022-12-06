@@ -8,7 +8,7 @@ public interface LandmarkDao {
 
     List<Landmark> listLandmarks();
 
-    Landmark getLandmark();
+    Landmark getLandmark(int landmarkId);
 
     boolean createLandmark(Landmark landmark);
 

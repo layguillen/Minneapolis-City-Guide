@@ -8,6 +8,6 @@ public interface HotelDao {
 
     List<Hotel> listHotels();
 
-    Hotel getHotel();
+    Hotel getHotel(int hotelId);
 
 }

@@ -16,18 +16,21 @@ public class JdbcRouteDao implements RouteDao{
         this.jdbcTemplate = jdbcTemplate;
     }
 
+    //gets routes from database
     @Override
     public List<Route> listRoutes(){
         String sql = "";
         return null;
     }
 
+    //gets route from database
     @Override
     public Route getRoute(){
         String sql = "";
         return null;
     }
 
+    //TODO: see if this is the right place to insert route from API into database
     @Override
     public boolean createRoute(Route route){
         String sql = "";
