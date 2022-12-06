@@ -30,12 +30,16 @@ public class JdbcRouteDao implements RouteDao{
         return null;
     }
 
-    //TODO: see if this is the right place to insert route from API into database
+    //Insert new route into database
     @Override
     public boolean createRoute(Route route){
         String sql = "";
         return false;
     }
+
+    //TODO method for adding/removing landmark to route
+
+    //TODO method for changing starting location for route
 
     private Route mapRowToRoute(SqlRowSet results){
         Route route = new Route();
