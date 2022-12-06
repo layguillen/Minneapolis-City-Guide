@@ -24,10 +24,10 @@ CREATE TABLE types(
 CREATE TABLE landmarks (
     id serial PRIMARY KEY,
     address_id int REFERENCES addresses(id),
+    likes int,
 	name varchar,
     type int REFERENCES types(id),
 	description varchar NOT NULL,
-	likes int,
     img_URL varchar NOT NULL
 );
 CREATE TABLE hotels (
