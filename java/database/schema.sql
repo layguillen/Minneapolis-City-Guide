@@ -1,6 +1,6 @@
 BEGIN TRANSACTION;
 
-DROP TABLE IF EXISTS users, addresses, landmarks, hotels, routes, routes_landmarks, review;
+DROP TABLE IF EXISTS users, addresses, types, landmarks, hotels, routes, routes_landmarks, review;
 
 CREATE TABLE users (
 	user_id SERIAL,
@@ -17,11 +17,15 @@ CREATE TABLE addresses (
     state varchar,
     zip int
 );
+CREATE TABLE types(
+    id serial PRIMARY KEY,
+    name varchar
+)
 CREATE TABLE landmarks (
     id serial PRIMARY KEY,
     address_id int REFERENCES addresses(id),
 	name varchar,
-    type varchar NOT NULL,
+    type int REFERENCES type(id),
 	description varchar NOT NULL,
 	average_rating int,
     img_URL varchar NOT NULL
@@ -29,7 +33,6 @@ CREATE TABLE landmarks (
 CREATE TABLE hotels (
     id serial PRIMARY KEY,
     address_id int REFERENCES addresses(id),
-    star_rating int NOT NULL,
     name varchar
 );
 CREATE TABLE routes (

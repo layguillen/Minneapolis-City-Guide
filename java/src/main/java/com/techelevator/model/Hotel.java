@@ -8,8 +8,6 @@ public class Hotel {
     private int hotelId;
     @JsonProperty("address_id")
     private int addressId;
-    @JsonProperty("star_rating")
-    private int starRating;
     @JsonProperty("name")
     private String name;
 
@@ -29,14 +27,6 @@ public class Hotel {
 
     public void setAddressId(int addressId) {
         this.addressId = addressId;
-    }
-
-    public int getStarRating() {
-        return starRating;
-    }
-
-    public void setStarRating(int starRating) {
-        this.starRating = starRating;
     }
 
     public String getName() {

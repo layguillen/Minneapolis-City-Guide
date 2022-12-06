@@ -5,6 +5,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -18,16 +19,43 @@ public class JdbcHotelDao implements HotelDao{
 
     @Override
     public List<Hotel> listHotels(){
-        return null;
+        List<Hotel> list = new ArrayList<>();
+
+        String sql = " SELECT id, address_id, name " +
+                    " FROM hotels ";
+
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
+        while(result.next()){
+            list.add(mapRowToHotel(result));
+        }
+
+        return list;
     }
 
     @Override
-    public Hotel getHotel(){
-        return null;
+    public Hotel getHotel(int hotelId){
+        if(hotelId == 0) throw new IllegalArgumentException("Hotel Id cannot be null");
+
+        Hotel hotel = new Hotel();
+
+        String sql = " SELECT id, address_id, name " +
+                    " FROM hotels " +
+                    " WHERE id = ? ";
+
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sql, hotelId);
+        if(result.next()){
+            return mapRowToHotel(result);
+        }
+
+        return hotel;
     }
 
     private Hotel mapRowToHotel(SqlRowSet results){
         Hotel hotel = new Hotel();
+
+        hotel.setHotelId(results.getInt("id"));
+        hotel.setAddressId(results.getInt("address_id"));
+        hotel.setName(results.getString("name"));
 
         return hotel;
     }

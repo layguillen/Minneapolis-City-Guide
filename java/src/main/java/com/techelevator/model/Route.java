@@ -15,6 +15,19 @@ public class Route {
     @JsonProperty("name")
     private String name;
 
+    /*
+    public class Route{
+        public Summary summary;
+        public ArrayList<Segment> segments;
+        public ArrayList<double> bbox;
+        public String geometry;
+        public ArrayList<int> way_points;
+    }
+
+     */
+
+
+
     public Route(){};
 
     public int getRouteId() {

@@ -4,5 +4,5 @@ import com.techelevator.model.Route;
 
 public interface iRouteService {
 
-    Route getRoute();
+    Route createRoute(String token, Route route);
 }
