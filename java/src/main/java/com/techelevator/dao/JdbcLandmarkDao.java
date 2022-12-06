@@ -17,7 +17,6 @@ public class JdbcLandmarkDao implements LandmarkDao{
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    //TODO: fix sql
     @Override
     public List<Landmark> listLandmarks(){
         List<Landmark> list = new ArrayList<>();
@@ -32,7 +31,6 @@ public class JdbcLandmarkDao implements LandmarkDao{
         return list;
     }
 
-    //TODO: fix sql
     @Override
     public Landmark getLandmark(int landmarkId){
         if(landmarkId == 0) throw new IllegalArgumentException("Landmark ID cannot be null.");

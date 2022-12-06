@@ -45,6 +45,7 @@ INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.3112, 44
 INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.268135,44.991817', '724 Sibley St', 'Minneapolis', 'MN', 55413);
 INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.25494,44.984474', '125 SE Main St', 'Minneapolis', 'MN', 55414);
 
+
 INSERT INTO types (name) VALUES ('Art');
 INSERT INTO types (name) VALUES ('Educational');
 INSERT INTO types (name) VALUES ('Shopping');
@@ -76,6 +77,13 @@ INSERT INTO landmarks(address_id, type, likes, name, description, img_url) VALUE
 INSERT INTO landmarks(address_id, type, likes, name, description, img_url) VALUES (20, 5, 5, 'The Main Cinema', ' Independent cinema offering first-run Hollywood movies, alongside art-house films.', 'n/a');
 INSERT INTO landmarks(address_id, type, likes, name, description, img_url) VALUES (21, 2, 5, 'The Bakken Museum', 'The Bakken is a science museum located in Minneapolis, Minnesota, United States, founded in 1975 by Earl Bakken, the co-founder of Medtronic. The exhibits present a history and explanation of electricity and electromagnetism.', 'n/a');
 INSERT INTO landmarks(address_id, type, likes, name, description, img_url) VALUES (22, 2, 5, 'Sea Life at Mall of America', 'Sea Life at Mall of America is a public aquarium located in the Mall of America in Bloomington, Minnesota, United States. The 1.3 million-US-gallon aquarium contains thousands of aquatic creatures, including sea turtles, sharks, sawfish, stingrays, jellyfish and seahorses.', 'n/a');
-
+INSERT INTO landmarks(address_id, type, likes, name, description, img_url) VALUES (23, 5, 5, 'Minnesota Zoo', 'The Minnesota Zoo, is an AZA-accredited zoo in Apple Valley, Minnesota. It is one of two state-supported zoos in the United States, with the other being the North Carolina Zoo. When it opened on May 22, 1978 it was fairly revolutionary in its exhibit design.', 'n/a');
+INSERT INTO landmarks(address_id, type, likes, name, description, img_url) VALUES (24, 5, 5, 'Moose Mountain Adventure Golf', 'Located in the Mall of America, Moose Mountain Adventure Golf is an 18-hole miniature golf course certain to provide a fun adventure for the entire family. The course features an original, whimsical design with an old-time north woods feel- complete with life size moose, horses and more.', 'n/a');
+INSERT INTO landmarks(address_id, type, likes, name, description, img_url) VALUES (25, 5, 5, 'Como Park Zoo & Conservatory', 'The Como Park Zoo and Marjorie McNeely Conservatory are located in Como Park at 1225 Estabrook Drive, Saint Paul, Minnesota. The park, zoo and conservatory are owned by the City of Saint Paul and are a division of Saint Paul Parks and Recreation.', 'n/a');
+INSERT INTO landmarks(address_id, type, likes, name, description, img_url) VALUES (26, 5, 5, 'Nickelodeon Universe', 'Nickelodeon Universe is the name of two indoor amusement parks located at Mall of America in Bloomington, Minnesota consisting of attractions and rides based on Nickelodeon’s popular franchises.', 'n/a');
+INSERT INTO landmarks(address_id, type, likes, name, description, img_url) VALUES (27, 8, 5, 'Patisserie 46', 'Award-winning French bakery/cafe with a warm atmosphere turning out world-class breads, croissants, coffee & light bites.', 'n/a');
+INSERT INTO landmarks(address_id, type, likes, name, description, img_url) VALUES (28, 4, 5, 'Bde Maka Ska Lake & Park', 'Bde Maka Ska is the largest lake in Minneapolis, Minnesota, United States, and part of the city`s Chain of Lakes. Surrounded by city park land and circled by bike and walking trails, it is popular for many outdoor activities.', 'n/a');
+INSERT INTO landmarks(address_id, type, likes, name, description, img_url) VALUES (29, 4, 5, 'Boom Island Park', 'Riverside park featuring a playground, a boat dock & restrooms, plus walking/biking paths.', 'n/a');
+INSERT INTO landmarks(address_id, type, likes, name, description, img_url) VALUES (30, 8, 5, 'Aster Cafe', 'Romantic eatery serving sandwiches & flatbreads, with skyline views & a summertime courtyard. The Aster presents live music most nights of the year, ranging from national acoustic acts to the best local artists and showcases', 'n/a');
 
 COMMIT TRANSACTION;
