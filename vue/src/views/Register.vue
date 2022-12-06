@@ -5,11 +5,11 @@
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
-      
+     <div class = "inputFields"> 
       <input
         type="text"
         id="username"
-        class="form-control grid-item1"
+        class="form-control"
         placeholder="Username"
         v-model="user.username"
         required
@@ -31,8 +31,11 @@
         placeholder="Confirm Password"
         v-model="user.confirmPassword"
         required
-      />
+      /> 
+      </div>
+      <div class = "haveAccount">
       <router-link :to="{ name: 'login' }">Have an account?</router-link>
+      </div>
       <button class="btn btn-lg btn-primary btn-block createButton" type="submit">
         create account
       </button>
@@ -105,6 +108,7 @@ div#register.text-center{
   color: #004E64;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', 'Arial', 'sans-serif';
   
+  
 
 }
 button.createButton{
@@ -112,6 +116,7 @@ button.createButton{
   border-radius: 60px;
   margin-left: 50px;
   margin-right: 50px;
+  margin-top: 80px;
 
   background-color: #004E64;
   color: #F3FCED;
@@ -134,6 +139,21 @@ button.createButton{
  border: 5px #004E64 solid;
  border-radius: 20%;
  background: rgb(246, 242, 242);
+}
+
+.form-control{ 
+  width: 70%;
+  margin-left: 15%;
+  margin-right: 15%;
+  margin-bottom: 10px ;
+}
+
+.inputFields {
+  margin-top: 50px;
+}
+
+.haveAccount{
+  margin-left: 15%;
 }
 
 </style>
