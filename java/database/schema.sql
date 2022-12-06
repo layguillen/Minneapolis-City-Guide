@@ -20,14 +20,14 @@ CREATE TABLE addresses (
 CREATE TABLE types(
     id serial PRIMARY KEY,
     name varchar
-)
+);
 CREATE TABLE landmarks (
     id serial PRIMARY KEY,
     address_id int REFERENCES addresses(id),
+    likes int,
 	name varchar,
-    type int REFERENCES type(id),
+    type int REFERENCES types(id),
 	description varchar NOT NULL,
-	average_rating int,
     img_URL varchar NOT NULL
 );
 CREATE TABLE hotels (
@@ -38,7 +38,7 @@ CREATE TABLE hotels (
 CREATE TABLE routes (
     id serial PRIMARY KEY,
     user_id int REFERENCES users(user_id),
-    hotel_id int NOT NULL,
+    start_id int REFERENCES addresses(id),
     created_date date NOT NULL,
 	name varchar
 );

@@ -11,4 +11,11 @@ public interface RouteDao {
     Route getRoute();
 
     boolean createRoute(Route route);
+
+    Route addLandmarkToRoute(Route route, int landmarkId);
+
+    Route removeLandmarkToRoute(Route route, int landmarkId);
+
+    Route updateStartingLocation(Route route, int startId);
+
 }

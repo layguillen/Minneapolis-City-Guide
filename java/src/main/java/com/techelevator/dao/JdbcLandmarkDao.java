@@ -22,7 +22,7 @@ public class JdbcLandmarkDao implements LandmarkDao{
     public List<Landmark> listLandmarks(){
         List<Landmark> list = new ArrayList<>();
         String sql = "SELECT id, address_id, name, type, description, likes, img_URL " +
-                    " FROM landmarks ";
+                    " FROM landmarks; ";
 
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
         while(result.next()){
@@ -53,7 +53,7 @@ public class JdbcLandmarkDao implements LandmarkDao{
     @Override
     public boolean createLandmark(Landmark landmark){
         String sql = "INSERT INTO landmarks (id, address_id, name, type, description, likes, img_URL) " +
-                    " VALUES(?, ?, ?, ?, ?, ?, ?)";
+                    " VALUES(?, ?, ?, ?, ?, ?, ?); ";
 
         return jdbcTemplate.update(sql,
                                     landmark.getLandmarkId(),
@@ -83,7 +83,7 @@ public class JdbcLandmarkDao implements LandmarkDao{
     private Landmark mapRowToLandmark(SqlRowSet results){
         Landmark landmark = new Landmark();
 
-        landmark.setLandmarkId(results.getInt("landmark_id"));
+        landmark.setLandmarkId(results.getInt("id"));
         landmark.setAddressId(results.getInt("address_id"));
         landmark.setName(results.getString("name"));
         landmark.setType(results.getString("type"));
