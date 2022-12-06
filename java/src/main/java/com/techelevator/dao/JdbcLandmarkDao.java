@@ -21,8 +21,9 @@ public class JdbcLandmarkDao implements LandmarkDao{
     @Override
     public List<Landmark> listLandmarks(){
         List<Landmark> list = new ArrayList<>();
-        String sql = "SELECT id, address_id, name, type, description, likes, img_URL " +
-                    " FROM landmarks; ";
+        String sql = "SELECT landmarks.id, address_id, landmarks.name, types.name AS type, description, likes, img_URL " +
+                " FROM landmarks " +
+                " JOIN types ON landmarks.type = types.id ";
 
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
         while(result.next()){
