@@ -34,7 +34,11 @@
       <router-link :to="{ name: 'register' }">Need an account?</router-link>
       <button type="submit">Sign in</button>
     </form>
+     
+    <img class="logo" src="../assets/Glider-1.png">
+  
   </div>
+ 
 </template>
 
 <script>
@@ -75,11 +79,15 @@ export default {
 };
 </script>
 <style>
+
 body{
   background-color: #F3FCED;
 }
-div#login.text-center{
-  display: flex;
-  flex-direction: row-reverse;
+img{
+  display: block;
+  height: 600px;
+  width: auto;
+  margin-left: 25%;
+  margin-right: 75%;
 }
 </style>
