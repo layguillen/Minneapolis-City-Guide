@@ -33,6 +33,7 @@ public class LandmarkController {
         return result;
     }
 
+    //used to update likes count (int)
     @RequestMapping(path = "/landmark/{id}", method= RequestMethod.PUT)
     public Landmark updateLandmark(@Valid @RequestBody Landmark landmark, @PathVariable("id") int landmarkId){
         Landmark result = landmarkDao.updateLandmark(landmark);

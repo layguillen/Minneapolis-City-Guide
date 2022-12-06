@@ -21,7 +21,7 @@ public class JdbcLandmarkDao implements LandmarkDao{
     @Override
     public List<Landmark> listLandmarks(){
         List<Landmark> list = new ArrayList<>();
-        String sql = "SELECT id, address_id, name, type, description, average_rating, img_URL " +
+        String sql = "SELECT id, address_id, name, type, description, likes, img_URL " +
                     " FROM landmarks ";
 
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
@@ -38,7 +38,7 @@ public class JdbcLandmarkDao implements LandmarkDao{
 
         Landmark landmark = new Landmark();
 
-        String sql = "SELECT id, address_id, name, type, description, average_rating, img_URL " +
+        String sql = "SELECT id, address_id, name, type, description, likes, img_URL " +
                     " FROM landmarks " +
                     " WHERE id = ?; ";
 
@@ -52,7 +52,7 @@ public class JdbcLandmarkDao implements LandmarkDao{
     //TODO: check sql
     @Override
     public boolean createLandmark(Landmark landmark){
-        String sql = "INSERT INTO landmarks (id, address_id, name, type, description, average_rating, img_URL) " +
+        String sql = "INSERT INTO landmarks (id, address_id, name, type, description, likes, img_URL) " +
                     " VALUES(?, ?, ?, ?, ?, ?, ?)";
 
         return jdbcTemplate.update(sql,
@@ -61,16 +61,16 @@ public class JdbcLandmarkDao implements LandmarkDao{
                                     landmark.getName(),
                                     landmark.getType(),
                                     landmark.getDescription(),
-                                    landmark.getAverageRating(),
+                                    landmark.getLikes(),
                                     landmark.getImgUrl()) == 1;
     }
 
-    //TODO: fix sql
+    //TODO: fix sql so that it adds one to the likes count (int)
     @Override
     public Landmark updateLandmark(Landmark landmark){
         Landmark result = landmark;
         String sql = " UPDATE landmarks " +
-                    " SET " +
+                    " SET likes = " +
                     " WHERE id = ? ";
         int num = jdbcTemplate.update(sql, landmark.getLandmarkId());
 
@@ -88,7 +88,7 @@ public class JdbcLandmarkDao implements LandmarkDao{
         landmark.setName(results.getString("name"));
         landmark.setType(results.getString("type"));
         landmark.setDescription(results.getString("description"));
-        landmark.setAverageRating(results.getInt("average_rating"));
+        landmark.setLikes(results.getInt("likes"));
         landmark.setImgUrl(results.getString("img_URL"));
 
         return landmark;

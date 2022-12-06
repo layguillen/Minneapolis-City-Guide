@@ -14,8 +14,8 @@ public class Landmark {
     private String type;
     @JsonProperty("description")
     private String description;
-    @JsonProperty("average_rating")
-    private int averageRating;
+    @JsonProperty("likes")
+    private int likes;
     @JsonProperty("img_URL")
     private String imgUrl;
 
@@ -61,12 +61,12 @@ public class Landmark {
         this.description = description;
     }
 
-    public int getAverageRating() {
-        return averageRating;
+    public int getLikes() {
+        return likes;
     }
 
-    public void setAverageRating(int averageRating) {
-        this.averageRating = averageRating;
+    public void setLikes(int likes) {
+        this.likes = likes;
     }
 
     public String getImgUrl() {

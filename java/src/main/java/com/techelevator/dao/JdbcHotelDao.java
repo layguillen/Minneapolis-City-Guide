@@ -21,7 +21,7 @@ public class JdbcHotelDao implements HotelDao{
     public List<Hotel> listHotels(){
         List<Hotel> list = new ArrayList<>();
 
-        String sql = " SELECT id, address_id, star_rating, name " +
+        String sql = " SELECT id, address_id, name " +
                     " FROM hotels ";
 
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
@@ -38,7 +38,7 @@ public class JdbcHotelDao implements HotelDao{
 
         Hotel hotel = new Hotel();
 
-        String sql = " SELECT id, address_id, star_rating, name " +
+        String sql = " SELECT id, address_id, name " +
                     " FROM hotels " +
                     " WHERE id = ? ";
 
@@ -55,9 +55,7 @@ public class JdbcHotelDao implements HotelDao{
 
         hotel.setHotelId(results.getInt("id"));
         hotel.setAddressId(results.getInt("address_id"));
-        hotel.setStarRating(results.getInt("star_rating"));
         hotel.setName(results.getString("name"));
-
 
         return hotel;
     }
