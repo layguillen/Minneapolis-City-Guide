@@ -35,7 +35,7 @@ INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.2420,44.
 INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.284806,44.9197552', '4552 Grand Ave', 'Minneapolis', 'MN', 55419);
 INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.3112,44.9451', '3000 Bde Maka Ska Parkway', 'Minneapolis', 'MN', 55408);
 INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.268135,44.991817', '724 Sibley St', 'Minneapolis', 'MN', 55413);
-INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.25494,44.984474', '125 SE Main St', 'Minneapolis', 'MN' 55414);
+INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.25494,44.984474', '125 SE Main St', 'Minneapolis', 'MN', 55414);
 INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.1958,44.7674', '13000 Zoo Blvd', 'Apple Valley', 'MN', 55124);
 INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.2422,44.8549', '376 North Garden', 'Bloomington', 'MN', 55425);
 INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.1525,44.9810', '1225 Estabrook Dr', 'St Paul', 'MN', 55103);
@@ -76,12 +76,6 @@ INSERT INTO landmarks(address_id, type, likes, name, description, img_url) VALUE
 INSERT INTO landmarks(address_id, type, likes, name, description, img_url) VALUES (20, 5, 5, 'The Main Cinema', ' Independent cinema offering first-run Hollywood movies, alongside art-house films.', 'n/a');
 INSERT INTO landmarks(address_id, type, likes, name, description, img_url) VALUES (21, 2, 5, 'The Bakken Museum', 'The Bakken is a science museum located in Minneapolis, Minnesota, United States, founded in 1975 by Earl Bakken, the co-founder of Medtronic. The exhibits present a history and explanation of electricity and electromagnetism.', 'n/a');
 INSERT INTO landmarks(address_id, type, likes, name, description, img_url) VALUES (22, 2, 5, 'Sea Life at Mall of America', 'Sea Life at Mall of America is a public aquarium located in the Mall of America in Bloomington, Minnesota, United States. The 1.3 million-US-gallon aquarium contains thousands of aquatic creatures, including sea turtles, sharks, sawfish, stingrays, jellyfish and seahorses.', 'n/a');
-INSERT INTO landmarks(address_id, type, likes, name, description, img_url) VALUES (23, 1, 5, '', '', 'n/a');
-INSERT INTO landmarks(address_id, type, likes, name, description, img_url) VALUES (24, 1, 5, '', '', 'n/a');
-INSERT INTO landmarks(address_id, type, likes, name, description, img_url) VALUES (25, 1, 5, '', '', 'n/a');
-INSERT INTO landmarks(address_id, type, likes, name, description, img_url) VALUES (26, 1, 5, '', '', 'n/a');
-INSERT INTO landmarks(address_id, type, likes, name, description, img_url) VALUES (27, 1, 5, '', '', 'n/a');
-INSERT INTO landmarks(address_id, type, likes, name, description, img_url) VALUES (28, 1, 5, '', '', 'n/a');
-INSERT INTO landmarks(address_id, type, likes, name, description, img_url) VALUES (29, 1, 5, '', '', 'n/a');
+
 
 COMMIT TRANSACTION;
