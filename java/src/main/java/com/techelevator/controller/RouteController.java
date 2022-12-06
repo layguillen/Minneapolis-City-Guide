@@ -1,5 +1,6 @@
 package com.techelevator.controller;
 
+import com.techelevator.dao.RouteDao;
 import com.techelevator.dao.UserDao;
 import com.techelevator.model.Route;
 import com.techelevator.services.iRouteService;
@@ -15,16 +16,18 @@ import java.security.Principal;
 public class RouteController {
 
     private iRouteService routeService;
+    private RouteDao routeDao;
     private UserDao userDao;
 
-    public RouteController(iRouteService routeService, UserDao userDao) {
-
+    public RouteController(iRouteService routeService, UserDao userDao, RouteDao routeDao) {
         this.routeService = routeService;
+        this.routeDao = routeDao;
         this.userDao = userDao;
     }
 
+    //calls API to get a new route
     @RequestMapping(path= "", method= RequestMethod.POST)
-    public Route getRoute(Principal principal){
+    public Route getNewRoute(Principal principal){
         Route route = new Route();
         route.setUserId(userDao.findIdByUsername(principal.getName()));
 

@@ -8,8 +8,8 @@ public class Route {
     private int routeId;
     @JsonProperty("user_id")
     private int userId;
-    @JsonProperty("hotel_id")
-    private int hotelId;
+    @JsonProperty("start_id")
+    private int startId;
     @JsonProperty("created_date")
     private String date;
     @JsonProperty("name")
@@ -46,12 +46,12 @@ public class Route {
         this.userId = userId;
     }
 
-    public int getHotelId() {
-        return hotelId;
+    public int getStartId() {
+        return startId;
     }
 
-    public void setHotelId(int hotelId) {
-        this.hotelId = hotelId;
+    public void setStartId(int startId) {
+        this.startId = startId;
     }
 
     public String getDate() {

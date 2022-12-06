@@ -37,9 +37,54 @@ public class JdbcRouteDao implements RouteDao{
         return false;
     }
 
-    //TODO method for adding/removing landmark to route
+    //TODO fix sql statement, method for adding landmark to route
+    @Override
+    public Route addLandmarkToRoute(Route route, int landmarkId){
+        if(route == null) throw new IllegalArgumentException("Route cannot be null");
 
-    //TODO method for changing starting location for route
+        Route result = route;
+        String sql = " UPDATE routes_landmarks " +
+                    " SET ";
+
+        int num = jdbcTemplate.update(sql, route.getRouteId(), landmarkId);
+        if(num != 1){
+            return null;
+        }
+        return result;
+    }
+
+    //TODO fix sql statement, method for removing landmark to route
+    @Override
+    public Route removeLandmarkToRoute(Route route, int landmarkId){
+        if(route == null) throw new IllegalArgumentException("Route cannot be null");
+
+        Route result = route;
+        String sql = " UPDATE routes_landmarks " +
+                " SET ";
+
+        int num = jdbcTemplate.update(sql, route.getRouteId(), landmarkId);
+        if(num != 1){
+            return null;
+        }
+        return result;
+    }
+
+
+    //TODO fix sql statement, method for changing starting location for route
+    @Override
+    public Route updateStartingLocation(Route route, int startId){
+        if(route == null) throw new IllegalArgumentException("Route cannot be null");
+
+        Route result = route;
+        String sql = " UPDATE routes " +
+                " SET ";
+
+        int num = jdbcTemplate.update(sql, route.getRouteId(), startId);
+        if(num != 1){
+            return null;
+        }
+        return result;
+    }
 
     private Route mapRowToRoute(SqlRowSet results){
         Route route = new Route();
