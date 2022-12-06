@@ -38,7 +38,7 @@ CREATE TABLE hotels (
 CREATE TABLE routes (
     id serial PRIMARY KEY,
     user_id int REFERENCES users(user_id),
-    hotel_id int NOT NULL,
+    start_id int REFERENCES addresses(id),
     created_date date NOT NULL,
 	name varchar
 );
