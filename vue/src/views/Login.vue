@@ -15,7 +15,7 @@
         type="text"
         id="username"
         class="form-control form-element"
-        placeholder="Username"
+        placeholder="Username or Email"
         v-model="user.username"
         required
         autofocus
@@ -28,11 +28,12 @@
         v-model="user.password"
         required
       />
-      <button class="form-element" type="submit">Sign in</button>
-      <router-link id="register" class="form-element" :to="{ name: 'register' }">Need an account?</router-link>
+      <button class="form-element login-button" type="submit"> <router-link  class="form-element routerstyle" :to="{ name: 'home' }">login</router-link></button>
+      <button class="register-button"> <router-link class="form-element routerstyle" :to="{ name: 'register' }">join the club</router-link></button>
     </form>
      
     <img class="logo" src="../assets/Glider-1.png">
+    
   
   </div>
  
@@ -71,7 +72,7 @@ export default {
             this.invalidCredentials = true;
           }
         });
-    }
+    },
   }
 };
 </script>
@@ -92,7 +93,7 @@ div#login.text-center{
 
 img{
   grid-area: img;
-  height: 90vh;
+  height: 80vh;
   justify-self: center;
 }
 
@@ -102,19 +103,45 @@ img{
   flex-direction: column;
   justify-content: center;
   align-self: center;
-  border: 1px black solid;
+  border: 5px #004E64 solid;
   border-radius: 10%;
   padding: 10%;
-
-  background: white;
+  background: rgb(246, 242, 242);
 }
 
 .form-element {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
+  border-radius: 9px;
+  
 }
 
-#register {
-  text-align: center;
+button.login-button{
+  background-color: #004E64;
+  border-radius: 12px;
+  color: #F3FCED;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', 'Arial', 'sans-serif';
+  font-size: 30px;
+  margin-left: 20%;
+  margin-right: 20%;
+
 }
+
+button.register-button{
+  background-color: #1fd6c1;
+  border-radius: 12px;
+  color: #F3FCED;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', 'Arial', 'sans-serif';
+  font-size: 30px;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+.routerstyle{
+  color: #F3FCED;
+  text-decoration: none;
+}
+
+
+
+
 </style>

@@ -1,21 +1,21 @@
 <template>
   <div id="register" class="text-center">
     <form class="form-register" @submit.prevent="register">
-      <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
+      <h1 class="h3 mb-3 font-weight-normal" id="createaccount">sign up</h1>
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
-      <label for="username" class="sr-only">Username</label>
+      
       <input
         type="text"
         id="username"
-        class="form-control"
+        class="form-control grid-item1"
         placeholder="Username"
         v-model="user.username"
         required
         autofocus
       />
-      <label for="password" class="sr-only">Password</label>
+      
       <input
         type="password"
         id="password"
@@ -33,8 +33,8 @@
         required
       />
       <router-link :to="{ name: 'login' }">Have an account?</router-link>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">
-        Create Account
+      <button class="btn btn-lg btn-primary btn-block createButton" type="submit">
+        create account
       </button>
     </form>
   </div>
@@ -90,4 +90,49 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+div#register.text-center{
+  display: grid;
+  grid-template-columns: repeat(11, .6fr);
+  grid-template-rows: repeat(5, .6fr);
+
+}
+.text-center{
+  height: 80vh;
+}
+#createaccount{
+  text-align: center;
+  color: #004E64;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', 'Arial', 'sans-serif';
+  
+
+}
+button.createButton{
+  height: 5vh;
+  border-radius: 60px;
+  margin-left: 50px;
+  margin-right: 50px;
+
+  background-color: #004E64;
+  color: #F3FCED;
+
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', 'Arial', 'sans-serif';
+  font-size: 30px;
+
+  
+}
+.form-register{
+ display: flex;
+ flex-direction: column;
+
+ grid-column-start:5;
+ grid-column-end: 8;
+ grid-row-start: 2;
+ grid-row-end: 5;
+ 
+ border: 5px #004E64 solid;
+ border-radius: 20%;
+ background: rgb(246, 242, 242);
+}
+
+</style>
