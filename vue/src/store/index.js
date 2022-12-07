@@ -24,7 +24,8 @@ export default new Vuex.Store({
     landmarks: [],
     currentLandmark: [
 
-    ]
+    ],
+    pendingLandmarks: []
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -45,6 +46,9 @@ export default new Vuex.Store({
     },
     SET_LANDMARKS(state, list) {
       this.landmarks = list;
+    },
+    SET_PENDING_LANDMARKS(state, list){
+      this.pendingLandmarks = list;
     }
   }
 })

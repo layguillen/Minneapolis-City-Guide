@@ -5,7 +5,9 @@
         <h1 id="title">Glider</h1>
         <img id="glider-img" src="..\assets\Glider-1.png" alt="Glider Image" >
       </div>
-      <router-link id="addLandmark" v-bind:to="{name: 'addLandmark'}">Add a Landmark</router-link>
+      <router-link v-bind:to="{name: 'addLandmark'}">
+        <button id="addLandmark">Add a Landmark</button>
+      </router-link>
       <!-- <h2 id="add-landmark">Add a Landmark</h2> -->
     </div>
    </div>
@@ -29,11 +31,15 @@
 #header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 #addLandmark{
-  border: 5px #004E64 solid;
-  border-radius: 10%;
+  border: 5px #bd92dd solid;
+  padding: 8px;
+  background-color: #004E64;
+  color: #F3FCED;
+  border-radius: 12px;
   justify-content: center;
   align-content: center;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', 'Arial', 'sans-serif';

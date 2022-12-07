@@ -25,10 +25,10 @@
             <label for="description">Description</label>
             <textarea class="form-control" id="description" rows="3" v-model= "newLandmark.description"></textarea>
           </div>    
-          <div class="form-group">
+          <!-- <div class="form-group">
               <label for="imgURL">Image URL</label>
               <input class="form-control" id="imgURL" type= "url" placeholder="Landmark Image URL" v-model= "newLandmark.imgUrl">
-          </div>
+          </div> -->
           
           <label id="addressLabel" for="address">Landmark Address:</label>
           <div id="address" class="form-group">
@@ -65,7 +65,6 @@ export default {
                 name: '',
                 type: '',
                 description: '',
-                imgUrl: '',
                 street: '',
                 city: '',
                 state: '',
@@ -78,14 +77,17 @@ export default {
         saveTodo(){
             this.newLandmark.approved = false;
             // make a pending landmark array in store
-            this.$store.commit('', this.newLandmark);
+            this.$store.commit('SET_PENDING_LANDMARKS', this.newLandmark);
+            
             // resets the form to blank
             this.newLandmark = {
                 name: '',
                 type: '',
                 description: '',
-                imgUrl: '',
-                address: '',
+                street: '',
+                city: '',
+                state: '',
+                zip: '',
                 approved: false
             }
         }
