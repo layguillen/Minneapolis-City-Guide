@@ -22,10 +22,7 @@ export default new Vuex.Store({
     user: currentUser || {},
     landmarkStyles: [],
     landmarks: [],
-    itinerary: [],
-    currentLandmark: [
-
-    ],
+    currentLandmark: [],
     pendingLandmarks: []
   },
   mutations: {
@@ -46,10 +43,14 @@ export default new Vuex.Store({
       axios.defaults.headers.common = {};
     },
     SET_LANDMARKS(state, list) {
-      this.landmarks = list;
+      state.landmarks = list;
     },
     SET_PENDING_LANDMARKS(state, list){
-      this.pendingLandmarks = list;
-    }
+      state.pendingLandmarks = list;
+    },
+    SET_LANDMARK(state, landmark) {
+      state.currentLandmark = landmark;
+    },
+    
   }
 })
