@@ -20,7 +20,7 @@ public class JdbcReviewDao implements ReviewDao{
     @Override
     public List<Review> listReviews(){
         List<Review> reviews = new ArrayList<>();
-        String sql = " SELECT id, landmark_id, user_id, title, isliked, description " +
+        String sql = " SELECT id, landmark_id, user_id, title, is_liked, description " +
                 " FROM reviews ";
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
         while (result.next()){
@@ -30,10 +30,16 @@ public class JdbcReviewDao implements ReviewDao{
         return reviews;
     }
 
+    @Override
+    public Review getReview(int id) {
+
+        return listReviews().get(id-1);
+    }
+
 
     @Override
     public boolean createReview(Review review){
-        String sql = " INSERT INTO reviews(id, landmark_id, user_id, title, isliked, description) " +
+        String sql = " INSERT INTO reviews(id, landmark_id, user_id, title, is_liked, description) " +
                 " VALUES (?, ?, ?, ?, ?, ?) ";
 
 
@@ -43,7 +49,12 @@ public class JdbcReviewDao implements ReviewDao{
 
     private Review mapRowToReview(SqlRowSet results){
         Review review = new Review();
-
+        review.setReviewId(results.getInt("id"));
+        review.setLandmarkId(results.getInt("landmark_id"));
+        review.setUserId(results.getInt("user_id"));
+        review.setTitle(results.getString("title"));
+        review.setLiked(results.getBoolean("is_liked"));
+        review.setDescription(results.getString("description"));
         return review;
     }
 }

@@ -8,5 +8,7 @@ public interface ReviewDao {
 
     List<Review> listReviews();
 
+    Review getReview(int id);
+
     boolean createReview(Review review);
 }

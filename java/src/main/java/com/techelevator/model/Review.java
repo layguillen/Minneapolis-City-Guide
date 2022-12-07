@@ -14,7 +14,7 @@ public class Review {
     private String description;
     @JsonProperty("title")
     private String title;
-    @JsonProperty("isLiked")
+    @JsonProperty("is_liked")
     private boolean isLiked;
 
     public Review(){};
