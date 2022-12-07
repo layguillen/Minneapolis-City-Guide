@@ -35,6 +35,7 @@ CREATE TABLE hotels (
     address_id int REFERENCES addresses(id),
     name varchar
 );
+
 CREATE TABLE routes (
     id serial PRIMARY KEY,
     user_id int REFERENCES users(user_id),
@@ -42,6 +43,7 @@ CREATE TABLE routes (
     created_date date NOT NULL,
 	name varchar
 );
+
 CREATE TABLE routes_landmarks(
     route_id int NOT NULL,
     landmark_id int NOT NULL,
@@ -52,6 +54,8 @@ CREATE TABLE reviews(
     id serial PRIMARY KEY,
     landmark_id int REFERENCES landmarks(id),
     user_id int REFERENCES users(user_id),
+    title varchar NOT NULL,
+    isLiked boolean NOT NULL,
     description varchar
 );
 
