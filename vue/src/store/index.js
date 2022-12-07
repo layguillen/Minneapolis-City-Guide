@@ -22,6 +22,7 @@ export default new Vuex.Store({
     user: currentUser || {},
     landmarkStyles: [],
     landmarks: [],
+    itinerary: [],
     currentLandmark: [
 
     ],
