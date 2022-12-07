@@ -6,7 +6,7 @@
         <img id="glider-img" src="..\assets\Glider-1.png" alt="Glider Image" >
       </div>
       <router-link v-bind:to="{name: 'addLandmark'}">
-        <button id="addLandmark">Add a Landmark</button>
+        <button id="addLandmark">Suggest a Landmark</button>
       </router-link>
       <!-- <h2 id="add-landmark">Add a Landmark</h2> -->
     </div>
