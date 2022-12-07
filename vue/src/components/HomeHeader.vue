@@ -7,8 +7,12 @@
         <img id="glider-img" src="..\assets\Glider-1.png" alt="Glider Image" >
       </div>
       <router-link v-bind:to="{name: 'addLandmark'}">
-        <button id="addLandmark">Suggest a Landmark</button>
+        <button id="addLandmark">Add Landmark</button>
       </router-link>
+<<<<<<< HEAD
+=======
+      
+>>>>>>> af7ac8d356b4c0de339d78cd451ebaca8592d11b
     </div>
     
    </div>
@@ -49,7 +53,12 @@
   border-radius: 12px;
   justify-content: center;
   align-content: center;
+<<<<<<< HEAD
   font-family: 'Montserrat Alternates', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial';
+=======
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', 'Arial', 'sans-serif';
+  cursor: pointer;
+>>>>>>> af7ac8d356b4c0de339d78cd451ebaca8592d11b
 }
 
 </style>
