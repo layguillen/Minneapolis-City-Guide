@@ -44,6 +44,28 @@ INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.284806,4
 INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.3112, 44.9451', '3000 Bde Maka Ska Parkway', 'Minneapolis', 'MN', 55408);
 INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.268135,44.991817', '724 Sibley St', 'Minneapolis', 'MN', 55413);
 INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.25494,44.984474', '125 SE Main St', 'Minneapolis', 'MN', 55414);
+INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.270991,44.976229','710 S Marquette Ave', 'Minneapolis', 'MN', 55402);
+INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.2660003,44.9740555','425 S 7th St', 'Minneapolis', 'MN', 55415);
+INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.284866,45.02765','300 N Washington Ave', 'Minneapolis', 'MN', 55401);
+INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.2787175,44.9777258', '201 S 11th St', 'Minneapolis', 'MN', 55403);
+INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.2702431,44.974828', '88 South 6th St', 'Minneapolis', 'MN', 55402);
+INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.2778937,44.9710301', '1300 Nicollet Mall', 'Minneapolis', 'MN', 55403);
+INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.2777302,44.9705786','1313 Nicollet Mall', 'Minneapolis', 'MN', 55403);
+INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.255932,44.976555','900 S Washington Ave', 'Minneapolis', 'MN', 55415);
+INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.2603377,44.9768311','609 S 3rd St', 'Minneapolis', 'MN', 55415);
+INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.273338,44.973338','1001 S Marquette Ave', 'Minneapolis', 'MN', 55403);
+INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.2734486,44.9771101','35 S 7th St', 'Minneapolis', 'MN', 55402);
+INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.2693033,44.9818598','245 Hennepin Ave', 'Minneapolis', 'MN', 55401);
+INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.2733614,44.9775822','30 S 7th St', 'Minneapolis', 'MN', 55402);
+INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.2733614,44.9775822','12 South 6th St', 'Minneapolis', 'MN', 55402);
+INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.2290893,44.9741969','615 Washington Ave', 'Minneapolis', 'MN', 55414);
+INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.2941142, 44.948196','1121 W Lake St', 'Minneapolis', 'MN', 55408);
+INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.269342,44.977937','527 S Marquette Ave', 'Minneapolis', 'MN', 55402);
+INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.247726, 44.9758254','615 2nd Ave', 'Minneapolis', 'MN', 55402);
+INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.27130126953125 ,44.9758415222168','821 S Marquette Ave', 'Minneapolis', 'MN', 55402);
+INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.2684523,44.973095','225 3rd Ave', 'Minneapolis', 'MN', 55401);
+INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.2767386,44.977544','19 N 8th St', 'Minneapolis', 'MN', 55403);
+
 
 
 INSERT INTO types (name) VALUES ('Art');
@@ -54,6 +76,9 @@ INSERT INTO types (name) VALUES ('Amusement');
 INSERT INTO types (name) VALUES ('Venue');
 INSERT INTO types (name) VALUES ('Historic');
 INSERT INTO types (name) VALUES ('Restaurant');
+
+
+
 
 INSERT INTO landmarks(address_id, type, likes, name, description, img_url) VALUES (1, 1, 5, 'Minneapolis Institute of Art', 'The Minneapolis Institute of Art is an arts museum located in Minneapolis, Minnesota, United States. Home to more than 90,000 works of art representing 5,000 years of world history, Mia is one of the largest art museums in the United States. Its permanent collection includes world-famous works that embody the highest levels of artistic achievement, spanning about 20,000 years and representing the world’s diverse cultures across six continents. The museum has seven curatorial areas: Arts of Africa & the Americas; Contemporary Art; Decorative Arts, Textiles & Sculpture; Asian Art; Paintings; Photography and New Media; and Prints and Drawings', 'n/a');
 INSERT INTO landmarks(address_id, type, likes, name, description, img_url) VALUES (2, 3, 5, 'Mall of America', 'Mall of America (MOA) is a shopping mall located in Bloomington, Minnesota, a suburb of the Twin Cities in Minnesota, United States. It lies southeast of the junction of Interstate 494 and Minnesota State Highway 77, north of the Minnesota River, and across the Interstate from the Minneapolis–Saint Paul International Airport. It opened in 1992, and is the largest mall in the United States, the largest in the Western Hemisphere, and the ninth largest shopping mall in the world.', 'n/a');
@@ -85,5 +110,27 @@ INSERT INTO landmarks(address_id, type, likes, name, description, img_url) VALUE
 INSERT INTO landmarks(address_id, type, likes, name, description, img_url) VALUES (28, 4, 5, 'Bde Maka Ska Lake & Park', 'Bde Maka Ska is the largest lake in Minneapolis, Minnesota, United States, and part of the city`s Chain of Lakes. Surrounded by city park land and circled by bike and walking trails, it is popular for many outdoor activities.', 'n/a');
 INSERT INTO landmarks(address_id, type, likes, name, description, img_url) VALUES (29, 4, 5, 'Boom Island Park', 'Riverside park featuring a playground, a boat dock & restrooms, plus walking/biking paths.', 'n/a');
 INSERT INTO landmarks(address_id, type, likes, name, description, img_url) VALUES (30, 8, 5, 'Aster Cafe', 'Romantic eatery serving sandwiches & flatbreads, with skyline views & a summertime courtyard. The Aster presents live music most nights of the year, ranging from national acoustic acts to the best local artists and showcases', 'n/a');
+
+INSERT INTO hotels (address_id, name) VALUES (31, 'The Marquette Hotel, Curio Collection by Hilton');
+INSERT INTO hotels (address_id, name) VALUES (32, 'Hyatt Place Minneapolis/Downtown');
+INSERT INTO hotels (address_id, name) VALUES (33, 'Hewing Hotel');
+INSERT INTO hotels (address_id, name) VALUES (34, 'Hotel Ivy, a Luxury Collection Hotel, Minneapolis');
+INSERT INTO hotels (address_id, name) VALUES (35, 'The Westin Minneapolis');
+INSERT INTO hotels (address_id, name) VALUES (36, 'Hyatt Regency Minneapolis');
+INSERT INTO hotels (address_id, name) VALUES (37, 'Millennium Minneapolis');
+INSERT INTO hotels (address_id, name) VALUES (38, 'Aloft Minneapolis');
+INSERT INTO hotels (address_id, name) VALUES (39, 'Radisson RED Minneapolis Downtown');
+INSERT INTO hotels (address_id, name) VALUES (40, 'Hilton Minneapolis');
+INSERT INTO hotels (address_id, name) VALUES (41, 'The Royal Sonesta Minneapolis Downtown');
+INSERT INTO hotels (address_id, name) VALUES (42, 'Four Seasons Hotel Minneapolis');
+INSERT INTO hotels (address_id, name) VALUES (43, 'Minneapolis Marriott City Center');
+INSERT INTO hotels (address_id, name) VALUES (44, 'Embassy Suites by Hilton Minneapolis Downtown');
+INSERT INTO hotels (address_id, name) VALUES (45, 'Graduate Minneapolis');
+INSERT INTO hotels (address_id, name) VALUES (46, 'Moxy Minneapolis Uptown');
+INSERT INTO hotels (address_id, name) VALUES (47, 'Rand Tower Hotel, Minneapolis');
+INSERT INTO hotels (address_id, name) VALUES (48, 'Hyatt Centric Downtown Minneapolis');
+INSERT INTO hotels (address_id, name) VALUES (49, 'The Foshay');
+INSERT INTO hotels (address_id, name) VALUES (50, 'Renaissance Minneapolis Hotel');
+INSERT INTO hotels (address_id, name) VALUES (51, 'Hampton Inn & Suites Minneapolis/Downtown');
 
 COMMIT TRANSACTION;
