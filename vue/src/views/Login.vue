@@ -120,7 +120,7 @@ button.login-button{
   background-color: #004E64;
   border-radius: 12px;
   color: #F3FCED;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', 'Arial', 'sans-serif';
+  font-family: 'Montserrat Alternates', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial', 'sans-serif';
   font-size: 30px;
   margin-left: 20%;
   margin-right: 20%;

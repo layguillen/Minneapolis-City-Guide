@@ -58,7 +58,7 @@ div.home {
   height: 100vh;
   width: 100vw;
   margin: 0;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', 'Arial', 'sans-serif';
+  font-family: 'Montserrat Alternates', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial', 'sans-serif';
 }
 
 #filter {
