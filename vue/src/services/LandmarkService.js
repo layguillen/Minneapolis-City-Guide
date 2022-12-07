@@ -6,11 +6,9 @@ const http = axios.create({
 
 export default {
 
-        listLandmarkTypes() {
-            return axios.get('/landmark/styles');
-        },
+        
 
-        listLandmarks() {
+        list() {
             return http.get('/landmark/list');
         }
 }
