@@ -133,4 +133,11 @@ INSERT INTO hotels (address_id, name) VALUES (49, 'The Foshay');
 INSERT INTO hotels (address_id, name) VALUES (50, 'Renaissance Minneapolis Hotel');
 INSERT INTO hotels (address_id, name) VALUES (51, 'Hampton Inn & Suites Minneapolis/Downtown');
 
+
+INSERT INTO reviews (landmark_id, user_id, is_liked, title, description) VALUES (1, 1, true, 'Awesome Place', 'This was an awesome place. My family loved it');
+INSERT INTO reviews (landmark_id, user_id, is_liked, title, description) VALUES (2, 1, true, 'Great Vibes', 'I loved the atmosphere');
+INSERT INTO reviews (landmark_id, user_id, is_liked, title, description) VALUES (1, 1, true, 'Killer Time', 'I murdered 14 children in this location and no one will ever know since no one reads reviews.');
+INSERT INTO reviews (landmark_id, user_id, is_liked, title, description) VALUES (2, 1, false, 'Bad Food', 'They served no hot dogs. I wanted hot dogs. Is this even the hot dog shop?');
+INSERT INTO reviews (landmark_id, user_id, is_liked, title, description) VALUES (1, 1, false, 'Ugly People', 'I don`t like ugly people. This place had like 2. I was really suffering');
+
 COMMIT TRANSACTION;
