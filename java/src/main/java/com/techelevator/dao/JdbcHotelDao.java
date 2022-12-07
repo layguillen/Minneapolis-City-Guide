@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.Address;
 import com.techelevator.model.Hotel;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -39,8 +40,8 @@ public class JdbcHotelDao implements HotelDao{
         Hotel hotel = new Hotel();
 
         String sql = " SELECT id, address_id, name " +
-                    " FROM hotels " +
-                    " WHERE id = ? ";
+                     " FROM hotels " +
+                     " WHERE id = ? ";
 
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql, hotelId);
         if(result.next()){
@@ -59,5 +60,17 @@ public class JdbcHotelDao implements HotelDao{
 
         return hotel;
     }
+    private Address mapRowToAddress(SqlRowSet results){
+        Address address = new Address();
+        address.setAddressId(results.getInt("id"));
+        address.setLongLat(results.getString("long_lat"));
+        address.setStreet(results.getString("street"));
+        address.setCity(results.getString("city"));
+        address.setStreet(results.getString("street"));
+        address.setStateAbbrev(results.getString("state"));
+        address.setZipCode(results.getInt("zip"));
+        return address;
+    }
+
 
 }

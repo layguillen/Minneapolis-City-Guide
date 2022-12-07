@@ -8,7 +8,7 @@ public interface AddressDao {
 
     List<Address> listOfAddresses();
 
-    Address getAddress();
+    Address getAddress(int id);
 
     boolean createAddress(Address address);
 }

@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.Address;
 import com.techelevator.model.Landmark;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -26,7 +27,16 @@ public class JdbcLandmarkDao implements LandmarkDao{
 
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
         while(result.next()){
-            list.add(mapRowToLandmark(result));
+            Landmark landmark = mapRowToLandmark(result);
+            String addressSql = " SELECT id, long_lat, street, city, state, zip " +
+                " FROM addresses " +
+                " WHERE id = ?";
+            SqlRowSet addressResult = jdbcTemplate.queryForRowSet(addressSql, landmark.getAddressId());
+
+            if (addressResult.next()){
+                landmark.setAddress(mapRowToAddress(addressResult));
+            }
+            list.add(landmark);
         }
         return list;
     }
@@ -45,6 +55,15 @@ public class JdbcLandmarkDao implements LandmarkDao{
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql, landmarkId);
         if (result.next()){
             return mapRowToLandmark(result);
+        }
+
+        String addressSql = " SELECT id, long_lat, street, city, state, zip " +
+                " FROM addresses " +
+                " WHERE id = ?";
+        SqlRowSet addressResult = jdbcTemplate.queryForRowSet(addressSql, landmark.getAddressId());
+
+        if (addressResult.next()){
+            landmark.setAddress(mapRowToAddress(addressResult));
         }
         return landmark;
     }
@@ -92,6 +111,17 @@ public class JdbcLandmarkDao implements LandmarkDao{
         landmark.setImgUrl(results.getString("img_URL"));
 
         return landmark;
+    }
+    private Address mapRowToAddress(SqlRowSet results){
+        Address address = new Address();
+        address.setAddressId(results.getInt("id"));
+        address.setLongLat(results.getString("long_lat"));
+        address.setStreet(results.getString("street"));
+        address.setCity(results.getString("city"));
+        address.setStreet(results.getString("street"));
+        address.setStateAbbrev(results.getString("state"));
+        address.setZipCode(results.getInt("zip"));
+        return address;
     }
 
 }

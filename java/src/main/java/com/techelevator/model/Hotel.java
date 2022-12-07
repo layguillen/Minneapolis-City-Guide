@@ -1,6 +1,8 @@
 package com.techelevator.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.techelevator.dao.AddressDao;
+import com.techelevator.dao.JdbcAddressDao;
 
 public class Hotel {
 
@@ -10,6 +12,8 @@ public class Hotel {
     private int addressId;
     @JsonProperty("name")
     private String name;
+
+    private Address address;
 
     public Hotel(){};
 
@@ -28,6 +32,14 @@ public class Hotel {
     public void setAddressId(int addressId) {
         this.addressId = addressId;
     }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+    public Address getAddress() {
+        return this.address;
+    }
+
 
     public String getName() {
         return name;

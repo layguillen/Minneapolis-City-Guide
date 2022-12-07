@@ -1,6 +1,6 @@
 BEGIN TRANSACTION;
 
-DROP TABLE IF EXISTS users, addresses, types, landmarks, hotels, routes, routes_landmarks, review;
+DROP TABLE IF EXISTS users, addresses, types, landmarks, hotels, routes, routes_landmarks, reviews;
 
 CREATE TABLE users (
 	user_id SERIAL,
@@ -48,7 +48,7 @@ CREATE TABLE routes_landmarks(
     PRIMARY KEY(route_id, landmark_id)
 );
 
-CREATE TABLE review(
+CREATE TABLE reviews(
     id serial PRIMARY KEY,
     landmark_id int REFERENCES landmarks(id),
     user_id int REFERENCES users(user_id),

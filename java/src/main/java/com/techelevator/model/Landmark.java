@@ -19,6 +19,8 @@ public class Landmark {
     @JsonProperty("img_URL")
     private String imgUrl;
 
+    private Address address;
+
     public Landmark(){};
 
     public int getLandmarkId() {
@@ -76,4 +78,8 @@ public class Landmark {
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
     }
+
+    public void setAddress(Address address) { this.address = address; }
+
+    public Address getAddress(){ return this.address; }
 }
