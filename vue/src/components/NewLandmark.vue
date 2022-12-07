@@ -1,5 +1,6 @@
 <template>
   <section id="main">
+      <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Montserrat Alternates'>
       <h2 id="page-title">Submit a New Landmark for Consideration</h2>
 
       <form class="form" v-on:submit.prevent= "saveLandmark">
@@ -102,7 +103,7 @@ body{
 }
 
 #main {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', 'Arial', 'sans-serif';
+    font-family: 'Montserrat Alternates', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial', 'sans-serif';
     color: #004E64;
     display: flex;
     flex-direction: column;
@@ -114,15 +115,7 @@ h2 {
     text-align: center;
 }
 
-.form-group {
-    /* margin: 1rem 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around; */
 
-    /* margin-top: 1.5rem;
-    margin-bottom: 1.5rem; */
-}
 
 .form {
     display: flex;
@@ -165,7 +158,7 @@ h2 {
     background-color: #004E64;
     border-radius: 12px;
     color: #F3FCED;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', 'Arial', 'sans-serif';
+    font-family: 'Montserrat Alternates', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial', 'sans-serif';
 }
 
 </style>

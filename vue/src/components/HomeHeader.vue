@@ -1,5 +1,6 @@
 <template>
-  <div class="home-header">
+<div class="home-header">
+     <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Montserrat Alternates'>
     <div id="header" class="home-element">
       <div id="title-img">
         <h1 id="title">Glider</h1>
@@ -8,12 +9,15 @@
       <router-link v-bind:to="{name: 'addLandmark'}">
         <button id="addLandmark">Suggest a Landmark</button>
       </router-link>
-      <!-- <h2 id="add-landmark">Add a Landmark</h2> -->
     </div>
+    
    </div>
+
+
 </template>
 
 <style>
+
 
 #title-img {
   display: flex;
@@ -21,6 +25,8 @@
 
 #title {
   align-self: center;
+  font-family: 'Montserrat Alternates';
+  color: #129D8D;
 }
 
 #glider-img {
@@ -32,6 +38,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-family: 'Montserrat Alternates', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial';
 }
 
 #addLandmark{
@@ -42,7 +49,7 @@
   border-radius: 12px;
   justify-content: center;
   align-content: center;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', 'Arial', 'sans-serif';
+  font-family: 'Montserrat Alternates', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial';
 }
 
 </style>
