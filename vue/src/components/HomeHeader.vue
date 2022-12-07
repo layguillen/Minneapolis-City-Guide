@@ -6,9 +6,9 @@
         <img id="glider-img" src="..\assets\Glider-1.png" alt="Glider Image" >
       </div>
       <router-link v-bind:to="{name: 'addLandmark'}">
-        <button id="addLandmark">Add a Landmark</button>
+        <button id="addLandmark">Add Landmark</button>
       </router-link>
-      <!-- <h2 id="add-landmark">Add a Landmark</h2> -->
+      
     </div>
    </div>
 </template>
@@ -43,6 +43,7 @@
   justify-content: center;
   align-content: center;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', 'Arial', 'sans-serif';
+  cursor: pointer;
 }
 
 </style>
