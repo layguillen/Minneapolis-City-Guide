@@ -12,9 +12,28 @@ public class Review {
     private int userId;
     @JsonProperty("description")
     private String description;
+    @JsonProperty("title")
+    private String title;
+    @JsonProperty("isLiked")
+    private boolean isLiked;
 
     public Review(){};
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public boolean getIsLiked() {
+        return isLiked;
+    }
+
+    public void setLiked(boolean liked) {
+        isLiked = liked;
+    }
 
     public int getReviewId() {
         return reviewId;
