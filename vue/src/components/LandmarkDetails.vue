@@ -4,7 +4,7 @@
        <img src="../assets/Landmark1.png" alt="">
      </div>
      <div class="griditem2">
-       <h1>EXAMPLE TEXT</h1>
+       <h1>{{this.$store.state.currentLandmark.name}}</h1>
      </div>
      <div class="griditem3">
        <p>{{this.$store.state.currentLandmark.description}}</p>
