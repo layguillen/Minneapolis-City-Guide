@@ -106,7 +106,7 @@ div#register.text-center{
 #createaccount{
   text-align: center;
   color: #004E64;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', 'Arial', 'sans-serif';
+  font-family: 'Montserrat Alternates', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial', 'sans-serif';
   font-size: 3em;
 }
 
