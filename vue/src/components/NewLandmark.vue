@@ -139,6 +139,7 @@ h2 {
 }
 
 #addressLabel{
+    margin-top: 10px;
     text-align: center;
     font-weight: bold;
 }

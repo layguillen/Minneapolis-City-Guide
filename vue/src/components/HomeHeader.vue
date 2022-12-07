@@ -35,7 +35,7 @@
 }
 
 #addLandmark{
-  border: 5px #bd92dd solid;
+  border: 5px solid;
   padding: 8px;
   background-color: #004E64;
   color: #F3FCED;
