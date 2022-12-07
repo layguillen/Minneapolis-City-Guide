@@ -9,10 +9,7 @@
       <router-link v-bind:to="{name: 'addLandmark'}">
         <button id="addLandmark">Add Landmark</button>
       </router-link>
-<<<<<<< HEAD
-=======
       
->>>>>>> af7ac8d356b4c0de339d78cd451ebaca8592d11b
     </div>
     
    </div>
