@@ -5,18 +5,37 @@
       <h2 id="filter-names">Example</h2>
     </div>
     <div id="main" class="home-element">
-      <h3 id="example">Another</h3>
+      <div id="landmarkLister" v-for="landmark in this.$store.landmarks" v-bind:key="landmark.id">
+        <img src="../assets/Landmark1.png" alt="Landmark Photo" id="landmarkImg">
+        <h3 id="example">{{ landmark.name }}</h3>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import HomeHeader from "../components/HomeHeader.vue";
+import landmarkService from "../services/LandmarkService.js";
 
 export default {
   name: "home",
   components: {
     HomeHeader
+},
+methods: {
+  setLandmarks() {
+    landmarkService.listLandmarks().then(response => {
+      if (response.status == 200) {
+        this.$store.commit('SET_LANDMARKS', response.data);
+      } else {
+        console.log('Something went wrong.');
+      }
+    })
+  }
+},
+
+created() {
+  this.setLandmarks();
 }
 };
 </script>
@@ -54,6 +73,16 @@ div.home {
 .home-element {
   padding-right: 5%;
   padding-left: 5%;
+}
+
+#landmarkLister {
+  display: flex;
+  flex-direction: row;
+  margin: 1.4em;
+}
+
+#landmarkImg {
+  height: 10em;
 }
 
 </style>
