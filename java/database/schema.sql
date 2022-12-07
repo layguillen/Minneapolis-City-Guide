@@ -55,7 +55,7 @@ CREATE TABLE reviews(
     landmark_id int REFERENCES landmarks(id),
     user_id int REFERENCES users(user_id),
     title varchar NOT NULL,
-    isLiked boolean NOT NULL,
+    is_liked boolean NOT NULL,
     description varchar
 );
 
