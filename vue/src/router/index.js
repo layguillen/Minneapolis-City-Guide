@@ -64,8 +64,8 @@ const router = new Router({
       }
     },
     {
-      path: "/details",
-      name: "landmarkDetails",
+      path: "/details/:id",
+      name: "landmark-details",
       component: LandmarkDetails,
       meta: {
         requiresAuth: false 
