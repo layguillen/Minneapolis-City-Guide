@@ -34,7 +34,7 @@
       /> 
       </div>
       <div class = "haveAccount">
-      <router-link :to="{ name: 'login' }">Have an account?</router-link>
+        <router-link :to="{ name: 'login' }">Have an account?</router-link>
       </div>
       <button class="btn btn-lg btn-primary btn-block createButton" type="submit">
         create account
@@ -107,24 +107,7 @@ div#register.text-center{
   text-align: center;
   color: #004E64;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', 'Arial', 'sans-serif';
-  
-  
-
-}
-button.createButton{
-  height: 5vh;
-  border-radius: 60px;
-  margin-left: 50px;
-  margin-right: 50px;
-  margin-top: 80px;
-
-  background-color: #004E64;
-  color: #F3FCED;
-
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', 'Arial', 'sans-serif';
-  font-size: 30px;
-
-  
+  font-size: 3em;
 }
 
 .form-register{
@@ -139,21 +122,49 @@ button.createButton{
  border: 5px #004E64 solid;
  border-radius: 20%;
  background: rgb(246, 242, 242);
+
+ 
 }
 
+/* styles input fields */
 .form-control{ 
   width: 70%;
   margin-left: 15%;
   margin-right: 15%;
   margin-bottom: 10px ;
+  padding: 2%;
+  border: 2px #004E64 solid;
+  border-radius: 9px;
 }
 
 .inputFields {
-  margin-top: 50px;
+  margin-top: 15px;
+  
 }
+
 
 .haveAccount{
   margin-left: 15%;
+
+  text-decoration: none;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', 'Arial', 'sans-serif';
+  }
+
+button.createButton{
+  height: 10vh;
+  border-radius: 60px;
+  margin-left: 15%;
+  margin-right: 15%;
+  margin-top: 10%;
+  margin-bottom: 10%;
+
+  background-color: #004E64;
+  color: #F3FCED;
+
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', 'Arial', 'sans-serif';
+  font-size: 150%;
+  
 }
+
 
 </style>
