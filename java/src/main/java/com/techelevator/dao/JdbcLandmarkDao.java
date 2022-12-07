@@ -44,7 +44,6 @@ public class JdbcLandmarkDao implements LandmarkDao{
     @Override
     public Landmark getLandmark(int landmarkId){
         if(landmarkId == 0) throw new IllegalArgumentException("Landmark ID cannot be null.");
-
         Landmark landmark = new Landmark();
 
         String sql = "SELECT landmarks.id, address_id, landmarks.name, types.name AS type, description, likes, img_URL " +
@@ -54,7 +53,7 @@ public class JdbcLandmarkDao implements LandmarkDao{
 
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql, landmarkId);
         if (result.next()){
-            return mapRowToLandmark(result);
+            landmark = mapRowToLandmark(result);
         }
 
         String addressSql = " SELECT id, long_lat, street, city, state, zip " +

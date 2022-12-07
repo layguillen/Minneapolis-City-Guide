@@ -23,32 +23,29 @@ public class JdbcHotelDao implements HotelDao{
         List<Hotel> list = new ArrayList<>();
 
         String sql = " SELECT id, address_id, name " +
-                    " FROM hotels ";
+                     " FROM hotels ";
 
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
+
         while(result.next()){
-            list.add(mapRowToHotel(result));
+            Hotel hotel = mapRowToHotel(result);
+            String addressSql = " SELECT id, long_lat, street, city, state, zip " +
+                                " FROM addresses " +
+                                " WHERE id = ?";
+            SqlRowSet addressResult = jdbcTemplate.queryForRowSet(addressSql, hotel.getAddressId());
+
+            if (addressResult.next()){
+                hotel.setAddress(mapRowToAddress(addressResult));
+            }
+            list.add(hotel);
         }
 
         return list;
     }
 
     @Override
-    public Hotel getHotel(int hotelId){
-        if(hotelId == 0) throw new IllegalArgumentException("Hotel Id cannot be null");
-
-        Hotel hotel = new Hotel();
-
-        String sql = " SELECT id, address_id, name " +
-                     " FROM hotels " +
-                     " WHERE id = ? ";
-
-        SqlRowSet result = jdbcTemplate.queryForRowSet(sql, hotelId);
-        if(result.next()){
-            return mapRowToHotel(result);
-        }
-
-        return hotel;
+    public Hotel getHotel(int id){
+        return listHotels().get(id-1);
     }
 
     private Hotel mapRowToHotel(SqlRowSet results){
