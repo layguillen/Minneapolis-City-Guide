@@ -18,7 +18,7 @@ CREATE TABLE addresses (
     zip int
 );
 CREATE TABLE types(
-    id serial PRIMARY KEY,
+    id int PRIMARY KEY,
     name varchar
 );
 CREATE TABLE landmarks (

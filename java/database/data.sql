@@ -68,14 +68,14 @@ INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.2767386,
 
 
 
-INSERT INTO types (name) VALUES ('Art');
-INSERT INTO types (name) VALUES ('Educational');
-INSERT INTO types (name) VALUES ('Shopping');
-INSERT INTO types (name) VALUES ('Outdoor');
-INSERT INTO types (name) VALUES ('Amusement');
-INSERT INTO types (name) VALUES ('Venue');
-INSERT INTO types (name) VALUES ('Historic');
-INSERT INTO types (name) VALUES ('Restaurant');
+INSERT INTO types (id, name) VALUES (1, 'Art');
+INSERT INTO types (id, name) VALUES (2, 'Educational');
+INSERT INTO types (id, name) VALUES (3, 'Shopping');
+INSERT INTO types (id, name) VALUES (4, 'Outdoor');
+INSERT INTO types (id, name) VALUES (5, 'Amusement');
+INSERT INTO types (id, name) VALUES (6, 'Venue');
+INSERT INTO types (id, name) VALUES (7, 'Historic');
+INSERT INTO types (id, name) VALUES (8, 'Restaurant');
 
 
 
