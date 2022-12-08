@@ -27,7 +27,7 @@
         <div id= "img-container">
             <img src="" alt="landmark picture" />
         </div>
-        <p>{{ landmark.description }}</p>
+        <p>{{ landmark.type }}</p>
       </div>
     </div>
   </div>
