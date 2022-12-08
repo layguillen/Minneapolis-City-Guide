@@ -108,7 +108,7 @@ public class JdbcLandmarkDao implements LandmarkDao{
         landmark.setType(results.getString("type"));
         landmark.setDescription(results.getString("description"));
         landmark.setLikes(results.getInt("likes"));
-        landmark.setImgUrl("../assets/Landmark"+landmark.getLandmarkId()+".png");
+        landmark.setImgUrl(results.getString("img_url"));
 
         return landmark;
     }

@@ -19,20 +19,11 @@ public class Landmark {
     @JsonProperty("img_URL")
     private String imgUrl;
 
-    //TODO: map coordinates to landmark
-    private String[] coordinates;
+
 
     private Address address;
 
     public Landmark(){};
-
-    public String[] getCoordinates() {
-        return coordinates;
-    }
-
-    public void setCoordinates(String[] coordinates) {
-        this.coordinates = coordinates;
-    }
 
     public int getLandmarkId() {
         return landmarkId;
