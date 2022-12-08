@@ -97,8 +97,11 @@ export default {
 #landmark-container{
     margin: 10px 10px;
     padding: 2%;
-    border-radius: 12px;
     border: 2px #129D8D solid;    
+
+    border-radius: 42px;
+    box-shadow:  21px 21px 42px #bebebe,
+             -21px -21px 42px #ffffff;
 }
 
 
