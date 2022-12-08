@@ -2,7 +2,9 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.RouteDao;
 import com.techelevator.dao.UserDao;
+import com.techelevator.model.Landmark;
 import com.techelevator.model.Route;
+import com.techelevator.routeModels.RouteAPI;
 import com.techelevator.services.iRouteService;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @CrossOrigin
@@ -26,12 +30,13 @@ public class RouteController {
     }
 
     //calls API to get a new route
-    @RequestMapping(path= "", method= RequestMethod.POST)
-    public Route getNewRoute(Principal principal){
-        Route route = new Route();
-        route.setUserId(userDao.findIdByUsername(principal.getName()));
+    @RequestMapping(path= "/route", method= RequestMethod.POST)
+    public ArrayList<RouteAPI> getNewRoute(String token, List<Landmark> landmarks){
 
-        return route;
+        ArrayList<RouteAPI> routes = new ArrayList<>();
+        routes = routeService.createRoute(token, landmarks);
+
+        return routes;
     }
 
 }

@@ -16,6 +16,9 @@ public class JdbcRouteDao implements RouteDao{
         this.jdbcTemplate = jdbcTemplate;
     }
 
+    //TODO: method that calls RouteService
+
+
     //gets routes from database
     @Override
     public List<Route> listRoutes(){
@@ -29,6 +32,9 @@ public class JdbcRouteDao implements RouteDao{
         String sql = "";
         return null;
     }
+
+
+
 
     //Insert new route into database
     @Override

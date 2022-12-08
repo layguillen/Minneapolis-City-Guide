@@ -1,6 +1,9 @@
 package com.techelevator.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.techelevator.routeModels.RouteAPI;
+
+import java.util.ArrayList;
 
 public class Route {
 
@@ -15,20 +18,21 @@ public class Route {
     @JsonProperty("name")
     private String name;
 
-    /*
-    public class Route{
-        public Summary summary;
-        public ArrayList<Segment> segments;
-        public ArrayList<double> bbox;
-        public String geometry;
-        public ArrayList<int> way_points;
-    }
 
-     */
+
+    private ArrayList<RouteAPI> routes;
 
 
 
     public Route(){};
+
+    public ArrayList<RouteAPI> getRoutes() {
+        return routes;
+    }
+
+    public void setRoutes(ArrayList<RouteAPI> routes) {
+        this.routes = routes;
+    }
 
     public int getRouteId() {
         return routeId;
