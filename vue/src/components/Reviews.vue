@@ -2,7 +2,7 @@
   <div>
       <div id="review-container" v-for="review in this.$store.state.reviews" v-bind:key="review.id">
           <h3>{{review.title}}</h3>
-          <h4>{{review.user}}</h4>
+          <!-- <h4>{{review.user}}</h4> -->
           <p>{{review.isLiked}}</p>
           <p>{{review.description}}</p>
       </div>

@@ -35,7 +35,7 @@ public class RouteService implements iRouteService{
     public RouteService(){}
 
     public ArrayList<RouteAPI> createRoute(Landmark[] landmarks){
-        HttpEntity<Coordinates> entity = makeRouteEntity(landmarks);
+        HttpEntity<Integer[][]> entity = makeRouteEntity(landmarks);
 
         Root root = null;
         ArrayList<RouteAPI> routeAPI = null;
@@ -54,14 +54,14 @@ public class RouteService implements iRouteService{
 
     //Post and Put
     //pass in a list of landmarks, loop through it to then make an array of coordinates which then gets passed into the entity as the body
-    private HttpEntity<Coordinates> makeRouteEntity(Landmark[] landmarks) {
+    private HttpEntity<Integer[][]> makeRouteEntity(Landmark[] landmarks) {
         Coordinates coordinates = new Coordinates();
         //TODO: check if this needs to be String[][] instead of int[][]
-        int[][] array = new int[landmarks.length][];
+        Integer[][] array = new Integer[landmarks.length][];
         coordinates.setCoordinatesArray(array);
 
         for (int i = 0; i < landmarks.length; i++) {
-            int[] intArray = new int[2];
+            Integer[] intArray = new Integer[2];
             String[] a = landmarks[i].getAddress().getLongLat().split(",");
             intArray[0] = Integer.parseInt(a[0]);
             intArray[1] = Integer.parseInt(a[1]);
@@ -74,7 +74,7 @@ public class RouteService implements iRouteService{
         //pass API_KEY as authorization
         headers.add("Authorization", API_KEY);
 
-        return new HttpEntity<Coordinates>(coordinates, headers);
+        return new HttpEntity<Integer[][]>(coordinates.getCoordinatesArray(), headers);
     }
 
 

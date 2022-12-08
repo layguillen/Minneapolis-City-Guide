@@ -2,13 +2,13 @@ package com.techelevator.model;
 
 public class Coordinates {
 
-    private int[][] coordinatesArray;
+    private Integer[][] coordinatesArray;
 
-    public int[][] getCoordinatesArray() {
+    public Integer[][] getCoordinatesArray() {
         return coordinatesArray;
     }
 
-    public void setCoordinatesArray(int[][] coordinatesArray) {
+    public void setCoordinatesArray(Integer[][] coordinatesArray) {
         this.coordinatesArray = coordinatesArray;
     }
 }
