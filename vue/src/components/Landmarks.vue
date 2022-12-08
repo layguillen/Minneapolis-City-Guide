@@ -102,6 +102,7 @@ export default {
     border-radius: 42px;
     box-shadow:  21px 21px 42px #bebebe,
              -21px -21px 42px #ffffff;
+
 }
 
 

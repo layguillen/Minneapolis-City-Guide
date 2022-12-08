@@ -2,7 +2,7 @@
   <div class="home">
     <HomeHeader></HomeHeader>
     <div id="filter" class="home-element">
-      <h2 id="filter-names">Minneapolis Landmarks</h2>
+      <h2 id="filter-names">Minneapolis Attractions</h2>
     </div>
     <div id="main" class="home-element">
       <landmarks />
