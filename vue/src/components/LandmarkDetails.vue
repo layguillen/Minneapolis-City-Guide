@@ -1,5 +1,5 @@
 <template>
-<div> 
+<div id = "mainDiv"> 
    <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Montserrat Alternates'>
   <div class="container">
     <!-- image -->
@@ -15,6 +15,11 @@
       <p id = "description">{{this.$store.state.currentLandmark.description}}</p>
      </div>
   </div>
+  <div class = "addToItinerary">
+    <button class = "addButton" type="submit">
+        add to itinerary
+      </button>
+      </div>
 </div>
 </template>
 
@@ -47,7 +52,7 @@ body{
 .container{
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-rows: repeat(4, 1fr);
   
 }
 .griditem1{
@@ -56,7 +61,7 @@ body{
 .griditem2{
   display: inline-block;
   grid-column-start: 3;
-  grid-column-end: 5;
+  grid-column-end: 6;
   grid-row-start: 1;
   grid-row-end:2;
 
@@ -66,15 +71,20 @@ body{
   color:#F3FCED;
   text-decoration-line: underline;
   text-decoration-color: #F3FCED;
+  text-underline-offset: 20px;
+  text-align: center;
+  margin-top: 7%;
   
 }
 .griditem3{
-  grid-column-start: 2;
-  grid-column-end: 5;
+  grid-column-start: 3;
+  grid-column-end: 6;
+  grid-row-start: 1;
   font-family: 'Montserrat Alternates', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial';
-  font-size: 25px;
+  font-size: 30px;
   color: #F3FCED;
-  margin-top: 150px;
+  margin-top: 20%;
+  margin-left:5%;
 }
 
 
@@ -84,5 +94,17 @@ body{
   margin-left: 5vh;
   margin-top: 10vh;
 }
+
+.addToItinerary {
+  border-radius: 10px;
+  grid-row-start:  1;
+  
+
+}
+
+/* #mainDiv {
+  display: flex;
+  flex-direction: column;
+} */
 
 </style>
