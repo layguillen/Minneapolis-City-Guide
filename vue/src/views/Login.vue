@@ -82,8 +82,8 @@ body{
   background-color: #F3FCED;
 }
 div#login.text-center{
-  height: 90vh;
-  width: 90vw;
+  height: 100vh;
+  width: 100vw;
   margin: 0;
   display: grid;
   grid-template-areas: 
@@ -107,6 +107,9 @@ img{
   border-radius: 10%;
   padding: 10%;
   background: rgb(246, 242, 242);
+  width: 300px;
+  height: 275px;
+  margin-right: 50px;
 }
 
 .form-element {
