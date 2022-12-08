@@ -1,4 +1,6 @@
 <template>
+<div> 
+   <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Montserrat Alternates'>
   <div class="container">
     <!-- image -->
      <div class="griditem1">
@@ -13,6 +15,7 @@
       <p id = "description">{{this.$store.state.currentLandmark.description}}</p>
      </div>
   </div>
+</div>
 </template>
 
 <script>
@@ -38,56 +41,48 @@ export default {
 </script>
 
 <style>
-
+body{
+  background-color: #004E64
+}
 .container{
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(4, 1fr);
-  background-color: #004E64
-}
-.griditem1{
+  grid-template-rows: repeat(2, 1fr);
   
 }
-/*
-@font-face {
-  font-family: Montserrat_Alternates;
-  src: url(montserrat_alternate;);
-}*/ 
+.griditem1{
+  display: flex;
+}
 .griditem2{
-  grid-column-start: 2;
-  grid-column-end: 6;
+  display: inline-block;
+  grid-column-start: 3;
+  grid-column-end: 5;
   grid-row-start: 1;
   grid-row-end:2;
+
   text-align:center;
-  margin-top: 20px;
-  font-family: fantasy;
-  font-size: 200%;
-  color:whitesmoke;
+  font-family: 'Montserrat Alternates', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial';
+  font-size: 150%;
+  color:#F3FCED;
   text-decoration-line: underline;
-  text-decoration-color: whitesmoke;
-  text-underline-offset: 20px ;
+  text-decoration-color: #F3FCED;
   
 }
 .griditem3{
-  grid-column-start:2;
-  grid-column-end: 6;
-  grid-row-start: 1;
-  margin-left:25px;
-  font-family:fantasy;
-  font-size: 30px;
-  color: whitesmoke;
+  grid-column-start: 2;
+  grid-column-end: 5;
+  font-family: 'Montserrat Alternates', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial';
+  font-size: 25px;
+  color: #F3FCED;
   margin-top: 150px;
 }
 
-#description{
-}
 
 #landmark1 {
-  width: 700px;
-  height: 400px;
-  margin-top: 60px;
-  margin-left: 70px;
-  float: left;
+  height: 50vh;
+  width: 200%;
+  margin-left: 5vh;
+  margin-top: 10vh;
 }
 
 </style>
