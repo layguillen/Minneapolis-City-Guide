@@ -1,7 +1,6 @@
 <template>
 <div id = "mainDiv"> 
    <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Montserrat Alternates'>
-  <div class="container">
     <!-- image -->
      <div class="griditem1">
        <img id = "landmark1" src="../assets/Landmark1.png" alt="">
@@ -14,13 +13,12 @@
      <div class="griditem3">
       <p id = "description">{{this.$store.state.currentLandmark.description}}</p>
      </div>
-  </div>
-  <div class = "addToItinerary">
+     <div class = "addToItinerary">
     <button class = "addButton" type="submit">
         add to itinerary
       </button>
       </div>
-</div>
+  </div>
 </template>
 
 <script>
@@ -46,25 +44,25 @@ export default {
 </script>
 
 <style>
-body{
-  background-color: #004E64
-}
-.container{
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(4, 1fr);
-  
-}
-.griditem1{
-  display: flex;
-}
-.griditem2{
-  display: inline-block;
-  grid-column-start: 3;
-  grid-column-end: 6;
-  grid-row-start: 1;
-  grid-row-end:2;
 
+#mainDiv{
+  background-color:#004E64;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* grid-template-rows: repeat(3, 1fr); */
+  grid-template-areas: 
+  "img desc"
+  "footer footer";
+  grid-template-rows: 1fr 1fr;
+  height: 100vh;
+  width: 100vw;
+  margin:0px;
+}
+
+.griditem2{
+  grid-area:desc;
+  display: inline-block;
+ 
   text-align:center;
   font-family: 'Montserrat Alternates', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial';
   font-size: 150%;
@@ -77,9 +75,7 @@ body{
   
 }
 .griditem3{
-  grid-column-start: 3;
-  grid-column-end: 6;
-  grid-row-start: 1;
+  grid-area: desc;
   font-family: 'Montserrat Alternates', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial';
   font-size: 30px;
   color: #F3FCED;
@@ -87,24 +83,20 @@ body{
   margin-left:5%;
 }
 
-
 #landmark1 {
-  height: 50vh;
-  width: 200%;
+  grid-area: img;
+  height: 70%;
+  width: 100%;
   margin-left: 5vh;
   margin-top: 10vh;
 }
 
 .addToItinerary {
+  grid-area:footer;
+  display: flex;
   border-radius: 10px;
-  grid-row-start:  1;
-  
-
+  align-items: flex-end;
 }
 
-/* #mainDiv {
-  display: flex;
-  flex-direction: column;
-} */
 
 </style>
