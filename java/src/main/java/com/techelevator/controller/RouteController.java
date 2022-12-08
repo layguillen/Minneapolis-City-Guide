@@ -6,10 +6,7 @@ import com.techelevator.model.Landmark;
 import com.techelevator.model.Route;
 import com.techelevator.routeModels.RouteAPI;
 import com.techelevator.services.iRouteService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.ArrayList;
@@ -31,10 +28,10 @@ public class RouteController {
 
     //calls API to get a new route
     @RequestMapping(path= "/route", method= RequestMethod.POST)
-    public ArrayList<RouteAPI> getNewRoute(String token, List<Landmark> landmarks){
+    public List<RouteAPI> getNewRoute(@RequestBody Landmark[] landmarks){
 
-        ArrayList<RouteAPI> routes = new ArrayList<>();
-        routes = routeService.createRoute(token, landmarks);
+        List<RouteAPI> routes = new ArrayList<>();
+        routes = routeService.createRoute(landmarks);
 
         return routes;
     }

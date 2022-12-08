@@ -1,8 +1,10 @@
 <template>
   <div>
-      <div id="route-container">
+      <div id="route-container" v-for="route in this.$store.state.routes" v-bind:key="route.id">
           <p>{{route.summary}}</p>
-          <div>{{route}}</div>
+          <div>{{route.segments}}</div>
+          <div>{{route.geometry}}</div>
+          <div>{{route.wayPoints}}</div>
       </div>
   </div>
 </template>

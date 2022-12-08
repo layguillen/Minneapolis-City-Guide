@@ -32,10 +32,10 @@ public class RouteService implements iRouteService{
 
     private RestTemplate restTemplate = new RestTemplate();
 
+    public RouteService(){}
 
-
-    public ArrayList<RouteAPI> createRoute(String token, List<Landmark> landmarks){
-        HttpEntity<Coordinates> entity = makeRouteEntity(landmarks, token);
+    public ArrayList<RouteAPI> createRoute(Landmark[] landmarks){
+        HttpEntity<Coordinates> entity = makeRouteEntity(landmarks);
 
         Root root = null;
         ArrayList<RouteAPI> routeAPI = null;
@@ -47,22 +47,22 @@ public class RouteService implements iRouteService{
             routeAPI = root.getRoutes();
 
         } catch (RestClientResponseException | ResourceAccessException e){
-            BasicLogger.log(e.getMessage());
+            System.out.println(e.getMessage());
         }
         return routeAPI;
     }
 
     //Post and Put
     //pass in a list of landmarks, loop through it to then make an array of coordinates which then gets passed into the entity as the body
-    private HttpEntity<Coordinates> makeRouteEntity(List<Landmark> landmarks, String token) {
+    private HttpEntity<Coordinates> makeRouteEntity(Landmark[] landmarks) {
         Coordinates coordinates = new Coordinates();
         //TODO: check if this needs to be String[][] instead of int[][]
-        int[][] array = new int[landmarks.size()][];
+        int[][] array = new int[landmarks.length][];
         coordinates.setCoordinatesArray(array);
 
-        for (int i = 0; i < landmarks.size(); i++) {
+        for (int i = 0; i < landmarks.length; i++) {
             int[] intArray = new int[2];
-            String[] a = landmarks.get(i).getAddress().getLongLat().split(",");
+            String[] a = landmarks[i].getAddress().getLongLat().split(",");
             intArray[0] = Integer.parseInt(a[0]);
             intArray[1] = Integer.parseInt(a[1]);
 
@@ -70,7 +70,6 @@ public class RouteService implements iRouteService{
         }
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        headers.setBearerAuth(token);
 
         //pass API_KEY as authorization
         headers.add("Authorization", API_KEY);

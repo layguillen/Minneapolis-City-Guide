@@ -12,5 +12,5 @@ public interface iRouteService {
 
     //Route createRoute(String token, Route route);
 
-    ArrayList<RouteAPI> createRoute(String token, List<Landmark> landmarks);
+    ArrayList<RouteAPI> createRoute(Landmark[] landmarks);
 }
