@@ -23,9 +23,9 @@
     </fieldset>
     <div id="container" v-for="landmark in filteredList" v-bind:key="landmark.id" >
       <div id="landmark-container">
-        <h3>{{ landmark.name }}</h3>
+        <h3>{{ landmark.img_URL}}</h3>
         <div id= "img-container">
-            <img src="" alt="landmark picture" />
+            <img :src="landmark.img_URL" alt="landmark picture" />
         </div>
         <p>{{ landmark.type }}</p>
       </div>
@@ -41,7 +41,9 @@ export default {
   data() {
     return {
       search: "",
-      type: ""
+      type: "",
+      i: 1,
+      imgURL: "",
     };
   },
   created() {
@@ -53,6 +55,10 @@ export default {
         this.$store.commit("SET_LANDMARKS", response.data);
       });
     },
+    imgPath(landmark) {
+      this.imgURL = landmark.imgURL;
+      return this.imgURL;
+    }
     
   },
   computed: {
@@ -82,7 +88,7 @@ export default {
         });
       }
       return this.filterByType;
-    },
+    }
   },
 };
 </script>
