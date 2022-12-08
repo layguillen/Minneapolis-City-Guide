@@ -2,15 +2,12 @@
   <div class="home">
     <HomeHeader></HomeHeader>
     <div id="filter" class="home-element">
-      <h2 id="filter-names">Example</h2>
+      <h2 id="filter-names">Landmarks</h2>
     </div>
     <div id="main" class="home-element">
       <landmarks />
       
-      <!-- <div id="landmarkLister" v-for="landmark in this.$store.landmarks" v-bind:key="landmark.id">
-        <img src="../assets/Landmark1.png" alt="Landmark Photo" id="landmarkImg">
-        <h3 id="example">{{ landmark.name }}</h3>
-      </div> -->
+
     </div>
   </div>
 </template>
