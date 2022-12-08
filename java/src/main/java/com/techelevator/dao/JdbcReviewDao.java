@@ -18,11 +18,12 @@ public class JdbcReviewDao implements ReviewDao{
     }
 
     @Override
-    public List<Review> listReviews(){
+    public List<Review> listReviews(int landmarkId){
         List<Review> reviews = new ArrayList<>();
         String sql = " SELECT id, landmark_id, user_id, title, is_liked, description " +
-                " FROM reviews ";
-        SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
+                " FROM reviews " +
+                " WHERE landmark_id = ? ";
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sql, landmarkId);
         while (result.next()){
             Review review = mapRowToReview(result);
             reviews.add(review);
@@ -30,11 +31,11 @@ public class JdbcReviewDao implements ReviewDao{
         return reviews;
     }
 
-    @Override
-    public Review getReview(int id) {
-
-        return listReviews().get(id-1);
-    }
+//    @Override
+//    public Review getReview(int id) {
+//
+//        return listReviews().get(id-1);
+//    }
 
 
     @Override

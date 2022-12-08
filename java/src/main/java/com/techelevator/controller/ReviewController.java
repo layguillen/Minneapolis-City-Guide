@@ -21,19 +21,20 @@ public class ReviewController {
         this.reviewDao = reviewDao;
     }
 
-    @RequestMapping(path="/review/list", method= RequestMethod.GET)
-    public List<Review> getAllReviews(){
-        return reviewDao.listReviews();
+    @RequestMapping(path="/review/list/{id}", method= RequestMethod.GET)
+    public List<Review> getAllReviews(@Valid @PathVariable("id") int landmarkId){
+
+        return reviewDao.listReviews(landmarkId);
     }
 
-    @RequestMapping(path="/review/{id}", method= RequestMethod.GET)
-    public Review getReviews(@Valid @PathVariable("id") int reviewId){
-        Review result = reviewDao.getReview(reviewId);
-        if(result == null){
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Review not found", null);
-        }
-        return result;
-    }
+//    @RequestMapping(path="/review/{id}", method= RequestMethod.GET)
+//    public Review getReviews(@Valid @PathVariable("id") int reviewId){
+//        Review result = reviewDao.getReview(reviewId);
+//        if(result == null){
+//            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Review not found", null);
+//        }
+//        return result;
+//    }
 
     @RequestMapping(path= "/review/new", method= RequestMethod.POST)
     public Review newReview(@Valid @RequestBody Review review){
