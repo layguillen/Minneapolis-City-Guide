@@ -1,23 +1,28 @@
 <template>
 <div id = "mainDiv"> 
    <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Montserrat Alternates'>
+
     <!-- image -->
      <div class="griditem1">
-       <img id = "landmark1" src="../assets/Landmark1.png" alt="">
+       <img v-bind:src="this.$store.state.url" id="landmark1"/>
      </div>
+
      <!-- name -->
      <div class="griditem2">
        <h1>{{this.$store.state.currentLandmark.name}}</h1>
      </div>
+
      <!-- description-->
      <div class="griditem3">
       <p id = "description">{{this.$store.state.currentLandmark.description}}</p>
      </div>
+
      <div class = "addToItinerary">
     <button class = "addButton" type="submit">
         add to itinerary
       </button>
       </div>
+
   </div>
 </template>
 
