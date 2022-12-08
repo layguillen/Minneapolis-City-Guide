@@ -5,38 +5,42 @@
       <h2 id="filter-names">Example</h2>
     </div>
     <div id="main" class="home-element">
-      <div id="landmarkLister" v-for="landmark in this.$store.landmarks" v-bind:key="landmark.id">
+      <landmarks />
+      
+      <!-- <div id="landmarkLister" v-for="landmark in this.$store.landmarks" v-bind:key="landmark.id">
         <img src="../assets/Landmark1.png" alt="Landmark Photo" id="landmarkImg">
         <h3 id="example">{{ landmark.name }}</h3>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
 
 <script>
-import HomeHeader from "../components/HomeHeader.vue";
-import landmarkService from "../services/LandmarkService.js";
+  import HomeHeader from "../components/HomeHeader.vue";
+  // import landmarkService from "../services/LandmarkService.js";
+  import Landmarks from '../components/Landmarks.vue'
 
-export default {
-  name: "home",
-  components: {
-    HomeHeader
-},
-methods: {
-  setLandmarks() {
-    landmarkService.listLandmarks().then(response => {
-      if (response.status == 200) {
-        this.$store.commit('SET_LANDMARKS', response.data);
-      } else {
-        console.log('Something went wrong.');
-      }
-    })
-  }
-},
+  export default {
+    name: "home",
+    components: {
+      HomeHeader,
+      Landmarks
+  },
+  methods: {
+    // setLandmarks() {
+    //   landmarkService.listLandmarks().then(response => {
+    //     if (response.status == 200) {
+    //       this.$store.commit('SET_LANDMARKS', response.data);
+    //     } else {
+    //       console.log('Something went wrong.');
+    //     }
+    //   })
+    // }
+  },
 
-created() {
-  this.setLandmarks();
-}
+  // created() {
+  //   this.setLandmarks();
+  // }
 };
 </script>
 
