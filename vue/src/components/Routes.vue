@@ -1,6 +1,9 @@
 <template>
   <div>
-
+      <div id="route-container">
+          <p>{{route.summary}}</p>
+          <div>{{route}}</div>
+      </div>
   </div>
 </template>
 
@@ -11,6 +14,9 @@ export default {
     name: "routes",
     data(){
 
+    },
+    created() {
+        this.getRoute();
     },
     methods: {
         getRoute(){
