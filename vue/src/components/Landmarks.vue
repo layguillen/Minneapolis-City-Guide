@@ -1,5 +1,6 @@
 <template>
-  <div id="landmark-list">
+  <div id="landmark-body">
+    <div id="form-inputs">
     <fieldset>
       <input
         id="filter-list"
@@ -21,14 +22,17 @@
         <option value="Venue">Venue</option>
       </select>
     </fieldset>
+    </div>
+    <div id="landmark-list">
     <div id="container" v-for="landmark in filteredList" v-bind:key="landmark.id" >
       <div id="landmark-container">
-        <h3>{{ landmark.img_URL}}</h3>
+        <h3>{{ landmark.name}}</h3>
         <div id= "img-container">
-            <img :src="landmark.img_URL" alt="landmark picture" />
+            <img class="display-img" :src="landmark.img_URL" />
         </div>
         <p>{{ landmark.type }}</p>
       </div>
+    </div>
     </div>
   </div>
 </template>
@@ -55,10 +59,6 @@ export default {
         this.$store.commit("SET_LANDMARKS", response.data);
       });
     },
-    imgPath(landmark) {
-      this.imgURL = landmark.imgURL;
-      return this.imgURL;
-    }
     
   },
   computed: {
@@ -95,21 +95,40 @@ export default {
 
 <style>
 
-#container {
+#landmark-list {
     display: flex;
-    
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 #landmark-container{
     margin: 10px 10px;
     padding: 2%;
-    border: 2px #129D8D solid;    
-
+    border: 2px #129D8D solid;
+    background-color: #129D8D;
+    color: #F3FCED;
     border-radius: 42px;
-    box-shadow:  21px 21px 42px #bebebe,
-             -21px -21px 42px #ffffff;
-
+    text-align: center;
 }
 
+#form-inputs {
+  display: flex;
+  flex-direction: row;
+  justify-content:space-evenly;
+}
+
+fieldset {
+  width: 15%;
+  text-align: center;
+}
+
+.display-img {
+  height: 7rem;
+}
+
+#container {
+    height: 20%;
+    width: 20%;
+}
 
 </style>

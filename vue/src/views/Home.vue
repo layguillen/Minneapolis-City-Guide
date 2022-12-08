@@ -27,10 +27,8 @@
 
 <style>
 
-body {
-  height: 100vh;
-  width: 100vw;
-  margin: 0;
+#filter-names {
+  color: #129D8D;
 }
 
 div.home {
@@ -40,9 +38,6 @@ div.home {
   "filter"
   "main";
   grid-template-rows: .1fr .1fr 1fr;
-  height: 100vh;
-  width: 100vw;
-  margin: 0;
   font-family: 'Montserrat Alternates', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial', 'sans-serif';
 }
 
@@ -58,16 +53,6 @@ div.home {
 .home-element {
   padding-right: 5%;
   padding-left: 5%;
-}
-
-#landmarkLister {
-  display: flex;
-  flex-direction: row;
-  margin: 1.4em;
-}
-
-#landmarkImg {
-  height: 10em;
 }
 
 </style>
