@@ -4,7 +4,7 @@
 
     <!-- image -->
      <div class="griditem1">
-       <img v-bind:src="this.$store.state.url" id="landmark1"/>
+       <img v-bind:src="this.$store.state.currentLandmark.img_URL" id="landmark1"/>
      </div>
 
      <!-- name -->
@@ -16,13 +16,19 @@
      <div class="griditem3">
       <p id = "description">{{this.$store.state.currentLandmark.description}}</p>
      </div>
-
+    <div class="buttons">
      <div class = "addToItinerary">
-    <button class = "addButton" type="submit">
+    <button type="submit">
         add to itinerary
       </button>
-      </div>
 
+      </div>
+      <div class="cancelButton">
+        <button>
+          cancel
+        </button>
+      </div>
+      </div>
   </div>
 </template>
 
@@ -53,11 +59,10 @@ export default {
 #mainDiv{
   background-color:#004E64;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  /* grid-template-rows: repeat(3, 1fr); */
+  grid-template-columns: repeat(2, 1fr);
   grid-template-areas: 
   "img desc"
-  "footer footer";
+  "buttons buttons";
   grid-template-rows: 1fr 1fr;
   height: 100vh;
   width: 100vw;
@@ -65,7 +70,7 @@ export default {
 }
 
 .griditem2{
-  grid-area:desc;
+  grid-area: desc;
   display: inline-block;
  
   text-align:center;
@@ -77,6 +82,7 @@ export default {
   text-underline-offset: 20px;
   text-align: center;
   margin-top: 7%;
+  margin-left: 5%;
   
 }
 .griditem3{
@@ -85,7 +91,8 @@ export default {
   font-size: 30px;
   color: #F3FCED;
   margin-top: 20%;
-  margin-left:5%;
+  margin-left:10%;
+
 }
 
 #landmark1 {
@@ -94,14 +101,19 @@ export default {
   width: 100%;
   margin-left: 5vh;
   margin-top: 10vh;
+  border-radius: 50px;
 }
 
 .addToItinerary {
-  grid-area:footer;
-  display: flex;
   border-radius: 10px;
-  align-items: flex-end;
 }
-
-
+.cancelButton{
+  border-radius: 10px;
+  margin-left: 50px;
+}
+.buttons{
+  grid-area: buttons;
+  display: flex;
+  margin-left: 50px;
+}
 </style>
