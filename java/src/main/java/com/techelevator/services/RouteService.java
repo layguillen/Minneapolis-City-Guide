@@ -24,8 +24,8 @@ import java.util.List;
 @Component
 public class RouteService implements iRouteService{
 
-    //TODO: figure out base API URL
-    private static final String API_URL = "https://api.openrouteservice.org/v2/directions/driving-car/{profile}/post";
+    //TODO: confirm base URL is correct
+    private static final String API_URL = "https://api.openrouteservice.org/v2/directions/driving-car/";
 
     //this is Layla's API key that we can use for every request
     private static final String API_KEY = "5b3ce3597851110001cf624825acbbd93a1c4750ac7148d566eec1ad";
@@ -40,9 +40,8 @@ public class RouteService implements iRouteService{
         Root root = null;
         ArrayList<RouteAPI> routeAPI = null;
         try{
-
             root = restTemplate.exchange(API_URL, HttpMethod.POST, entity, Root.class).getBody();
-            //TODO: decide what's needed here route or root
+            //TODO: decide what's needed here ObjectMapper or use restTemplate
 //            ObjectMapper om = new ObjectMapper();
 //            root = om.readValue(API_URL, Root.class);
             routeAPI = root.getRoutes();
@@ -54,9 +53,10 @@ public class RouteService implements iRouteService{
     }
 
     //Post and Put
-    //TODO: pass in a list of landmarks, loop through it to then make an array of coordinates which then gets passed into the entity as the body
+    //pass in a list of landmarks, loop through it to then make an array of coordinates which then gets passed into the entity as the body
     private HttpEntity<Coordinates> makeRouteEntity(List<Landmark> landmarks, String token) {
         Coordinates coordinates = new Coordinates();
+        //TODO: check if this needs to be String[][] instead of int[][]
         int[][] array = new int[landmarks.size()][];
         coordinates.setCoordinatesArray(array);
 
@@ -74,7 +74,7 @@ public class RouteService implements iRouteService{
 
         //pass API_KEY as authorization
         headers.add("Authorization", API_KEY);
-        //TODO: pass in string array to HttpEntity in method signature
+
         return new HttpEntity<Coordinates>(coordinates, headers);
     }
 
