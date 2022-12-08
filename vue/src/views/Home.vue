@@ -2,7 +2,7 @@
   <div class="home">
     <HomeHeader></HomeHeader>
     <div id="filter" class="home-element">
-      <h2 id="filter-names">Landmarks</h2>
+      <h2 id="filter-names">Minneapolis Landmarks</h2>
     </div>
     <div id="main" class="home-element">
       <landmarks />
@@ -14,7 +14,6 @@
 
 <script>
   import HomeHeader from "../components/HomeHeader.vue";
-  // import landmarkService from "../services/LandmarkService.js";
   import Landmarks from '../components/Landmarks.vue'
 
   export default {
@@ -22,22 +21,7 @@
     components: {
       HomeHeader,
       Landmarks
-  },
-  methods: {
-    // setLandmarks() {
-    //   landmarkService.listLandmarks().then(response => {
-    //     if (response.status == 200) {
-    //       this.$store.commit('SET_LANDMARKS', response.data);
-    //     } else {
-    //       console.log('Something went wrong.');
-    //     }
-    //   })
-    // }
-  },
-
-  // created() {
-  //   this.setLandmarks();
-  // }
+  }
 };
 </script>
 

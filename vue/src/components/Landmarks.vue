@@ -21,7 +21,7 @@
         <option value="Venue">Venue</option>
       </select>
     </fieldset>
-    <div v-for="landmark in filteredList" v-bind:key="landmark.id" >
+    <div id="container" v-for="landmark in filteredList" v-bind:key="landmark.id" >
       <div id="landmark-container">
         <h3>{{ landmark.name }}</h3>
         <img src="" alt="landmark picture" />
@@ -86,4 +86,17 @@ export default {
 </script>
 
 <style>
+
+#container {
+    display: flex;
+    
+}
+
+#landmark-container{
+    margin: 10px 10px;
+    padding: 2%;
+    border-radius: 12px;
+    border: 2px #129D8D solid;    
+}
+
 </style>
