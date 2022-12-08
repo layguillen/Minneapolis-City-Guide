@@ -59,6 +59,9 @@ export default new Vuex.Store({
      state.itineraryLandmarks = state.itineraryLandmarks.filter(landmark => {
             return landmark.id != landmarkId;
       })
+    },
+    EMPTY_ITINERARY_LANDMARKS(state) {
+      state.itineraryLandmarks = [];
     }
   }
 })
