@@ -24,7 +24,9 @@
     <div id="container" v-for="landmark in filteredList" v-bind:key="landmark.id" >
       <div id="landmark-container">
         <h3>{{ landmark.name }}</h3>
-        <img src="" alt="landmark picture" />
+        <div id= "img-container">
+            <img src="" alt="landmark picture" />
+        </div>
         <p>{{ landmark.description }}</p>
       </div>
     </div>
@@ -98,5 +100,6 @@ export default {
     border-radius: 12px;
     border: 2px #129D8D solid;    
 }
+
 
 </style>
