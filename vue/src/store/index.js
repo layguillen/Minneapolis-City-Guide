@@ -23,7 +23,8 @@ export default new Vuex.Store({
     landmarkStyles: [],
     landmarks: [],
     currentLandmark: [],
-    pendingLandmarks: []
+    pendingLandmarks: [],
+    itineraryLandmarks: [],
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -51,6 +52,13 @@ export default new Vuex.Store({
     SET_LANDMARK(state, landmark) {
       state.currentLandmark = landmark;
     },
-    
+    SET_ITINERARY_LANDMARK(state, landmark) {
+      state.itineraryLandmarks.push(landmark);
+    },
+    REMOVE_ITINERARY_LANDMARK(state, landmarkId) {
+     state.itineraryLandmarks = state.itineraryLandmarks.filter(landmark => {
+            return landmark.id != landmarkId;
+      })
+    }
   }
 })
