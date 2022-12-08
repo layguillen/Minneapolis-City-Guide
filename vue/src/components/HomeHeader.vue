@@ -55,6 +55,10 @@
   font-family: 'Montserrat Alternates', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial';
 }
 
+#addLandmark:hover {
+  cursor: pointer;
+}
+
 #itinerary{
   border: 5px solid;
   padding: 8px;
@@ -64,6 +68,10 @@
   justify-content: center;
   align-content: center;
   font-family: 'Montserrat Alternates', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial';
+}
+
+#itinerary:hover {
+  cursor: pointer;
 }
 
 

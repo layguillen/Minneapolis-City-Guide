@@ -11,7 +11,7 @@
     </fieldset>
     <fieldset>
       <select class="type-filter" id="type-filter" v-model="type">
-        <option value="">--- Search by type ---</option>
+        <option value="">Select Type</option>
         <option value="Amusement">Amusement</option>
         <option value="Art">Art</option>
         <option value="Educational">Educational</option>
@@ -24,14 +24,16 @@
     </fieldset>
     </div>
     <div id="landmark-list">
-    <div id="container" v-for="landmark in filteredList" v-bind:key="landmark.id" >
-      <div id="landmark-container">
+    <div id="container" v-for="landmark in filteredList" v-bind:key="landmark.id">
+      
+        <div id="landmark-container" v-on:click="routeToDetails(landmark.id)">
         <h3>{{ landmark.name}}</h3>
         <div id= "img-container">
             <img class="display-img" :src="landmark.img_URL" />
         </div>
         <p>{{ landmark.type }}</p>
       </div>
+      
     </div>
     </div>
   </div>
@@ -59,7 +61,9 @@ export default {
         this.$store.commit("SET_LANDMARKS", response.data);
       });
     },
-    
+    routeToDetails(landmarkId) {
+      this.$router.push(`/details/${landmarkId}`)
+    }
   },
   computed: {
       filterByType(){
@@ -111,6 +115,10 @@ export default {
     text-align: center;
 }
 
+#landmark-container:hover {
+  cursor: pointer;
+}
+
 #form-inputs {
   display: flex;
   flex-direction: row;
@@ -120,6 +128,10 @@ export default {
 fieldset {
   width: 15%;
   text-align: center;
+  background-color: #129D8D;
+  border-width: 0px;
+  border-radius: 30px;
+  padding-top: .6em;
 }
 
 .display-img {
@@ -127,8 +139,7 @@ fieldset {
 }
 
 #container {
-    height: 20%;
-    width: 20%;
+    width: 300px;
 }
 
 </style>
