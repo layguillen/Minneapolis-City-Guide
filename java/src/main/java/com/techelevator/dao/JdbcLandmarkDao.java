@@ -23,7 +23,8 @@ public class JdbcLandmarkDao implements LandmarkDao{
         List<Landmark> list = new ArrayList<>();
         String sql = "SELECT landmarks.id, address_id, landmarks.name, types.name AS type, description, likes, img_URL " +
                 " FROM landmarks " +
-                " JOIN types ON landmarks.type = types.id ";
+                " JOIN types ON landmarks.type = types.id " +
+                " ORDER BY landmarks.name ";
 
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
         while(result.next()){
