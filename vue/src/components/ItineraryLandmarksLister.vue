@@ -16,7 +16,7 @@
       </div>
       <div>
           <label for="hotel-search"></label>
-          <select class="hotel-search" id="hotel-search" v-model="search">
+          <select class="hotel-search" id="hotel-search" v-model="id">
               <option value="">--- Select your hotel ---</option>
               <option value="1">The Marquette Hotel</option>
               <option value="2">Hyatt Place Minneapolis/Downtown</option>
@@ -42,8 +42,7 @@
           </select>
       </div>
       <div id="current-hotel-container">
-          <h4>{{this.$store.state.currentHotel.name}}</h4>
-          <p>{{this.$store.state.currentHotel.address}}</p>
+        <h4>{{this.$store.state.currentHotel.name}}</h4>
       </div>
       <div id="delete-btn-container">
           <button id="deleteBtn" v-on:click="deleted()">Delete Itinerary</button>
@@ -62,7 +61,7 @@ export default {
     },
     data(){
         return {
-            search: ""
+            id: ""
         }
     },
     created() {
@@ -82,17 +81,23 @@ export default {
             .then((response)=> {
                 this.$store.commit("SET_HOTELS", response.data);
             })
+        },
+        retrieveCurrentHotel(){
+            HotelService.getHotel(this.id)
+            .then((response)=>{
+                this.$store.commit("SET_CURRENT_HOTEL", response.data)
+            })
         }
     },
     computed: {
-        setCurrentHotel(){
-            const hotels = this.$store.state.hotels;
-            return hotels.filter((hotel)=> {
-                if(hotel.id === this.search){
-                    this.$store.commit("SET_CURRENT_HOTEL", hotel)
-                }
-            })
-        }
+        // setCurrentHotel(){
+        //     const hotels = this.$store.state.hotels;
+        //     return hotels.filter((hotel)=> {
+        //         if(hotel.id === this.id){
+        //             this.$store.commit("SET_CURRENT_HOTEL", hotel);
+        //         }
+        //     })
+        // }
     }
 }
 </script>
