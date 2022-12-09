@@ -2,7 +2,7 @@
   <div id="itinerary-landmarks">
       <h1>Landmarks</h1>
       <div id="landmarks" v-for="landmark in this.$store.state.itineraryLandmarks" v-bind:key="landmark.id">
-          <img id="landmark-img" src="../assets/Landmark2.png" alt="Landmark Img">
+          <!-- <img id="landmark-img" src="../assets/Landmark2.png" alt="Landmark Img"> -->
           <h2 id="landmark-name">{{ landmark.name }}</h2>
       </div>
   </div>
