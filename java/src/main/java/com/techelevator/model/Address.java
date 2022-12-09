@@ -16,8 +16,9 @@ public class Address {
     private int zipCode;
     @JsonProperty("long_lat")
     private String longLat;
-
+    @JsonProperty("longitude")
     private double longitude;
+    @JsonProperty("latitude")
     private double latitude;
 
     public Address(){};
