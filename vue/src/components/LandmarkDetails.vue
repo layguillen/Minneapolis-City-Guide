@@ -61,6 +61,7 @@ export default {
    },
    addToItinerary(){
      this.$store.commit('SET_ITINERARY_LANDMARK', this.$store.state.currentLandmark);
+     alert('Landmark added to Intinerary')
    }
 
  },
