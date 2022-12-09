@@ -6,7 +6,7 @@
           <h1>Leave a Review</h1>
         <div class="form-element">
             <label for="username">Username:</label>
-            <input id="username" type="text" v-model="newReview.username" />
+            <input id="username" type="text" />
         </div>
 
         <div class="form-element">
@@ -16,7 +16,7 @@
 
         <div class="form-element">
             <label for="rating">Rating:</label>
-            <select id="rating" v-model="newReview.rating">
+            <select id="rating" v-model="newReview.liked">
                 <option value="">--- Select Rating ---</option>
                 <option value="true">Liked</option>
                 <option value="false">Disliked</option>
@@ -29,7 +29,7 @@
         </div>
 
         <div class="actions">
-            <button>Submit</button>
+            <button type="submit">Submit</button>
             <button v-on:click= "resetForm" type="button">Cancel</button>
         </div>
 
@@ -56,10 +56,11 @@ export default {
         return {
             newReview: {
                 landmarkID: 0,
+                userId: '',
                 username: '',
                 title: '',
-                description: '',
-                liked: false
+                liked: '',
+                description: ''
             }
         }
     },
@@ -67,10 +68,12 @@ export default {
         saveReview(){
             const reviewToAdd = {
                 landmarkID: Number(this.$route.params.id),
-                username: this.newReview.username,
+                userId: this.$store.state.user.id,
+                username: this.$store.state.user.username,
                 title: this.newReview.title,
-                description: this.newReview.description,
-                liked: this.newReview.liked
+                liked: this.newReview.liked,
+                description: this.newReview.description
+                
             };
             //if it's a zero we know it's an insert
             if(this.reviewID === 0){
@@ -79,11 +82,12 @@ export default {
                 .then(response => {
                     //expect a 201 meaning created
                     if(response.status === 201){
-                        this.$router.push(`/details/${this.newReview.landmarkID}`)
+                        this.$router.push(`/details/${this.reviewToAdd.landmarkID}`)
                     }
                 })
                 .catch(error => {
-                    this.handleErrorResponse(error, "adding")
+                    this.handleErrorResponse(error, "adding");
+                    alert("Review was not added.");
                 })
             }
 
@@ -92,7 +96,7 @@ export default {
                 username: '',
                 title: '',
                 description: '',
-                liked: false
+                liked: ''
             }
         }, 
         resetForm(){
@@ -143,6 +147,11 @@ h1{
     text-align: center;
     font-weight: bold; 
 }
+
+label{
+    margin-right: 10px;
+}
+
 #username{
     color:#004E64;
     border-radius:7px;

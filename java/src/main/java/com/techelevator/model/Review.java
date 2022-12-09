@@ -16,8 +16,19 @@ public class Review {
     private String title;
     @JsonProperty("is_liked")
     private boolean isLiked;
+    @JsonProperty("username")
+    private String username;
 
     public Review(){};
+
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     public String getTitle() {
         return title;
@@ -32,7 +43,7 @@ public class Review {
     }
 
     public void setLiked(boolean liked) {
-        isLiked = liked;
+        this.isLiked = liked;
     }
 
     public int getReviewId() {

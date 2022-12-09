@@ -44,7 +44,12 @@ public class JdbcLandmarkDao implements LandmarkDao{
 
     @Override
     public Landmark getLandmark(int landmarkId){
-        return listLandmarks().get(landmarkId-1);
+        for(Landmark landmark: listLandmarks()){
+            if(landmark.getLandmarkId() == landmarkId){
+                return landmark;
+            }
+        }
+        return new Landmark();
     }
 
     //TODO: check sql

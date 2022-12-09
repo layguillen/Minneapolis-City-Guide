@@ -19,35 +19,31 @@
      </div>
 
  
-<div id="button-container">
-    
-    <button class="buttons" v-on:click="addToItinerary()">add to itinerary</button>
-   
-
-
-
-    <div class="cancelDiv">
-      <button class = "buttons" >
-        <router-link id= "homeLink" :to="{ name: 'home' }">view landmarks</router-link>
-      </button>
-      </div>
-
-        <div class = "reviewDiv">
-        <button class = "buttons" >
-          <router-link id= "reviewLink" :to="{ name: 'NewReview' }">leave a review</router-link>
-          </button>
-      </div>
+    <div id="button-container">
+        
+        <button class="buttons" v-on:click="addToItinerary()">add to itinerary</button>
       
-      <div class="likeDiv">
-        <button class="buttons"  >likes: {{this.$store.state.currentLandmark.likes}}</button>
-      </div>
-</div>
+        <div class="cancelDiv">
+          <button class = "buttons" >
+            <router-link id= "homeLink" :to="{ name: 'home' }">view landmarks</router-link>
+          </button>
+          </div>
+
+            <div class = "reviewDiv">
+            <button class = "buttons" >
+              <router-link id= "reviewLink" :to="{ name: 'NewReview' }">leave a review</router-link>
+              </button>
+          </div>
+          
+          <div class="likeDiv">
+            <button class="buttons"  >likes: {{this.$store.state.currentLandmark.likes}}</button>
+          </div>
+    </div>
 
   </div>
 </template>
 
 <script>
-
 import landmarkservice from '../services/LandmarkService.js'
 export default {
  name: 'landmark-details',

@@ -19,7 +19,7 @@ export default {
         retrieveReviews(){
             ReviewService.listReviews(this.$route.params.landmarkId)
             .then(response => {
-              this.$store.commit("SET_REVIEWS", response.data.reviews);  
+              this.$store.commit("SET_REVIEWS", response.data);  
             })
             .catch(error => {
                 if (error.response && error.response.status === 404) {
