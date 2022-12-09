@@ -1,37 +1,41 @@
 <template>
-<div id = "mainDiv"> 
+<div class="mainDiv"> 
+
    <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Montserrat Alternates'>
 
-    <!-- image -->
-     <div class="griditem1">
-       <img v-bind:src="this.$store.state.url" id="landmark1"/>
+    
+     <div class="imgDiv">
+       <img v-bind:src="this.$store.state.currentLandmark.img_URL" id="imgId"/>
      </div>
 
-     <!-- name -->
-     <div class="griditem2">
+    
+     <div class="titleDiv">
        <h1>{{this.$store.state.currentLandmark.name}}</h1>
      </div>
 
-     <!-- description-->
-     <div class="griditem3">
+    
+     <div class="descDiv">
       <p id = "description">{{this.$store.state.currentLandmark.description}}</p>
      </div>
 
-    <div class = "addToItinerary">
-      <button class = "addButton" type="submit">
+    <div class="addDiv">
+      <button class="addButton" type="submit">
         add to itinerary
       </button>
       </div>
-    <div class = "cancel">
+
+    <div class="cancelDiv">
       <button class = "cancelButton" type="submit">
         cancel
       </button>
       </div>
+
         <div class = "newReview">
         <button class = "reviewButton">
           <router-link id= "reviewLink" :to="{ name: 'NewReview' }">leave a review</router-link>
           </button>
       </div>
+
   </div>
 </template>
 
@@ -44,12 +48,8 @@ export default {
    setDetails(){
      landmarkservice.getDetails(this.$route.params.id).then((response) =>{
      
-    this.$store.commit('SET_LANDMARK', response.data);
-   }).catch((error) =>{
-     if(error.response.status === 404){
-       console.log('didnt work');
-     }
-   })
+     this.$store.commit('SET_LANDMARK', response.data);
+   });
    }
  },
  created(){
@@ -64,27 +64,30 @@ body{
   margin:0;
   padding:0;
 }
-
-#mainDiv{
+.mainDiv{
   background-color:#004E64;
+
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  /* grid-template-rows: repeat(3, 1fr); */
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
   grid-template-areas: 
   "img desc"
   "footer footer";
-  grid-template-rows: 1fr 1fr;
+  
   height: 100vh;
   width: 100vw;
-  /* margin-left:-10px;
-  margin-top:-10px; 
-  margin-bottom:-20px; */
 }
 
-.addToItinerary {
+#imgId{
+  grid-area: img;
+  height: 75%;
+  width: 40vw;
+  margin-left: 8vh;
+  margin-top: 8vh;
+  border-radius: 20%;
+} 
+.addDiv{
   grid-area:footer;
-  /* display: flex;
-  align-items: flex-end; */
   border-radius: 20px;
   margin-left:20px;
 }
@@ -98,11 +101,9 @@ body{
   border:none;
   font-family: 'Montserrat Alternates', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial';
 }
-.cancel {
+
+.cancelDiv {
   grid-area: footer;
-  /* display: flex;
-  align-items: flex-end; */
-  /* margin-top:22%; */
   margin-left:275px;
 }
 .cancelButton {
@@ -117,10 +118,9 @@ body{
 }
 .newReview {
  grid-area:footer;
-  /* display: flex;
-  align-items: flex-end; */
   margin-left: 395px;
 }
+
 .reviewButton{
   background-color:#BD92DD;
   color: #F3FCED;
@@ -131,10 +131,11 @@ body{
   border:none;
   font-family: 'Montserrat Alternates', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial';
 }
+
 #reviewLink{
   color: #F3FCED;
 }
-.griditem2{
+.titleDiv{
   grid-area:desc;
   display: inline-block;
  
@@ -150,7 +151,7 @@ body{
   margin-right: 10px;
   
 }
-.griditem3{
+.descDiv{
   grid-area: desc;
   font-family: 'Montserrat Alternates', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial';
   font-size: 30px;
@@ -159,13 +160,7 @@ body{
   margin-left:0%;
   margin-right:10%;
 }
-#landmark1 {
-  grid-area: img;
-  height: 75%;
-  width: 40vw;
-  margin-left: 8vh;
-  margin-top: 8vh;
-}
+
 #description {
   margin-bottom:-400px;
 }
