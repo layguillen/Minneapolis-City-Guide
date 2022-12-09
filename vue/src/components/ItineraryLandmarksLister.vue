@@ -14,6 +14,33 @@
             <p id="landmark-description"> {{landmark.description}}</p>
           </div>
       </div>
+      <div>
+          <label for="hotel"></label>
+          <select class="hotel" id="hotel" v-model="search">
+              <option value="31">--- Select your hotel ---</option>
+              <option value="32">The Marquette Hotel</option>
+              <option value="33">Hyatt Place Minneapolis/Downtown</option>
+              <option value="34">Hewing Hotel</option>
+              <option value="35">Hotel Ivy</option>
+              <option value="36">The Westin Minneapolis</option>
+              <option value="37">Hyatt Regency Minneapolis</option>
+              <option value="38">Millennium Minneapolis</option>
+              <option value="39">Aloft Minneapolis</option>
+              <option value="40">Radisson RED Minneapolis Downtown</option>
+              <option value="41">Hilton Minneapolis</option>
+              <option value="42">The Royal Sonesta Minneapolis Downtown</option>
+              <option value="43">Four Seasons Hotel Minneapolis</option>
+              <option value="44">Minneapolis Marriott City Center</option>
+              <option value="45">Embassy Suites by Hilton Minneapolis Downtown</option>
+              <option value="46">Graduate Minneapolis</option>
+              <option value="47">Moxy Minneapolis Uptown</option>
+              <option value="48">Rand Tower Hotel, Minneapolis</option>
+              <option value="49">Hyatt Centric Downtown Minneapolis</option>
+              <option value="50">The Foshay</option>
+              <option value="51">Renaissance Minneapolis Hotel</option>
+              <option value="52">Hampton Inn & Suites Minneapolis/Downtown</option>
+          </select>
+      </div>
       <div id="delete-btn-container">
           <button id="deleteBtn" v-on:click="deleted()">Delete Itinerary</button>
       </div>
@@ -22,10 +49,17 @@
 
 <script>
 import Map from '../components/Map.vue'
+import HotelService from '../services/HotelService'
+
 export default {
     name: "itinerary-landmarks-lister",
     components: {
         Map
+    },
+    data(){
+        return {
+            search: ""
+        }
     },
     created() {
         // this.$store.state.landmarks.forEach(element => {
@@ -40,6 +74,10 @@ export default {
         deleted() {
             this.$store.commit('EMPTY_ITINERARY_LANDMARKS');
             alert("Itinerary deleted");
+        },
+        retrieveHotel(){
+            HotelService.listHotels()
+            
         }
     }
 }

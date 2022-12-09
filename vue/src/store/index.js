@@ -28,6 +28,7 @@ export default new Vuex.Store({
     routes: [],
     reviews: [],
     hotels: [],
+    currentHotel: [],
     showAddLandmark: true,
   },
   mutations: {
@@ -55,6 +56,9 @@ export default new Vuex.Store({
     },
     SET_LANDMARK(state, landmark) {
       state.currentLandmark = landmark;
+    },
+    SET_HOTEL(state, hotel){
+      state.currentHotel = hotel;
     },
     SET_ITINERARY_LANDMARK(state, landmark) {
       state.itineraryLandmarks.push(landmark);
