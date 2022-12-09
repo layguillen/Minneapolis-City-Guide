@@ -50,9 +50,4 @@ div.home {
   grid-area: main;
 }
 
-.home-element {
-  padding-right: 5%;
-  padding-left: 5%;
-}
-
 </style>
