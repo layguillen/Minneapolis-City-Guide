@@ -27,7 +27,7 @@
     <div id="container" v-for="landmark in filteredList" v-bind:key="landmark.id">
       
         <div id="landmark-container" v-on:click="routeToDetails(landmark.id)">
-        <h3>{{ landmark.name}}</h3>
+        <h3>{{landmark.name}}</h3>
         <div id= "img-container">
             <img class="display-img" :src="landmark.img_URL" />
         </div>
@@ -117,6 +117,10 @@ export default {
 
 #landmark-container:hover {
   cursor: pointer;
+}
+
+#landmark-container h3 {
+  height: 35px;
 }
 
 #form-inputs {
