@@ -5,8 +5,13 @@
       <div class="map">
           <iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" 
             src="https://www.openstreetmap.org/export/embed.html?bbox=-93.40061187744142%2C44.88263391919232%2C-93.20835113525392%2C45.05872899067149&amp;layer=mapnik" 
-            style="border: 1px solid black">
+            style="border: 1px solid black"
+            v-bind="LMarker">
           </iframe><br/>
+          <!-- <l-map style="height: 300px" :zoom="zoom" :center="center">
+            <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
+            <l-marker :lat-lng="markerLatLng"></l-marker>
+          </l-map> -->
           <small>
               <a href="https://www.openstreetmap.org/#map=12/44.9707/-93.3045">View Larger Map</a>
            </small>
@@ -16,6 +21,8 @@
 </template>
 
 <script >
+// import L from 'leaflet';
+// import { LMap, LTileLayer, LMarker } from 'vue2-leaflet';
 
 // let mapOptions = {
 //     center:[48.8702, 2.3368],
@@ -27,10 +34,14 @@
 // map.addLayer(layer);
 
 export default {
-    
+    components: {
+    // LMap,
+    // LTileLayer,
+    // LMarker,
+    },
     data(){
-        return {
-             
+        return {   
+            LMarker: '',
         }
     },
     methods: {
@@ -38,7 +49,7 @@ export default {
         //     const currentItinerary = this.$store.state.itineraryLandmarks;
         //     currentItinerary.forEach(element => {
         //         new L.Marker([element.landmark.address.longitude, element.landmark.address.latitude])
-        //         .addTo(map)
+        //         .addTo(LMarker)
         //     }); 
         // }
     }

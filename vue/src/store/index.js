@@ -27,6 +27,7 @@ export default new Vuex.Store({
     itineraryLandmarks: [],
     routes: [],
     reviews: [],
+    hotels: [],
     showAddLandmark: true,
   },
   mutations: {
