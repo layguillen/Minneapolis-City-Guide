@@ -51,7 +51,8 @@ export default {
 
 #glider-img {
   display: inline-block;
-  height: 4.8em;
+  height: 4.0em;
+  margin: auto;
 }
 
 #header {
@@ -90,7 +91,7 @@ export default {
 }
 
 #profile-img {
-  height: 70px;
+  height: 3.6rem;
   border-radius: 40px;
   border-width: 50px;
 }
@@ -98,12 +99,13 @@ export default {
 .dropdown {
   display: inline-block;
   position: relative;
+  text-decoration-line: none;
 }
 
 .dropdown-content {
   display: none;
   position: absolute;
-  width: 100%;
+  width: 105%;
   overflow: auto;
   background-color: #1fd6c1;
 }
