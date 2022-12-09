@@ -136,6 +136,8 @@ fieldset {
 
 .display-img {
   height: 7rem;
+  border: 5px white solid;
+  border-radius: 5px;
 }
 
 #container {
