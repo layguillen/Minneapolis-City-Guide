@@ -77,6 +77,11 @@ h1{
     justify-content: space-between;
 }
 
+#landmark-description{
+    font-family: 'Montserrat Alternates', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial';
+    color: #004E64;
+}
+
 #landmark-img{
     padding: 2px;
     margin-right: 10px;
