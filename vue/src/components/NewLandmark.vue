@@ -131,6 +131,10 @@ h2 {
     
 }
 
+#description{
+    margin-bottom: 10px;
+}
+
 #addressLabel{
     margin-top: 10px;
     text-align: center;
