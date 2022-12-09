@@ -1,9 +1,10 @@
 <template>
   <div>
+      <h2>Reviews</h2>
       <div id="review-container" v-for="review in this.$store.state.reviews" v-bind:key="review.id">
           <h3>{{review.title}}</h3>
-          <!-- <h4>{{review.user}}</h4> -->
-          <p>{{review.isLiked}}</p>
+          <h4>{{review.username}}</h4>
+          <!-- <p>{{review.isLiked}}</p> -->
           <p>{{review.description}}</p>
       </div>
   </div>
@@ -14,7 +15,9 @@ import ReviewService from '../services/ReviewService';
 
 export default {
     name: "reviews",
-    
+    created() {
+        this.retrieveReviews();
+    },
     methods: {
         retrieveReviews(){
             ReviewService.listReviews(this.$route.params.landmarkId)
@@ -31,9 +34,7 @@ export default {
             });
         },
     },
-    created() {
-        this.retrieveReviews();
-    }
+    
 }
 </script>
 
