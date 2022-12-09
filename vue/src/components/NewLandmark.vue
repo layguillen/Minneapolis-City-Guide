@@ -1,5 +1,5 @@
 <template>
-  <section id="main">
+  <section id="new-landmark-container">
       <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Montserrat Alternates'>
       <h2 id="page-title">Submit a New Landmark for Consideration</h2>
 
@@ -102,7 +102,8 @@ body{
   background-color: #F3FCED;
 }
 
-#main {
+#new-landmark-container {
+    border-top: #1fd6c1 5px solid;
     font-family: 'Montserrat Alternates', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial', 'sans-serif';
     color: #004E64;
     display: flex;

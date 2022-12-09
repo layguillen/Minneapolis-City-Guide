@@ -1,13 +1,18 @@
 <template>
-  <new-landmark />
+  <div>
+    <home-header />
+    <new-landmark />
+  </div>
 </template>
 
 <script>
+import HomeHeader from '../components/HomeHeader.vue'
 import NewLandmark from '../components/NewLandmark.vue'
 
 export default {
     components: {
-        NewLandmark
+        NewLandmark,
+        HomeHeader
     }
 }
 </script>
