@@ -22,9 +22,6 @@ INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.24669,44
 INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.266098,44.954808', '2600 Park Ave', 'Minneapolis', 'MN', 55407);
 INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.24669,44.99909', '945 Broadway St', 'Minneapolis','MN', 55413);
 INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.255980,44.978502', '750 S 2nd St', 'Minneapolis', 'MN', 55401);
-INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.266098,44.954808 ', '2600 Park Ave', 'Minneapolis', 'MN', 55407);
-INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.271884,44.976074', '717 Nicollet Mall', 'Minneapolis', 'MN', 55402);
-INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.27564,44.97716', '731 Hennepin Ave Suite 1', 'Minneapolis', 'MN', 55403);
 INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.2558874,44.9848308', '115 SE Main St', 'Minneapolis', 'MN', 55414);
 INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.321259,44.938320', '3537 Zenith Ave S', 'Minneapolis', 'MN', 55416);
 INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.2422,44.8549', '120 East Broadway East Side', 'Bloomington', 'MN', 55425);
@@ -34,14 +31,6 @@ INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.1525,44.
 INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.2420,44.8547', '5000 Center Ct', 'Bloomington', 'MN', 55425);
 INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.284806,44.9197552', '4552 Grand Ave', 'Minneapolis', 'MN', 55419);
 INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.3112,44.9451', '3000 Bde Maka Ska Parkway', 'Minneapolis', 'MN', 55408);
-INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.268135,44.991817', '724 Sibley St', 'Minneapolis', 'MN', 55413);
-INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.25494,44.984474', '125 SE Main St', 'Minneapolis', 'MN', 55414);
-INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.1958,44.7674', '13000 Zoo Blvd', 'Apple Valley', 'MN', 55124);
-INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.2422,44.8549', '376 North Garden', 'Bloomington', 'MN', 55425);
-INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.1525,44.9810', '1225 Estabrook Dr', 'St Paul', 'MN', 55103);
-INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.2420,44.8547', '5000 Center Ct', 'Bloomington', 'MN', 55425);
-INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.284806,44.9197552', '4552 Grand Ave', 'Minneapolis', 'MN', 55419);
-INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.3112, 44.9451', '3000 Bde Maka Ska Parkway', 'Minneapolis', 'MN', 55408);
 INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.268135,44.991817', '724 Sibley St', 'Minneapolis', 'MN', 55413);
 INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.25494,44.984474', '125 SE Main St', 'Minneapolis', 'MN', 55414);
 INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.270991,44.976229','710 S Marquette Ave', 'Minneapolis', 'MN', 55402);
@@ -65,6 +54,8 @@ INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.247726, 
 INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.27130126953125 ,44.9758415222168','821 S Marquette Ave', 'Minneapolis', 'MN', 55402);
 INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.2684523,44.973095','225 3rd Ave', 'Minneapolis', 'MN', 55401);
 INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.2767386,44.977544','19 N 8th St', 'Minneapolis', 'MN', 55403);
+INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.258179,44.975054','401 Chicago Ave', 'Minneapolis', 'MN', 55415);
+INSERT INTO addresses (long_lat, street, city, state, zip) VALUES ('-93.166779,45.031670','3003 Snelling Ave', 'Roseville', 'MN', 55113);
 
 
 
@@ -133,6 +124,8 @@ INSERT INTO hotels (address_id, name) VALUES (49, 'The Foshay');
 INSERT INTO hotels (address_id, name) VALUES (50, 'Renaissance Minneapolis Hotel');
 INSERT INTO hotels (address_id, name) VALUES (51, 'Hampton Inn & Suites Minneapolis/Downtown');
 
+INSERT INTO landmarks(address_id, type, likes, name, description, img_url) VALUES (52, 6, 5, 'U.S. Bank Stadium', 'U.S. Bank Stadium is an enclosed stadium located in downtown Minneapolis, Minnesota. Built on the former site of the Hubert H. Humphrey Metrodome, the indoor stadium opened in 2016 and is the home of the Minnesota Vikings of the National Football League (NFL); it also hosts early season college baseball games of the University of Minnesota Golden Gophers', 'https://saint-paul-2022.s3.amazonaws.com/imager/files_idss_com/C17/515c21dd-ef6f-480f-b8d6-9c9e7c0e4ba9/196175c2-c904-4a79-b552-06dd50398481_e45adf5f6bc0c5c2a30a39868f44eab6.jpg');
+INSERT INTO landmarks(address_id, type, likes, name, description, img_url) VALUES (53, 2, 5, 'University of Northwestern', 'Northwestern University is a private research university in Evanston, Illinois. Founded in 1851, Northwestern is the oldest chartered university in Illinois and is ranked among the most prestigious academic institutions in the world.', 'https://unwsp.edu/uploads/Videos/_heroMedium/2021-Home-UNW-Fallback-Image.jpg');
 
 INSERT INTO reviews (landmark_id, user_id, is_liked, title, description) VALUES (1, 1, true, 'Awesome Place', 'This was an awesome place. My family loved it');
 INSERT INTO reviews (landmark_id, user_id, is_liked, title, description) VALUES (2, 1, true, 'Great Vibes', 'I loved the atmosphere');
