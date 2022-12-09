@@ -14,6 +14,9 @@
             <p id="landmark-description"> {{landmark.description}}</p>
           </div>
       </div>
+      <div id="delete-btn-container">
+          <button id="deleteBtn" v-on:click="deleted()">Delete Itinerary</button>
+      </div>
   </div>
 </template>
 
@@ -25,17 +28,18 @@ export default {
         Map
     },
     created() {
-        this.$store.state.landmarks.forEach(element => {
-            this.$store.commit('SET_ITINERARY_LANDMARK', element);
-        });
-    },
-    deleted() {
-        this.$store.commit('EMPTY_ITINERARY_LANDMARKS');
+        // this.$store.state.landmarks.forEach(element => {
+        //     this.$store.commit('SET_ITINERARY_LANDMARK', element);
+        // });
     },
     methods: {
         removeFromItinerary(id){
            this.$store.commit("REMOVE_ITINERARY_LANDMARK", id);
            alert("Landmark removed from itinerary");
+        },
+        deleted() {
+            this.$store.commit('EMPTY_ITINERARY_LANDMARKS');
+            alert("Itinerary deleted");
         }
     }
 }
@@ -90,6 +94,25 @@ h1{
 
 #removeBtn:hover {
   cursor: pointer;
+}
+
+#delete-btn-container{
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+#deleteBtn{
+    font-family: 'Montserrat Alternates', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial';
+    border: 5px solid;
+    padding: 8px;
+    background-color: #004E64;
+    color: #F3FCED;
+    border-radius: 12px;
+}
+
+#deleteBtn:hover{
+    cursor: pointer;
 }
 
 </style>
