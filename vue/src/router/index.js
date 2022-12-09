@@ -9,6 +9,7 @@ import NewLandmark from '../views/NewLandmark.vue'
 import LandmarkDetails from '../views/LandmarkDetails.vue'
 import Itinerary from '../views/Itinerary.vue'
 import Routes from '../views/Routes.vue'
+import NewReview from '../views/NewReview.vue'
 
 Vue.use(Router)
 
@@ -88,7 +89,15 @@ const router = new Router({
         meta: {
         requiresAuth: false
       }
+    },
+    {
+        path: "/newReview",
+        name: "NewReview",
+        component: NewReview,
+        meta: {
+        requiresAuth: false
     }
+  }
   ]
 })
 
