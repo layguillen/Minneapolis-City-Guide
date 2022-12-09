@@ -4,10 +4,9 @@
 <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Montserrat Alternates'>
       <form v-on:submit.prevent= "saveReview" class="form">
           <h1>Leave a Review</h1>
-
         <div class="form-element">
-            <label for="reviewer">Username:</label>
-            <input id="reviewer" type="text" v-model="newReview.username" />
+            <label for="username">Username:</label>
+            <input id="username" type="text" v-model="newReview.username" />
         </div>
 
         <div class="form-element">
@@ -143,5 +142,25 @@ h1{
     margin-top: 10px;
     text-align: center;
     font-weight: bold; 
+}
+#username{
+    color:#004E64;
+    border-radius:7px;
+    border-color: #004E64;
+}
+#title{ 
+    border-radius:7px;
+    color:#004E64;
+    border-color: #004E64;
+}
+#review{
+    border-radius: 7px;
+    border-color: #004E64;
+    color:#004E64;
+}
+#rating{
+    border-radius: 7px;
+    border-color: #004E64;
+    color:#004E64;
 }
 </style>
