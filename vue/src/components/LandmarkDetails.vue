@@ -18,23 +18,31 @@
       <p id = "description">{{this.$store.state.currentLandmark.description}}</p>
      </div>
 
+ <div class="buttons">
+
     <div class="addDiv">
-      <button class="addButton" type="submit">
-        add to itinerary
-      </button>
-      </div>
+      <a href="#" class="addButton" v-on:click="addToItinerary()">add to itinerary</a>
+    </div>
+
+
 
     <div class="cancelDiv">
-      <button class = "cancelButton" type="submit">
-        cancel
+      <button class = "cancelButton">
+        <router-link id= "reviewLink" :to="{ name: 'home' }">cancel</router-link>
       </button>
       </div>
 
-        <div class = "newReview">
+        <div class = "reviewDiv">
         <button class = "reviewButton">
           <router-link id= "reviewLink" :to="{ name: 'NewReview' }">leave a review</router-link>
           </button>
       </div>
+      
+      <div class="likeDiv">
+        <button class="likeButton" >Likes: {{this.$store.state.currentLandmark.likes}}</button>
+      </div>
+
+  </div>
 
   </div>
 </template>
@@ -50,7 +58,11 @@ export default {
      
      this.$store.commit('SET_LANDMARK', response.data);
    });
+   },
+   addToItinerary(){
+     this.$store.commit('SET_ITINERARY_LANDMARK', this.$store.state.currentLandmark);
    }
+
  },
  created(){
    this.setDetails();
@@ -86,15 +98,26 @@ body{
   margin-top: 8vh;
   border-radius: 20%;
 } 
-.addDiv{
-  grid-area:footer;
-  border-radius: 20px;
-  margin-left:20px;
-}
+
 .addButton {
-  margin-top:22%;
+  
+  margin-left:20px;
   padding:5px;
   border-radius: 20px;
+  font-size: 30px;
+  background-color:#BD92DD;
+  color: #F3FCED;
+  border:none;
+  font-family: 'Montserrat Alternates', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial';
+
+}
+
+
+.cancelButton {
+  padding:5px;
+  border-radius: 20px;
+  margin-left:275px;
+
   font-size: 30px;
   background-color:#BD92DD;
   color: #F3FCED;
@@ -102,34 +125,25 @@ body{
   font-family: 'Montserrat Alternates', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial';
 }
 
-.cancelDiv {
-  grid-area: footer;
-  margin-left:275px;
-}
-.cancelButton {
-  padding:5px;
-  border-radius: 20px;
-  margin-top:419px;
-  font-size: 30px;
-  background-color:#BD92DD;
-  color: #F3FCED;
-  border:none;
-  font-family: 'Montserrat Alternates', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial';
-}
-.newReview {
- grid-area:footer;
-  margin-left: 395px;
-}
 
 .reviewButton{
   background-color:#BD92DD;
   color: #F3FCED;
   border-radius:20px;
   padding:5px;
-  margin-top:420px;
+  margin-left: 395px;
+
   font-size: 30px;
   border:none;
   font-family: 'Montserrat Alternates', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial';
+
+}
+
+.buttons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-area: footer;
 }
 
 #reviewLink{
@@ -141,7 +155,7 @@ body{
  
   text-align:center;
   font-family: 'Montserrat Alternates', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial';
-  font-size: 200%;
+  font-size: 180%;
   color:#F3FCED;
   text-decoration-line: underline;
   text-decoration-color: #F3FCED;
@@ -160,9 +174,18 @@ body{
   margin-left:0%;
   margin-right:10%;
 }
+.likeButton{
+  
+  background-color:#BD92DD;
+  color: #F3FCED;
+  border-radius:20px;
+  padding:5px;
+  margin-left: 395px;
 
-#description {
-  margin-bottom:-400px;
+  font-size: 30px;
+  border:none;
+  font-family: 'Montserrat Alternates', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial';
 }
+
 
 </style>
