@@ -11,5 +11,8 @@ export default {
         },
         getDetails(id){
             return http.get(`/landmark/${id}`)
+        },
+        addLandmark(){
+            return axios.post('/landmark/new')
         }
 }

@@ -25,7 +25,7 @@
 
         <div class="form-element">
             <label for="review">Review</label>
-            <textarea id="review" v-model="newReview.review"></textarea>
+            <textarea id="review" v-model="newReview.description"></textarea>
         </div>
 
         <div class="actions">

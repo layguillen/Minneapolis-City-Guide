@@ -10,6 +10,7 @@ import LandmarkDetails from '../views/LandmarkDetails.vue'
 import Itinerary from '../views/Itinerary.vue'
 import Routes from '../views/Routes.vue'
 import NewReview from '../views/NewReview.vue'
+import PendingLandmarks from '../views/PendingLandmarks.vue'
 
 Vue.use(Router)
 
@@ -96,8 +97,16 @@ const router = new Router({
         component: NewReview,
         meta: {
         requiresAuth: false
+      } 
+    },
+    {
+      path: "/pending",
+      name: "pendingLandmarks",
+      component: PendingLandmarks,
+      meta: {
+      requiresAuth: false
+      },
     }
-  }
   ]
 })
 
