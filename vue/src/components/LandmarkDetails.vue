@@ -1,37 +1,49 @@
 <template>
-<div id = "mainDiv"> 
+<div class="mainDiv"> 
+
    <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Montserrat Alternates'>
 
-    <!-- image -->
-     <div class="griditem1">
-       <img v-bind:src="this.$store.state.url" id="landmark1"/>
+    
+     <div class="imgDiv">
+       <img v-bind:src="this.$store.state.currentLandmark.img_URL" id="imgId"/>
      </div>
 
-     <!-- name -->
-     <div class="griditem2">
+    
+     <div class="titleDiv">
        <h1>{{this.$store.state.currentLandmark.name}}</h1>
      </div>
 
-     <!-- description-->
-     <div class="griditem3">
+    
+     <div class="descDiv">
       <p id = "description">{{this.$store.state.currentLandmark.description}}</p>
      </div>
 
-    <div class = "addToItinerary">
-      <button class = "addButton" type="submit">
-        add to itinerary
+ <div class="buttons">
+
+    <div class="addDiv">
+      <a href="#" class="addButton" v-on:click="addToItinerary()">add to itinerary</a>
+    </div>
+
+
+
+    <div class="cancelDiv">
+      <button class = "cancelButton">
+        <router-link id= "reviewLink" :to="{ name: 'home' }">cancel</router-link>
       </button>
       </div>
-    <div class = "cancel">
-      <button class = "cancelButton" type="submit">
-        cancel
-      </button>
-      </div>
-        <div class = "newReview">
+
+        <div class = "reviewDiv">
         <button class = "reviewButton">
           <router-link id= "reviewLink" :to="{ name: 'NewReview' }">leave a review</router-link>
           </button>
       </div>
+      
+      <div class="likeDiv">
+        <button class="likeButton" >Likes: {{this.$store.state.currentLandmark.likes}}</button>
+      </div>
+
+  </div>
+
   </div>
 </template>
 
@@ -44,13 +56,14 @@ export default {
    setDetails(){
      landmarkservice.getDetails(this.$route.params.id).then((response) =>{
      
-    this.$store.commit('SET_LANDMARK', response.data);
-   }).catch((error) =>{
-     if(error.response.status === 404){
-       console.log('didnt work');
-     }
-   })
+     this.$store.commit('SET_LANDMARK', response.data);
+   });
+   },
+   addToItinerary(){
+     this.$store.commit('SET_ITINERARY_LANDMARK', this.$store.state.currentLandmark);
+     alert('Landmark added to Intinerary')
    }
+
  },
  created(){
    this.setDetails();
@@ -64,32 +77,32 @@ body{
   margin:0;
   padding:0;
 }
-
-#mainDiv{
+.mainDiv{
   background-color:#004E64;
+
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  /* grid-template-rows: repeat(3, 1fr); */
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
   grid-template-areas: 
   "img desc"
   "footer footer";
-  grid-template-rows: 1fr 1fr;
+  
   height: 100vh;
   width: 100vw;
-  /* margin-left:-10px;
-  margin-top:-10px; 
-  margin-bottom:-20px; */
 }
 
-.addToItinerary {
-  grid-area:footer;
-  /* display: flex;
-  align-items: flex-end; */
-  border-radius: 20px;
-  margin-left:20px;
-}
+#imgId{
+  grid-area: img;
+  height: 75%;
+  width: 40vw;
+  margin-left: 8vh;
+  margin-top: 8vh;
+  border-radius: 20%;
+} 
+
 .addButton {
-  margin-top:22%;
+  
+  margin-left:20px;
   padding:5px;
   border-radius: 20px;
   font-size: 30px;
@@ -97,50 +110,53 @@ body{
   color: #F3FCED;
   border:none;
   font-family: 'Montserrat Alternates', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial';
+
 }
-.cancel {
-  grid-area: footer;
-  /* display: flex;
-  align-items: flex-end; */
-  /* margin-top:22%; */
-  margin-left:275px;
-}
+
+
 .cancelButton {
   padding:5px;
   border-radius: 20px;
-  margin-top:419px;
+  margin-left:275px;
+
   font-size: 30px;
   background-color:#BD92DD;
   color: #F3FCED;
   border:none;
   font-family: 'Montserrat Alternates', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial';
 }
-.newReview {
- grid-area:footer;
-  /* display: flex;
-  align-items: flex-end; */
-  margin-left: 395px;
-}
+
+
 .reviewButton{
   background-color:#BD92DD;
   color: #F3FCED;
   border-radius:20px;
   padding:5px;
-  margin-top:420px;
+  margin-left: 395px;
+
   font-size: 30px;
   border:none;
   font-family: 'Montserrat Alternates', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial';
+
 }
+
+.buttons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-area: footer;
+}
+
 #reviewLink{
   color: #F3FCED;
 }
-.griditem2{
+.titleDiv{
   grid-area:desc;
   display: inline-block;
  
   text-align:center;
   font-family: 'Montserrat Alternates', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial';
-  font-size: 200%;
+  font-size: 180%;
   color:#F3FCED;
   text-decoration-line: underline;
   text-decoration-color: #F3FCED;
@@ -150,7 +166,7 @@ body{
   margin-right: 10px;
   
 }
-.griditem3{
+.descDiv{
   grid-area: desc;
   font-family: 'Montserrat Alternates', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial';
   font-size: 30px;
@@ -159,15 +175,18 @@ body{
   margin-left:0%;
   margin-right:10%;
 }
-#landmark1 {
-  grid-area: img;
-  height: 75%;
-  width: 40vw;
-  margin-left: 8vh;
-  margin-top: 8vh;
+.likeButton{
+  
+  background-color:#BD92DD;
+  color: #F3FCED;
+  border-radius:20px;
+  padding:5px;
+  margin-left: 395px;
+
+  font-size: 30px;
+  border:none;
+  font-family: 'Montserrat Alternates', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial';
 }
-#description {
-  margin-bottom:-400px;
-}
+
 
 </style>
