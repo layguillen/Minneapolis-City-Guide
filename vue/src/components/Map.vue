@@ -1,7 +1,7 @@
 <template>
   <div>
       <link rel = "stylesheet" href = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
-      <h2>Minneapolis Map</h2>
+      <!-- <h2>Minneapolis Map</h2> -->
       <div class="map">
           <iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" 
             src="https://www.openstreetmap.org/export/embed.html?bbox=-93.40061187744142%2C44.88263391919232%2C-93.20835113525392%2C45.05872899067149&amp;layer=mapnik" 
