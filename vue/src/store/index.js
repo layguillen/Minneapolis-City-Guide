@@ -26,7 +26,8 @@ export default new Vuex.Store({
     pendingLandmarks: [],
     itineraryLandmarks: [],
     routes: [],
-    reviews: []
+    reviews: [],
+    showAddLandmark: true,
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -70,6 +71,12 @@ export default new Vuex.Store({
     },
     SET_REVIEWS(state, list){
       state.reviews = list;
+    },
+    ADD_LANDMARK_TRUE(state) {
+      state.showAddLandmark = true;
+    },
+    ADD_LANDMARK_FALSE(state) {
+      state.showAddLandmark = false;
     }
   }
 })

@@ -11,7 +11,7 @@
       <router-link v-bind:to="{name: 'itinerary'}">
         <button id="itinerary">View Itinerary</button>
       </router-link>
-      <router-link v-bind:to="{name: 'addLandmark'}">
+      <router-link v-if="$store.state.showAddLandmark" v-bind:to="{name: 'addLandmark'}">
         <button id="addLandmark">Add Landmark</button>
       </router-link>
       <div id="dropdown" class="dropdown">
@@ -28,6 +28,13 @@
 
 
 </template>
+
+<script>
+export default {
+  
+}
+</script>
+
 
 <style>
 
