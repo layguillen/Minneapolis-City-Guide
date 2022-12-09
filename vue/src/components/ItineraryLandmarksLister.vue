@@ -1,6 +1,7 @@
 <template>
   <div id="itinerary-container">
       <h1>Your Itinerary</h1>
+      <Map />
       <div id="landmarks" v-for="landmark in this.$store.state.itineraryLandmarks" v-bind:key="landmark.id">
           <div id="title-btn-container">
               <h2 id="landmark-name">{{ landmark.name }}</h2>
@@ -17,8 +18,12 @@
 </template>
 
 <script>
+import Map from '../components/Map.vue'
 export default {
     name: "itinerary-landmarks-lister",
+    components: {
+        Map
+    },
     created() {
         this.$store.state.landmarks.forEach(element => {
             this.$store.commit('SET_ITINERARY_LANDMARK', element);
@@ -68,9 +73,10 @@ h1{
     justify-content: space-between;
 }
 
-#img-container{
+#landmark-img{
     padding: 2px;
     margin-right: 10px;
+    height: 10rem;
 }
 
 #removeBtn{
