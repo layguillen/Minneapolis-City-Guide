@@ -21,7 +21,7 @@ public class JdbcLandmarkDao implements LandmarkDao{
     @Override
     public List<Landmark> listLandmarks(){
         List<Landmark> list = new ArrayList<>();
-        String sql = "SELECT landmarks.id, address_id, landmarks.name, types.name AS type, description, likes, img_URL " +
+        String sql = "SELECT landmarks.id, address_id, landmarks.name, types.name AS type, description, likes, img_URL, is_pending" +
                 " FROM landmarks " +
                 " JOIN types ON landmarks.type = types.id " +
                 " ORDER BY landmarks.name ";
@@ -44,44 +44,23 @@ public class JdbcLandmarkDao implements LandmarkDao{
 
     @Override
     public Landmark getLandmark(int landmarkId){
-        if(landmarkId == 0) throw new IllegalArgumentException("Landmark ID cannot be null.");
-        Landmark landmark = new Landmark();
-
-        String sql = "SELECT landmarks.id, address_id, landmarks.name, types.name AS type, description, likes, img_URL " +
-                    " FROM landmarks " +
-                    " JOIN types ON landmarks.type = types.id " +
-                    " WHERE landmarks.id = ?; ";
-
-        SqlRowSet result = jdbcTemplate.queryForRowSet(sql, landmarkId);
-        if (result.next()){
-            landmark = mapRowToLandmark(result);
-        }
-
-        String addressSql = " SELECT id, long_lat, street, city, state, zip " +
-                " FROM addresses " +
-                " WHERE id = ?";
-        SqlRowSet addressResult = jdbcTemplate.queryForRowSet(addressSql, landmark.getAddressId());
-
-        if (addressResult.next()){
-            landmark.setAddress(mapRowToAddress(addressResult));
-        }
-        return landmark;
+        return listLandmarks().get(landmarkId-1);
     }
 
     //TODO: check sql
     @Override
     public boolean createLandmark(Landmark landmark){
-        String sql = "INSERT INTO landmarks (id, address_id, name, type, description, likes, img_URL) " +
+        String sql = "INSERT INTO landmarks (address_id, name, type, description, likes, img_URL, is_pending) " +
                     " VALUES(?, ?, ?, ?, ?, ?, ?); ";
 
         return jdbcTemplate.update(sql,
-                                    landmark.getLandmarkId(),
                                     landmark.getAddressId(),
                                     landmark.getName(),
                                     landmark.getType(),
                                     landmark.getDescription(),
                                     landmark.getLikes(),
-                                    landmark.getImgUrl()) == 1;
+                                    landmark.getImgUrl(),
+                                    landmark.isPending()) == 1;
     }
 
     //TODO: fix sql so that it adds one to the likes count (int)
@@ -109,7 +88,7 @@ public class JdbcLandmarkDao implements LandmarkDao{
         landmark.setDescription(results.getString("description"));
         landmark.setLikes(results.getInt("likes"));
         landmark.setImgUrl(results.getString("img_url"));
-
+        landmark.setPending(results.getBoolean("is_pending"));
         return landmark;
     }
     private Address mapRowToAddress(SqlRowSet results){

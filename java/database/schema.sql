@@ -28,7 +28,8 @@ CREATE TABLE landmarks (
 	name varchar,
     type int REFERENCES types(id),
 	description varchar NOT NULL,
-    img_URL varchar NOT NULL
+    img_URL varchar NOT NULL,
+    is_pending boolean NULL
 );
 CREATE TABLE hotels (
     id serial PRIMARY KEY,

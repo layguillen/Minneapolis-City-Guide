@@ -18,12 +18,20 @@ public class Landmark {
     private int likes;
     @JsonProperty("img_URL")
     private String imgUrl;
-
+    @JsonProperty("pending")
+    private boolean isPending;
 
 
     private Address address;
 
     public Landmark(){};
+    public boolean isPending() {
+        return isPending;
+    }
+
+    public void setPending(boolean pending) {
+        isPending = pending;
+    }
 
     public int getLandmarkId() {
         return landmarkId;
