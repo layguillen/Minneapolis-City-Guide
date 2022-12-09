@@ -28,7 +28,7 @@
         v-model="user.password"
         required
       />
-      <button class="form-element login-button" type="submit"> <router-link  class="form-element routerstyle" :to="{ name: 'home' }">login</router-link></button>
+      <button class="form-element login-button" type="submit">login</button>
       <button class="register-button"> <router-link class="form-element routerstyle" :to="{ name: 'register' }">join the club</router-link></button>
     </form>
      
@@ -62,7 +62,7 @@ export default {
           if (response.status == 200) {
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
             this.$store.commit("SET_USER", response.data.user);
-            this.$router.push("/");
+            this.$router.push("/home");
           }
         })
         .catch(error => {

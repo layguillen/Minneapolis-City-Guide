@@ -2,10 +2,12 @@
 <div class="home-header">
      <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Montserrat Alternates'>
     <div id="header" class="home-element">
+      <router-link id="title-img-router" v-bind:to="{name: 'home'}" >
       <div id="title-img">
         <h1 id="title">Glider</h1>
         <img id="glider-img" src="..\assets\Glider-1.png" alt="Glider Image" >
       </div>
+      </router-link>
       <router-link v-bind:to="{name: 'itinerary'}">
         <button id="itinerary">View Itinerary</button>
       </router-link>
@@ -105,6 +107,10 @@
 
 #router-link {
   color: #F3FCED;
+}
+
+#title-img-router {
+  text-decoration: none;
 }
 
 
