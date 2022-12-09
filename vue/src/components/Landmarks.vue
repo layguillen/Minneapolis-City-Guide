@@ -146,6 +146,9 @@ fieldset {
 
 #container {
     width: 300px;
+    margin-left: 12.5px;
+    margin-right: 12.5px;
+    margin-bottom: 10px;
 }
 
 </style>

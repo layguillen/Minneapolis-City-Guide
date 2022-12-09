@@ -72,6 +72,8 @@ export default {
   justify-content: space-between;
   align-items: center;
   font-family: 'Montserrat Alternates', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial';
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 #addLandmark:hover {
