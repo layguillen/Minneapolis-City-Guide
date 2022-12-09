@@ -17,6 +17,8 @@ public class Address {
     @JsonProperty("long_lat")
     private String longLat;
 
+    private double longitude;
+    private double latitude;
 
     public Address(){};
 
@@ -67,5 +69,14 @@ public class Address {
 
     public void setLongLat(String longLat) {
         this.longLat = longLat;
+        this.latitude = Double.parseDouble(longLat.split(",")[1]);
+        this.longitude = Double.parseDouble(longLat.split(",")[0]);
+    }
+
+    public double getLatitude(){
+        return this.latitude;
+    }
+    public double getLongitude(){
+        return this.longitude;
     }
 }
