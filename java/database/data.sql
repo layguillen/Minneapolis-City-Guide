@@ -125,18 +125,40 @@ INSERT INTO hotels (address_id, name) VALUES (50, 'Renaissance Minneapolis Hotel
 INSERT INTO hotels (address_id, name) VALUES (51, 'Hampton Inn & Suites Minneapolis/Downtown');
 
 INSERT INTO landmarks(address_id, type, likes, is_pending, name, description, img_url) VALUES (52, 6, 5, false, 'U.S. Bank Stadium', 'U.S. Bank Stadium is an enclosed stadium located in downtown Minneapolis, Minnesota. Built on the former site of the Hubert H. Humphrey Metrodome, the indoor stadium opened in 2016 and is the home of the Minnesota Vikings of the National Football League (NFL); it also hosts early season college baseball games of the University of Minnesota Golden Gophers', 'https://saint-paul-2022.s3.amazonaws.com/imager/files_idss_com/C17/515c21dd-ef6f-480f-b8d6-9c9e7c0e4ba9/196175c2-c904-4a79-b552-06dd50398481_e45adf5f6bc0c5c2a30a39868f44eab6.jpg');
-INSERT INTO landmarks(address_id, type, likes, is_pending, name, description, img_url) VALUES (53, 2, 5, false, 'University of Northwestern', 'Northwestern University is a private research university in Evanston, Illinois. Founded in 1851, Northwestern is the oldest chartered university in Illinois and is ranked among the most prestigious academic institutions in the world.', 'https://unwsp.edu/uploads/Videos/_heroMedium/2021-Home-UNW-Fallback-Image.jpg');
+INSERT INTO landmarks(address_id, type, likes, is_pending, name, description, img_url) VALUES (53, 2, 5, false, 'University of Northwestern', 'University of Northwestern is a private university in St. Paul, MN.', 'https://unwsp.edu/uploads/Videos/_heroMedium/2021-Home-UNW-Fallback-Image.jpg');
 
 INSERT INTO reviews (landmark_id, user_id, is_liked, title, description) VALUES (1, 1, true, 'Awesome Place', 'This was an awesome place. My family loved it');
 INSERT INTO reviews (landmark_id, user_id, is_liked, title, description) VALUES (2, 1, true, 'Great Vibes', 'I loved the atmosphere');
 INSERT INTO reviews (landmark_id, user_id, is_liked, title, description) VALUES (3, 1, true, 'Killer Time', 'I murdered 101 puppies in this location and no one will ever know since no one reads reviews. -CD');
 INSERT INTO reviews (landmark_id, user_id, is_liked, title, description) VALUES (4, 1, false, 'Bad Food', 'They served no hot dogs. I wanted hot dogs. Is this even the hot dog shop?');
 INSERT INTO reviews (landmark_id, user_id, is_liked, title, description) VALUES (5, 1, false, 'Ugly People', 'I don`t like ugly people. This place had like 2. I was really suffering');
-INSERT INTO reviews (landmark_id, user_id, is_liked, title, description) VALUES (6, 1, true, 'Fun place', 'What a cool place! Everyone should check this out.');
-INSERT INTO reviews (landmark_id, user_id, is_liked, title, description) VALUES (7, 1, false, 'What is this???', 'What even is this place?');
-INSERT INTO reviews (landmark_id, user_id, is_liked, title, description) VALUES (8, 1, true, 'Christmas morning', 'I come here every Christmas morning. It is the best!');
-INSERT INTO reviews (landmark_id, user_id, is_liked, title, description) VALUES (9, 1, false, 'Do not come here', 'Do not waste your time by coming here.');
+INSERT INTO reviews (landmark_id, user_id, is_liked, title, description) VALUES (6, 1, true, 'Cool stadium', 'What a cool place! Everyone should check this out.');
+INSERT INTO reviews (landmark_id, user_id, is_liked, title, description) VALUES (7, 1, false, 'What is this???', 'What even is this place? I thought it was supposed to be a dance club.');
+INSERT INTO reviews (landmark_id, user_id, is_liked, title, description) VALUES (8, 1, true, 'Christmas morning', 'I come here every Christmas morning (even though it is not open). It is the best!');
+INSERT INTO reviews (landmark_id, user_id, is_liked, title, description) VALUES (9, 1, true, 'Beautiful church', 'Only come here if you like old churches. I do, so I liked it.');
 INSERT INTO reviews (landmark_id, user_id, is_liked, title, description) VALUES (10, 1, true, 'Best day ever', 'Coming here was the highlight of my day. I would come back every day if I could.');
 INSERT INTO reviews (landmark_id, user_id, is_liked, title, description) VALUES (11, 1, true, 'Love at first sight', 'I knew I would like it here the second I laid eyes on it!');
+INSERT INTO reviews (landmark_id, user_id, is_liked, title, description) VALUES (12, 1, true, 'Great music', 'Fantastic way to spend an evening. Highly recommend catching a show.');
+INSERT INTO reviews (landmark_id, user_id, is_liked, title, description) VALUES (13, 1, true, 'For Russian Art Lovers', 'If you like Russian art, this place is a gem!');
+INSERT INTO reviews (landmark_id, user_id, is_liked, title, description) VALUES (14, 1, true, 'Beautiful Place and Music', 'Exceptional orchestra and beautiful concert hall.');
+INSERT INTO reviews (landmark_id, user_id, is_liked, title, description) VALUES (15, 1, true, 'Great Brews', 'Definitely need to check out if you like beer!');
+INSERT INTO reviews (landmark_id, user_id, is_liked, title, description) VALUES (16, 1, true, 'Fun for the Whole Family', 'I brought my family here on Saturday morning and everyone loved it!');
+INSERT INTO reviews (landmark_id, user_id, is_liked, title, description) VALUES (17, 1, false, 'Just OK', 'Not for me.');
+INSERT INTO reviews (landmark_id, user_id, is_liked, title, description) VALUES (18, 1, true, 'Good shopping', 'Great place to walk around and do some shopping.');
+INSERT INTO reviews (landmark_id, user_id, is_liked, title, description) VALUES (19, 1, true, 'Great Food', 'This place has the best food and such a cool view!');
+INSERT INTO reviews (landmark_id, user_id, is_liked, title, description) VALUES (20, 1, true, 'Fun Movie Theater', 'We saw a cool film here. Comfy chairs and great popcorn.');
+INSERT INTO reviews (landmark_id, user_id, is_liked, title, description) VALUES (21, 1, true, 'Science Lovers Heaven', 'If you are a science nerd like me, you will love this museum.');
+INSERT INTO reviews (landmark_id, user_id, is_liked, title, description) VALUES (22, 1, true, 'Cool Aquarium', 'My kids loved visiting this aquarium and seeing the fish.');
+INSERT INTO reviews (landmark_id, user_id, is_liked, title, description) VALUES (23, 1, false, 'Sad Animals', 'All the animals looked sad, which made me sad.');
+INSERT INTO reviews (landmark_id, user_id, is_liked, title, description) VALUES (24, 1, false, 'I Lost My Wallet', 'I lost my wallet playing mini golf here and never got it back.');
+INSERT INTO reviews (landmark_id, user_id, is_liked, title, description) VALUES (25, 1, true, 'Best Zoo', 'This is the best zoo in MN, in my humble opinion.');
+INSERT INTO reviews (landmark_id, user_id, is_liked, title, description) VALUES (26, 1, true, 'Fun for the Kids', 'Some cool rides that my kids enjoyed.');
+INSERT INTO reviews (landmark_id, user_id, is_liked, title, description) VALUES (27, 1, true, 'Yummy Croissants', 'Tastes just like the croissants I ate in Paris. Yum!');
+INSERT INTO reviews (landmark_id, user_id, is_liked, title, description) VALUES (28, 1, true, 'Great for Running', 'The trail around the lake is great for runners.');
+INSERT INTO reviews (landmark_id, user_id, is_liked, title, description) VALUES (29, 1, true, 'Great Day on the Water', 'I loved taking out a paddle boat.');
+INSERT INTO reviews (landmark_id, user_id, is_liked, title, description) VALUES (30, 1, true, 'Good Sandwiches', 'I am very picky when it comes to sandwiches. So when I say this place was good, I meant it!');
+INSERT INTO reviews (landmark_id, user_id, is_liked, title, description) VALUES (31, 1, true, 'Go Vikings!', 'We caught a Vikings game here and it was a highlight of our trip!');
+INSERT INTO reviews (landmark_id, user_id, is_liked, title, description) VALUES (32, 1, true, 'Beautiful Campus', 'Loved walking around this campus!');
+
 
 COMMIT TRANSACTION;
