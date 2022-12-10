@@ -56,13 +56,13 @@
 </template>
 
 <script>
-import Map from '../components/Map.vue'
+ import Map from '../components/Map.vue'
 import HotelService from '../services/HotelService'
 
 export default {
     name: "itinerary-landmarks-lister",
     components: {
-        Map
+         Map
     },
     data(){
         return {
