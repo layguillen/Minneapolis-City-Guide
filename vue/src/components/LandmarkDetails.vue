@@ -28,7 +28,11 @@
     </div>
 
     <div id="button-container">
-      <button class="buttons" id="add-itinerary-Btn"  v-on:click="addToItinerary()">
+      <button
+        class="buttons"
+        id="add-itinerary-Btn"
+        v-on:click="addToItinerary()"
+      >
         add to itinerary
       </button>
 
@@ -42,7 +46,7 @@
 
       <div class="reviewDiv">
         <button class="buttons">
-          <router-link id="reviewLink" :to="{ name: 'NewReview' }"
+          <router-link id="reviewLink" :to="{ name: 'NewReview', params: {id: this.$store.state.currentLandmark.id} }"
             >leave a review</router-link
           >
         </button>
@@ -102,7 +106,6 @@ body {
 
   display: flex;
   flex-direction: column;
-  
 }
 
 #img-title-details {
@@ -115,12 +118,12 @@ body {
   justify-content: center;
 }
 
-#title-desc{
+#title-desc {
   width: 700px;
 }
 
-.imgDiv{
-   height: 500px;
+.imgDiv {
+  height: 500px;
   width: 600px;
 }
 
@@ -133,10 +136,9 @@ body {
   border-radius: 20%;
 }
 
-#add-itinerary-Btn:hover{
+#add-itinerary-Btn:hover {
   cursor: pointer;
 }
-
 
 #button-container {
   /* grid-area: footer; */

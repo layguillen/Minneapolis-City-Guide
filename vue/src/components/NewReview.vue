@@ -4,10 +4,10 @@
 <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Montserrat Alternates'>
       <form v-on:submit.prevent= "saveReview" class="form">
           <h1>Leave a Review</h1>
-        <div class="form-element">
+        <!-- <div class="form-element">
             <label for="username">Username:</label>
             <input id="username" type="text" />
-        </div>
+        </div> -->
 
         <div class="form-element">
             <label for="title">Title:</label>
@@ -29,8 +29,8 @@
         </div>
 
         <div class="actions">
-            <button type="submit">Submit</button>
-            <button v-on:click= "resetForm" type="button">Cancel</button>
+            <button id="submit-btn" type="submit">Submit</button>
+            <button id="cancel-btn" v-on:click= "resetForm" type="button">Cancel</button>
         </div>
 
       </form>
@@ -55,9 +55,9 @@ export default {
     data(){
         return {
             newReview: {
-                landmarkID: 0,
-                userId: '',
-                username: '',
+                landmarkID: this.$route.params.id,
+                userId: this.$store.state.user.id,
+                username: this.$store.state.user.username,
                 title: '',
                 liked: '',
                 description: ''
@@ -67,7 +67,7 @@ export default {
     methods: {
         saveReview(){
             const reviewToAdd = {
-                landmarkID: Number(this.$route.params.id),
+                landmarkID: this.$route.params.id,
                 userId: this.$store.state.user.id,
                 username: this.$store.state.user.username,
                 title: this.newReview.title,
@@ -172,4 +172,31 @@ label{
     border-color: #004E64;
     color:#004E64;
 }
+
+#submit-btn{
+  border: 5px solid;
+  padding: 8px;
+  background-color: #004E64;
+  color: #F3FCED;
+  border-radius: 12px;
+  font-family: 'Montserrat Alternates', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial';
+}
+
+#submit-btn:hover{
+    cursor: pointer;
+}
+
+#cancel-btn{
+border: 5px solid;
+  padding: 8px;
+  background-color: #004E64;
+  color: #F3FCED;
+  border-radius: 12px;
+  font-family: 'Montserrat Alternates', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial';
+}
+
+#cancel-btn:hover{
+    cursor: pointer;
+}
+
 </style>
