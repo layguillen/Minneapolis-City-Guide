@@ -43,6 +43,7 @@ export default {
 #reviews{
     background-color:#004E64; 
     color: #F3FCED;
+    padding: 10px;
 }
 
 #reviews-title {
@@ -54,7 +55,8 @@ export default {
     border: 5px #BD92DD solid;
     border-radius: 12px;
     text-align: center;
-    margin: 20px 150px;
+    margin: 20px 100px;
+    padding: 10px;
 }
 
 

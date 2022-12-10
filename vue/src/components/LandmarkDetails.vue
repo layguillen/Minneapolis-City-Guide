@@ -28,7 +28,7 @@
     </div>
 
     <div id="button-container">
-      <button class="buttons" v-on:click="addToItinerary()">
+      <button class="buttons" id="add-itinerary-Btn"  v-on:click="addToItinerary()">
         add to itinerary
       </button>
 
@@ -133,13 +133,16 @@ body {
   border-radius: 20%;
 }
 
-
+#add-itinerary-Btn:hover{
+  cursor: pointer;
+}
 
 
 #button-container {
-  grid-area: footer;
+  /* grid-area: footer; */
   display: flex;
   justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 
 #homeLink {
@@ -191,5 +194,6 @@ body {
   border: none;
   font-family: "Montserrat Alternates", "Franklin Gothic Medium", "Arial Narrow",
     "Arial";
+  margin: 10px;
 }
 </style>
