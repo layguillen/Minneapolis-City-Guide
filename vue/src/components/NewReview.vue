@@ -47,10 +47,7 @@ export default {
         //N/A
     },
     props: {
-        id: {
-            type: Number,
-            default: 0
-        }
+        
     },
     data(){
         return {
