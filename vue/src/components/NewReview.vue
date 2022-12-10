@@ -55,7 +55,7 @@ export default {
     data(){
         return {
             newReview: {
-                landmarkID: this.$route.params.id,
+                landmarkId: this.$route.params.id,
                 userId: this.$store.state.user.id,
                 username: this.$store.state.user.username,
                 title: '',
@@ -66,30 +66,32 @@ export default {
     },
     methods: {
         saveReview(){
-            const reviewToAdd = {
-                landmarkID: this.$route.params.id,
-                userId: this.$store.state.user.id,
-                username: this.$store.state.user.username,
-                title: this.newReview.title,
-                liked: this.newReview.liked,
-                description: this.newReview.description
+            // const reviewToAdd = {
+            //     landmarkId: this.newReview.landmarkId,
+            //     userId: this.$store.state.user.id,
+            //     username: this.$store.state.user.username,
+            //     title: this.newReview.title,
+            //     liked: this.newReview.liked,
+            //     description: this.newReview.description
                 
-            };
+            // };
             //if it's a zero we know it's an insert
-            if(this.id === 0){
+            //if(this.id === 0){
                 //add
-                ReviewService.addReview(reviewToAdd)
+                ReviewService.addReview(this.newReview)
                 .then(response => {
                     //expect a 201 meaning created
                     if(response.status === 201){
-                        this.$router.push(`/details/${this.reviewToAdd.landmarkID}`)
+                        this.$router.push(`/details/${this.newReview.landmarkId}`)
                     }
                 })
                 .catch(error => {
                     this.handleErrorResponse(error, "adding");
                     alert("Review was not added.");
                 })
-            }
+
+            //}
+            this.$router.push(`/details/${this.newReview.landmarkId}`);
 
             //resets form 
             this.newReview = {

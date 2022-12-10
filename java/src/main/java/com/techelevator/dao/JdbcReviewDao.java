@@ -40,12 +40,18 @@ public class JdbcReviewDao implements ReviewDao{
 
 
     @Override
-    public boolean createReview(Review review){
-//                  INSERT INTO reviews (landmark_id, user_id, is_liked, title, description) VALUES (1, 1, false, 'Ugly People', 'I don`t like ugly people. This place had like 2. I was really suffering');
-        String sql = " INSERT INTO reviews(landmark_id, user_id, title, is_liked, description) " +
-                " VALUES (?, ?, ?, ?, ?); ";
+    public Review createReview(int landmarkId, Review review){
 
-        return jdbcTemplate.update(sql, review.getLandmarkId(), review.getUserId(), review.getTitle(), review.getIsLiked(), review.getDescription())==1;
+        String sql = " INSERT INTO reviews(landmark_id, user_id, title, is_liked, description) " +
+                " VALUES (?, ?, ?, ?, ?) RETURNING id; ";
+
+        int newId = jdbcTemplate.queryForObject(sql, int.class, landmarkId,
+                review.getUserId(), review.getTitle(), review.getIsLiked(),
+                review.getDescription());
+
+        review.setReviewId(newId);
+
+        return review;
     }
 
 
