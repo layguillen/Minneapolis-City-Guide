@@ -1,10 +1,10 @@
 <template>
   <div>
-      <h2>Reviews</h2>
+      <h2 id="reviews-title">Reviews</h2>
       <div id="review-container" v-for="review in this.$store.state.reviews" v-bind:key="review.id">
           <h3>{{review.title}}</h3>
-          <h4>{{review.username}}</h4>
-          <!-- <p>{{review.isLiked}}</p> -->
+          <h4>Reviewer: {{review.username}}</h4>
+          <p>Liked?: {{review.is_liked}}</p>
           <p>{{review.description}}</p>
       </div>
   </div>
@@ -20,14 +20,14 @@ export default {
     },
     methods: {
         retrieveReviews(){
-            ReviewService.listReviews(this.$route.params.landmarkId)
+            ReviewService.listReviews(this.$route.params.id)
             .then(response => {
               this.$store.commit("SET_REVIEWS", response.data);  
             })
             .catch(error => {
                 if (error.response && error.response.status === 404) {
                     alert(
-                        "Reviews not available. This landmark may have been deleted or you have entered an invalid landmark ID."
+                        "Reviews not available. This landmark may not have any reviews or the ID is incorrect."
                     );
                     this.$router.push({ name: 'Home' });
           }
@@ -39,5 +39,23 @@ export default {
 </script>
 
 <style>
+
+body{
+    background-color:#004E64;
+    color: #F3FCED;
+}
+
+#reviews-title {
+    color: #F3FCED;
+}
+
+#review-container{
+    font-family: 'Montserrat Alternates', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial';
+    border: 5px #BD92DD solid;
+    border-radius: 12px;
+    text-align: center;
+    margin: 20px 150px;
+}
+
 
 </style>

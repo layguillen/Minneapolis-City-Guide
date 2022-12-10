@@ -14,9 +14,9 @@
             <p id="landmark-description"> {{landmark.description}}</p>
           </div>
       </div>
-      <div>
-          <label for="hotel-search"></label>
-          <select class="hotel-search" id="hotel-search" v-model="id">
+      <div id="hotel-selection">
+          <label for="hotel-search">Hotel</label>
+          <select class="hotel-search" id="hotel-search" v-model="id" v-on:click="retrieveCurrentHotel">
               <option value="">--- Select your hotel ---</option>
               <option value="1">The Marquette Hotel</option>
               <option value="2">Hyatt Place Minneapolis/Downtown</option>
@@ -40,9 +40,14 @@
               <option value="20">Renaissance Minneapolis Hotel</option>
               <option value="21">Hampton Inn & Suites Minneapolis/Downtown</option>
           </select>
-      </div>
-      <div id="current-hotel-container">
-        <h4>{{this.$store.state.currentHotel.name}}</h4>
+          <div id="current-hotel-container">
+            <h4>{{this.$store.state.currentHotel.name}}</h4>
+            <p>{{this.$store.state.currentHotel.address.street}}
+                {{this.$store.state.currentHotel.address.city}},
+                {{this.$store.state.currentHotel.address.state}}
+                {{this.$store.state.currentHotel.address.zip}}
+            </p>  
+         </div>
       </div>
       <div id="delete-btn-container">
           <button id="deleteBtn" v-on:click="deleted()">Delete Itinerary</button>
@@ -156,6 +161,13 @@ h1{
 
 #removeBtn:hover {
   cursor: pointer;
+}
+
+#hotel-selection{
+    font-family: 'Montserrat Alternates', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial';
+    text-align: center;
+    margin-top: 5%;
+    color: #004E64;
 }
 
 #delete-btn-container{
