@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="reviews">
       <h2 id="reviews-title">Reviews</h2>
       <div id="review-container" v-for="review in this.$store.state.reviews" v-bind:key="review.id">
           <h3>{{review.title}}</h3>
@@ -40,8 +40,8 @@ export default {
 
 <style>
 
-body{
-    background-color:#004E64;
+#reviews{
+    background-color:#004E64; 
     color: #F3FCED;
 }
 
