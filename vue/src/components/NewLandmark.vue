@@ -12,14 +12,14 @@
             <label for="type">Type</label>  
             <select class="form-control" id="type" v-model= "newLandmark.type">
                 <option value="">--- Select a type ---</option>
-                <option value="Amusement">Amusement</option>
-                <option value="Art">Art</option>
-                <option value="Educational">Educational</option>
-                <option value="Historic">Historic</option>
-                <option value="Outdoor">Outdoor</option>
-                <option value="Restaurant">Restaurant</option>
-                <option value="Shopping">Shopping</option>
-                <option value="Venue">Venue</option>
+                <option value="5">Amusement</option>
+                <option value="1">Art</option>
+                <option value="2">Educational</option>
+                <option value="7">Historic</option>
+                <option value="4">Outdoor</option>
+                <option value="8">Restaurant</option>
+                <option value="3">Shopping</option>
+                <option value="6">Venue</option>
             </select>
           </div>
           <div class="form-group">
@@ -43,11 +43,11 @@
               </div>
               <div>
                 <label for="state">State Abbreviation (ex: MN)</label>
-                <input type="text" id="state" placeholder="state abbreviation" v-model= "newLandmark.state">
+                <input type="text" id="state" placeholder="ex: MN" v-model= "newLandmark.state">
               </div>
               <div>
                 <label for="zip">Zip Code</label>
-                <input type="number" id="zip" placeholder="zip code" v-model= "newLandmark.zip">
+                <input type="number" id="zip" placeholder="ex: 55401" v-model= "newLandmark.zip">
               </div>
           </div>
           
@@ -59,7 +59,15 @@
 </template>
 
 <script>
+import LandmarkService from '../services/LandmarkService'
+
 export default {
+    props: {
+        id: {
+            type: Number,
+            default: 0
+        }
+    },
     data(){
         return {
             newLandmark: {
@@ -69,17 +77,37 @@ export default {
                 street: '',
                 city: '',
                 state: '',
-                zip: '',
-                approved: false
+                zip: ''
             }
         }
     },
     methods: {
-        saveTodo(){
-            this.newLandmark.approved = false;
-            // make a pending landmark array in store
-            this.$store.commit('SET_PENDING_LANDMARKS', this.newLandmark);
-            
+        saveLandmark(){
+            // this.newLandmark.pending = true;
+            const landmarkToAdd = {
+                name: this.newLandmark.name,
+                //trying to convert string to number
+                type: Number(this.newLandmark.type),
+                description: this.newLandmark.description,
+                street: this.newLandmark.street,
+                city: this.newLandmark.city,
+                state: this.newLandmark.state,
+                zip: this.newLandmark.zip,
+                pending: true
+            }
+            if(this.id === 0){
+                LandmarkService.addLandmark(landmarkToAdd)
+                .then(response => {
+                    //expect a 201 meaning created
+                    if(response.status === 201){
+                        this.$router.push()
+                    }
+                })
+                .catch(error => {
+                    this.handleErrorResponse(error, "adding")
+                    alert("Landmark was not added.")
+                })
+            }
             // resets the form to blank
             this.newLandmark = {
                 name: '',
@@ -89,10 +117,27 @@ export default {
                 city: '',
                 state: '',
                 zip: '',
-                approved: false
+                approved: true
+            }
+        },
+        handleErrorResponse(error, verb) {
+            if (error.response) {
+                this.errorMsg =
+                "Error " + verb + " Landmark. Response received was '" +
+                error.response.statusText +
+                "'.";
+            } else if (error.request) {
+                this.errorMsg =
+                "Error " + verb + " Landmark. Server could not be reached.";
+            } else {
+                this.errorMsg =
+                "Error " + verb + " Landmark. Request could not be created.";
             }
         }
+            
+            
     }
+    
 }
 </script>
 
@@ -164,6 +209,7 @@ h2 {
     border-radius: 12px;
     color: #F3FCED;
     font-family: 'Montserrat Alternates', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial', 'sans-serif';
+    cursor: pointer;
 }
 
 </style>

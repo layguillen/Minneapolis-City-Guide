@@ -10,9 +10,9 @@ export default {
             return http.get('/landmark/list');
         },
         getDetails(id){
-            return http.get(`/landmark/${id}`)
+            return http.get(`/landmark/${id}`);
         },
-        addLandmark(){
-            return axios.post('/landmark/new')
+        addLandmark(landmark){
+            return axios.post('/landmark/new', landmark);
         }
 }

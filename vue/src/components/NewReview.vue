@@ -47,7 +47,7 @@ export default {
         //N/A
     },
     props: {
-        reviewID: {
+        id: {
             type: Number,
             default: 0
         }
@@ -76,7 +76,7 @@ export default {
                 
             };
             //if it's a zero we know it's an insert
-            if(this.reviewID === 0){
+            if(this.id === 0){
                 //add
                 ReviewService.addReview(reviewToAdd)
                 .then(response => {

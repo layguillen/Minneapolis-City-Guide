@@ -51,8 +51,8 @@ export default new Vuex.Store({
     SET_LANDMARKS(state, list) {
       state.landmarks = list;
     },
-    SET_PENDING_LANDMARKS(state, list){
-      state.pendingLandmarks = list;
+    SET_PENDING_LANDMARK(state, landmark){
+      state.pendingLandmarks.push(landmark);
     },
     SET_LANDMARK(state, landmark) {
       state.currentLandmark = landmark;

@@ -41,12 +41,12 @@
               <option value="21">Hampton Inn & Suites Minneapolis/Downtown</option>
           </select>
           <div id="current-hotel-container">
-            <h4>{{this.$store.state.currentHotel.name}}</h4>
+            <!-- <h4>{{this.$store.state.currentHotel.name}}</h4>
             <p>{{this.$store.state.currentHotel.address.street}}
                 {{this.$store.state.currentHotel.address.city}},
                 {{this.$store.state.currentHotel.address.state}}
                 {{this.$store.state.currentHotel.address.zip}}
-            </p>  
+            </p>   -->
          </div>
       </div>
       <div id="delete-btn-container">
