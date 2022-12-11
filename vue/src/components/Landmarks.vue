@@ -1,5 +1,8 @@
 <template>
   <div id="landmark-body">
+    <div class="loading" v-if="isLoading">
+      <img src="../assets/paper-plane.gif" />
+    </div>
     <div id="form-inputs">
     <fieldset>
       <input
@@ -50,6 +53,7 @@ export default {
       type: "",
       i: 1,
       imgURL: "",
+      isLoading: true
     };
   },
   created() {
@@ -59,6 +63,7 @@ export default {
     retrieveLandmarks() {
       landmarkService.list().then((response) => {
         this.$store.commit("SET_LANDMARKS", response.data);
+        this.isLoading = false;
       });
     },
     routeToDetails(landmarkId) {
@@ -68,7 +73,6 @@ export default {
   computed: {
       filterByType(){
           const filteredLandmarks = this.$store.state.landmarks;
-
           return filteredLandmarks.filter((landmark)=> {
               if(!landmark.type.indexOf(this.type)){
                   return true;
@@ -78,7 +82,6 @@ export default {
       },
       filteredList() {
       const filteredLandmarks = this.$store.state.landmarks;
-
       if (this.search != "") {
         return filteredLandmarks.filter((landmark) => {
           if (
@@ -149,6 +152,10 @@ fieldset {
     margin-left: 12.5px;
     margin-right: 12.5px;
     margin-bottom: 10px;
+}
+
+.loadings{
+  flex: 3;
 }
 
 </style>

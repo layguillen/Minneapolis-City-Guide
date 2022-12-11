@@ -92,11 +92,10 @@ export default {
                 .catch(error => {
                     this.handleErrorResponse(error, "submitting");
                     this.formAddedFailure = true;
-                    // alert("Review was not added.");
                 })
 
             //}
-            // this.$router.push(`/details/${this.newReview.landmarkId}`);
+             //this.$router.push(`/details/${this.newReview.landmarkId}`);
 
             
         }, 

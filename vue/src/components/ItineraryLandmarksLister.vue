@@ -2,6 +2,12 @@
   <div id="itinerary-container">
       <h1>Your Itinerary</h1>
       <Map />
+      <div class="remove-status success" v-show="landmarkDeleted">Landmark successfully removed</div>
+      <div class="remove-status success" v-show="itineraryDeleted">Itinerary successfully deleted</div>
+      <div class="loading" v-if="isLoading">
+          <img src="../assets/paper-plane.gif" />
+      </div>
+      
       <div id="landmarks" v-for="landmark in this.$store.state.itineraryLandmarks" v-bind:key="landmark.id">
           <div id="title-btn-container">
               <h2 id="landmark-name">{{ landmark.name }}</h2>
@@ -67,7 +73,10 @@ export default {
     data(){
         return {
             id: "",
-            hotelSelected: false
+            hotelSelected: false,
+            landmarkDeleted: false,
+            itineraryDeleted: false,
+            isLoading: true
         }
     },
     created() {
@@ -76,25 +85,30 @@ export default {
     methods: {
         removeFromItinerary(id){
            this.$store.commit("REMOVE_ITINERARY_LANDMARK", id);
-           alert("Landmark removed from itinerary");
+           this.landmarkDeleted = true;
         },
         deleted() {
+            
             this.$store.commit('EMPTY_ITINERARY_LANDMARKS');
-            alert("Itinerary deleted");
+            this.landmarkDeleted = false;
+            this.itineraryDeleted = true;
             this.id = ""
         },
         retrieveHotels(){
             HotelService.listHotels()
             .then((response)=> {
                 this.$store.commit("SET_HOTELS", response.data);
+                this.isLoading = false;
             })
         },
         retrieveCurrentHotel(){
+            this.isLoading = true;
             HotelService.getHotel(this.id)
             .then((response)=>{
                 this.$store.commit("SET_CURRENT_HOTEL", response.data)
             });
             this.hotelSelected = true;
+            this.isLoading = false;
         }
     },
     
@@ -182,6 +196,26 @@ h1{
 
 #deleteBtn:hover{
     cursor: pointer;
+}
+
+.remove-status{
+   border-radius: 5px;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+  width: 350px;
+  margin: 10px auto 10px;
+  font-family: 'Montserrat Alternates', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial';
+  color: #004E64;
+
+}
+
+.remove-status.success{
+    background-color: #90EE90;
+}
+
+.loading{
+    flex: 3;
 }
 
 </style>

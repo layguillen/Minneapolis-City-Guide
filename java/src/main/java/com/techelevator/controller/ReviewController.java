@@ -44,7 +44,7 @@ public class ReviewController {
 //            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Review to be added was not found", null);
 //        }
 
-        return reviewDao.createReview(review.getLandmarkId(), review);
+        return reviewDao.createReview(review);
     }
 
 

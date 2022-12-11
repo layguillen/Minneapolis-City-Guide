@@ -14,5 +14,8 @@ export default {
         },
         addLandmark(landmark){
             return axios.post('/landmark/new', landmark);
+        },
+        updateLandmarkLikes(landmark){
+            return axios.put(`/landmark/${landmark.id}`, landmark)
         }
 }

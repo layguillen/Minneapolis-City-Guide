@@ -11,5 +11,5 @@ public interface ReviewDao {
 
 //    Review getReview(int id);
 
-    Review createReview(int landmarkId, Review review);
+    Review createReview(Review review);
 }

@@ -4,7 +4,9 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Montserrat Alternates"
     />
-
+    <div class="loading" v-if="isLoading">
+      <img src="../assets/paper-plane.gif" />
+    </div>
     <div id="img-title-details">
       <div class="imgDiv">
         <img
@@ -26,7 +28,13 @@
         </div>
       </div>
     </div>
-
+    <div class="like-dislike-btn">
+      <button class="like-btn" v-on:click="likeLandmark()">Like</button>
+      <button class="dislike-btn">Dislike</button>
+    </div>
+    <div class="landmark-status success" v-show="landmarkAddedSuccess">Landmark successfully added</div>
+    <div class="landmark-status failure" v-show="itineraryContains">Landmark already exists in itinerary</div>
+    
     <div id="button-container">
       <button
         class="buttons"
@@ -46,7 +54,12 @@
 
       <div class="reviewDiv">
         <button class="buttons">
-          <router-link id="reviewLink" :to="{ name: 'NewReview', params: {id: this.$store.state.currentLandmark.id} }"
+          <router-link
+            id="reviewLink"
+            :to="{
+              name: 'NewReview',
+              params: { id: this.$store.state.currentLandmark.id },
+            }"
             >leave a review</router-link
           >
         </button>
@@ -65,19 +78,35 @@
 import landmarkservice from "../services/LandmarkService.js";
 export default {
   name: "landmark-details",
+  data() {
+    return {
+      landmarkAddedSuccess: false,
+      itineraryContains: false,
+      isLoading: true
+    };
+  },
   methods: {
     setDetails() {
       landmarkservice.getDetails(this.$route.params.id).then((response) => {
         this.$store.commit("SET_LANDMARK", response.data);
+        this.isLoading = false;
       });
     },
     addToItinerary() {
-      this.$store.commit(
-        "SET_ITINERARY_LANDMARK",
-        this.$store.state.currentLandmark
-      );
-      alert("Landmark added to Intinerary");
+      if (this.$store.state.itineraryLandmarks.indexOf(this.$store.state.currentLandmark) === -1) {
+        this.$store.commit("SET_ITINERARY_LANDMARK",this.$store.state.currentLandmark);
+        this.landmarkAddedSuccess = true;
+      } else {
+        this.itineraryContains = true;
+      }
     },
+    likeLandmark(){
+      landmarkservice.updateLandmarkLikes()
+      .then(response => {
+        this.$store.commit("SET_LANDMARK", response.data);
+        this.isLoading = false;
+      })
+    }
   },
   created() {
     this.setDetails();
@@ -185,6 +214,43 @@ body {
 #landmarkTitle {
   color: #f3fced;
 }
+
+.like-dislike-btn{
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.like-btn{
+  color: #004e64;
+  background: #f3fced;
+  border-color: #004e64;
+  cursor: pointer;
+  border-radius: 9px;
+  font-weight: 600;
+  font-size: 14px;
+  height: 40px;
+  width: 100px;
+  font-family: "Montserrat Alternates", "Franklin Gothic Medium", "Arial Narrow",
+    "Arial";
+}
+
+.dislike-btn{
+  color: #004e64;
+  background: #f3fced;
+  border-color: #004e64;
+  cursor: pointer;
+  border-radius: 9px;
+  font-weight: 600;
+  font-size: 14px;
+  height: 40px;
+  width: 100px;
+  font-family: "Montserrat Alternates", "Franklin Gothic Medium", "Arial Narrow",
+    "Arial";
+}
+
 .buttons {
   background-color: #bd92dd;
   color: #f3fced;
@@ -198,4 +264,28 @@ body {
     "Arial";
   margin: 10px;
 }
+
+.landmark-status {
+  border-radius: 5px;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+  width: 350px;
+  margin: 0 auto 10px;
+  color: #004e64;
+  font-family: "Montserrat Alternates", "Franklin Gothic Medium", "Arial Narrow",
+    "Arial";
+}
+.landmark-status.success {
+  background-color: #90ee90;
+}
+
+.landmark-status.failure{
+  background-color: #F08080;
+}
+
+.loading{
+  flex: 3;
+}
+
 </style>
