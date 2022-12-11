@@ -12,5 +12,5 @@ public interface LandmarkDao {
 
     boolean createLandmark(Landmark landmark);
 
-    Landmark updateLandmark(Landmark landmark);
+    Landmark updateLandmark(Landmark landmark, int landmarkId);
 }

@@ -26,12 +26,13 @@
             {{ this.$store.state.currentLandmark.description }}
           </p>
         </div>
+        <div class="like-dislike-btn">
+          <button class="like-btn" v-on:click="likeLandmark">Like</button>
+          <button class="dislike-btn">Dislike</button>
+        </div>
       </div>
     </div>
-    <div class="like-dislike-btn">
-      <button class="like-btn" v-on:click="likeLandmark()">Like</button>
-      <button class="dislike-btn">Dislike</button>
-    </div>
+
     <div class="landmark-status success" v-show="landmarkAddedSuccess">Landmark successfully added</div>
     <div class="landmark-status failure" v-show="itineraryContains">Landmark already exists in itinerary</div>
     
@@ -67,7 +68,7 @@
 
       <div class="likeDiv">
         <button class="buttons">
-          likes: {{ this.$store.state.currentLandmark.likes }}
+          likes: {{ retrieveLikes }}
         </button>
       </div>
     </div>
@@ -82,9 +83,14 @@ export default {
     return {
       landmarkAddedSuccess: false,
       itineraryContains: false,
-      isLoading: true
+      isLoading: true,
     };
   },
+  computed: {
+    retrieveLikes(){
+      return this.$store.state.currentLandmark.likes;
+    }
+  }, 
   methods: {
     setDetails() {
       landmarkservice.getDetails(this.$route.params.id).then((response) => {
@@ -101,7 +107,8 @@ export default {
       }
     },
     likeLandmark(){
-      landmarkservice.updateLandmarkLikes()
+      this.isLoading = true;
+      landmarkservice.updateLandmarkLikes(this.$store.state.currentLandmark)
       .then(response => {
         this.$store.commit("SET_LANDMARK", response.data);
         this.isLoading = false;
@@ -220,6 +227,7 @@ body {
   gap: 2rem;
   justify-content: center;
   align-items: center;
+  margin-top: 20px;
   margin-bottom: 10px;
 }
 

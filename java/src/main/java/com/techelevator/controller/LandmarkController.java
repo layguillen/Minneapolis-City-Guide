@@ -36,7 +36,7 @@ public class LandmarkController {
     //used to update likes count (int)
     @RequestMapping(path = "/landmark/{id}", method= RequestMethod.PUT)
     public Landmark updateLandmark(@Valid @RequestBody Landmark landmark, @PathVariable("id") int landmarkId){
-        Landmark result = landmarkDao.updateLandmark(landmark);
+        Landmark result = landmarkDao.updateLandmark(landmark, landmarkId);
         if(result == null){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Landmark not found", null);
         }
