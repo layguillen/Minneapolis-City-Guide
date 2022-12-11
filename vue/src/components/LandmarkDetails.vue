@@ -27,7 +27,7 @@
           </p>
         </div>
         <div class="like-dislike-btn">
-          <button class="like-btn" v-on:click="likeLandmark">Like</button>
+          <button class="like-btn" v-on:click="likeLandmark" @click="reloadPage">Like</button>
           <button class="dislike-btn">Dislike</button>
         </div>
       </div>
@@ -113,6 +113,9 @@ export default {
         this.$store.commit("SET_LANDMARK", response.data);
         this.isLoading = false;
       })
+    }, 
+    reloadPage(){
+      window.location.reload();
     }
   },
   created() {

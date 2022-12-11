@@ -91,7 +91,7 @@ export default {
             const landmarkToAdd = {
                 name: this.newLandmark.name,
                 //trying to convert string to number
-                type: Number(this.newLandmark.type),
+                type: parseInt(this.newLandmark.type),
                 description: this.newLandmark.description,
                 street: this.newLandmark.street,
                 city: this.newLandmark.city,

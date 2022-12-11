@@ -53,7 +53,7 @@ export default {
     data(){
         return {
             newReview: {
-                landmarkId: this.$route.params.id,
+                landmarkId: parseInt(this.$route.params.id),
                 userId: this.$store.state.user.id,
                 username: this.$store.state.user.username,
                 title: '',
