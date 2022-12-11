@@ -64,12 +64,7 @@
 import LandmarkService from '../services/LandmarkService'
 
 export default {
-    props: {
-        id: {
-            type: Number,
-            default: 0
-        }
-    },
+    // props: ["id"],
     data(){
         return {
             newLandmark: {

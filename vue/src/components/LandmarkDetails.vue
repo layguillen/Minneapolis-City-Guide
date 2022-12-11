@@ -79,6 +79,9 @@
 import landmarkservice from "../services/LandmarkService.js";
 export default {
   name: "landmark-details",
+  props: {
+    id: Number
+  },
   data() {
     return {
       landmarkAddedSuccess: false,

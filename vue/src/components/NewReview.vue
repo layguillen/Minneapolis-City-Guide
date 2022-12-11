@@ -47,9 +47,7 @@ export default {
     components: {
         //N/A
     },
-    props: {
-        
-    },
+    props: ["id"],
     data(){
         return {
             newReview: {
