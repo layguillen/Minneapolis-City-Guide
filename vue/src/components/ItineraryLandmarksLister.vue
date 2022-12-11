@@ -40,13 +40,13 @@
               <option value="20">Renaissance Minneapolis Hotel</option>
               <option value="21">Hampton Inn & Suites Minneapolis/Downtown</option>
           </select>
-          <div id="current-hotel-container">
-            <!-- <h4>{{this.$store.state.currentHotel.name}}</h4>
+          <div id="current-hotel-container" v-if="hotelSelected">
+            <h4>{{this.$store.state.currentHotel.name}}</h4>
             <p>{{this.$store.state.currentHotel.address.street}}
                 {{this.$store.state.currentHotel.address.city}},
                 {{this.$store.state.currentHotel.address.state}}
                 {{this.$store.state.currentHotel.address.zip}}
-            </p>   -->
+            </p>  
          </div>
       </div>
       <div id="delete-btn-container">
@@ -66,7 +66,8 @@ export default {
     },
     data(){
         return {
-            id: ""
+            id: "",
+            hotelSelected: false
         }
     },
     created() {
@@ -80,6 +81,7 @@ export default {
         deleted() {
             this.$store.commit('EMPTY_ITINERARY_LANDMARKS');
             alert("Itinerary deleted");
+            this.id = ""
         },
         retrieveHotels(){
             HotelService.listHotels()
@@ -91,19 +93,11 @@ export default {
             HotelService.getHotel(this.id)
             .then((response)=>{
                 this.$store.commit("SET_CURRENT_HOTEL", response.data)
-            })
+            });
+            this.hotelSelected = true;
         }
     },
-    computed: {
-        // setCurrentHotel(){
-        //     const hotels = this.$store.state.hotels;
-        //     return hotels.filter((hotel)=> {
-        //         if(hotel.id === this.id){
-        //             this.$store.commit("SET_CURRENT_HOTEL", hotel);
-        //         }
-        //     })
-        // }
-    }
+    
 }
 </script>
 
@@ -183,6 +177,7 @@ h1{
     background-color: #004E64;
     color: #F3FCED;
     border-radius: 12px;
+    margin-top: 10px;
 }
 
 #deleteBtn:hover{
