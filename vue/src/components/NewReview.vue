@@ -1,14 +1,15 @@
 <template>
 
   <section id="new-review-container">
-<link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Montserrat Alternates'>
+    <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Montserrat Alternates'>
       <form v-on:submit.prevent= "saveReview" class="form">
           <h1>Leave a Review</h1>
         <!-- <div class="form-element">
             <label for="username">Username:</label>
             <input id="username" type="text" />
         </div> -->
-
+        <div class="status-message success" v-show="formAddedSuccess">Review successfully submitted</div> 
+        <div class="status-message error" v-show="formAddedFailure">{{errorMessage}}</div>
         <div class="form-element">
             <label for="title">Title:</label>
             <input id="title" type="text" v-model="newReview.title" />
@@ -16,7 +17,7 @@
 
         <div class="form-element">
             <label for="rating">Rating:</label>
-            <select id="rating" v-model="newReview.liked">
+            <select id="rating" v-model="newReview.isLiked">
                 <option value="">--- Select Rating ---</option>
                 <option value="true">Liked</option>
                 <option value="false">Disliked</option>
@@ -56,9 +57,12 @@ export default {
                 userId: this.$store.state.user.id,
                 username: this.$store.state.user.username,
                 title: '',
-                liked: '',
+                isLiked: '',
                 description: ''
-            }
+            },
+            formAddedSuccess: false,
+            formAddedFailure: false,
+            errorMessage: ''
         }
     },
     methods: {
@@ -68,7 +72,7 @@ export default {
             //     userId: this.$store.state.user.id,
             //     username: this.$store.state.user.username,
             //     title: this.newReview.title,
-            //     liked: this.newReview.liked,
+            //     isLiked: this.newReview.isLiked,
             //     description: this.newReview.description
                 
             // };
@@ -79,40 +83,42 @@ export default {
                 .then(response => {
                     //expect a 201 meaning created
                     if(response.status === 201){
-                        this.$router.push(`/details/${this.newReview.landmarkId}`)
+                        this.resetForm();
+                        this.formAddedSuccess = true;
+                        this.$router.push(`/details/${this.newReview.landmarkId}`);
+                        
                     }
                 })
                 .catch(error => {
-                    this.handleErrorResponse(error, "adding");
-                    alert("Review was not added.");
+                    this.handleErrorResponse(error, "submitting");
+                    this.formAddedFailure = true;
+                    // alert("Review was not added.");
                 })
 
             //}
-            this.$router.push(`/details/${this.newReview.landmarkId}`);
+            // this.$router.push(`/details/${this.newReview.landmarkId}`);
 
-            //resets form 
-            this.newReview = {
-                username: '',
-                title: '',
-                description: '',
-                liked: ''
-            }
+            
         }, 
         resetForm(){
             this.newReview = {};
         },
         handleErrorResponse(error, verb) {
             if (error.response) {
-                this.errorMsg =
-                "Error " + verb + " review. Response received was '" +
+                this.errorMessage = '';
+                if(error.response.status === 500){
+                    this.errorMessage = "Error " + verb + " review. An internal server error occurred.";
+                } else if (error.response.status === 404){
+                    this.errorMessage = "Error " + verb + " review. URL could not be found.";
+                } else {
+                    this.errorMessage = "Error " + verb + " review. Response received was '" +
                 error.response.statusText +
                 "'.";
+                }
             } else if (error.request) {
-                this.errorMsg =
-                "Error " + verb + " review. Server could not be reached.";
+                this.errorMessage = "Error " + verb + " review. Server could not be reached.";
             } else {
-                this.errorMsg =
-                "Error " + verb + " review. Request could not be created.";
+                this.errorMessage = "Error " + verb + " review. Request could not be created.";
             }
         }
     }
@@ -196,6 +202,21 @@ border: 5px solid;
 
 #cancel-btn:hover{
     cursor: pointer;
+}
+
+.status-message {
+  border-radius: 5px;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+  width: 350px;
+  margin: 0 auto 10px;
+}
+.status-message.success {
+  background-color: #90EE90;
+}
+.status-message.error {
+  background-color: #F08080;
 }
 
 </style>

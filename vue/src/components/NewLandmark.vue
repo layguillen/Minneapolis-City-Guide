@@ -4,6 +4,8 @@
       <h2 id="page-title">Submit a New Landmark for Consideration</h2>
 
       <form class="form" v-on:submit.prevent= "saveLandmark">
+          <div class="status-message success" v-show="formAddedSuccess">Review successfully submitted</div> 
+        <div class="status-message error" v-show="formAddedFailure">{{errorMessage}}</div>
           <div class="form-group">
             <label for="name">Name</label>
             <input class="form-control" id="name" type= "text" placeholder="Enter Landmark Name" v-model="newLandmark.name">
@@ -78,12 +80,14 @@ export default {
                 city: '',
                 state: '',
                 zip: ''
-            }
+            },
+            formAddedSuccess: false,
+            formAddedFailure: false,
+            errorMessage: ''
         }
     },
     methods: {
         saveLandmark(){
-            // this.newLandmark.pending = true;
             const landmarkToAdd = {
                 name: this.newLandmark.name,
                 //trying to convert string to number
@@ -95,43 +99,42 @@ export default {
                 zip: this.newLandmark.zip,
                 pending: true
             }
+            //if new landmark id is 0, we know it's an insert
             if(this.id === 0){
                 LandmarkService.addLandmark(landmarkToAdd)
                 .then(response => {
                     //expect a 201 meaning created
                     if(response.status === 201){
+                        this.resetForm();
+                        this.formAddedSuccess = true;
                         this.$router.push()
                     }
                 })
                 .catch(error => {
-                    this.handleErrorResponse(error, "adding")
-                    alert("Landmark was not added.")
+                    this.handleErrorResponse(error, "submitting")
+                    this.formAddedFailure = true;
                 })
             }
-            // resets the form to blank
-            this.newLandmark = {
-                name: '',
-                type: '',
-                description: '',
-                street: '',
-                city: '',
-                state: '',
-                zip: '',
-                approved: true
-            }
+        },
+        resetForm(){
+          this.newLandmark = {};  
         },
         handleErrorResponse(error, verb) {
             if (error.response) {
-                this.errorMsg =
-                "Error " + verb + " Landmark. Response received was '" +
+                this.errorMessage = '';
+                if(error.response.status === 500){
+                    this.errorMessage = "Error " + verb + " landmark. An internal server error occurred.";
+                } else if (error.response.status === 404){
+                    this.errorMessage = "Error " + verb + " landmark. URL could not be found.";
+                } else {
+                    this.errorMessage = "Error " + verb + " landmark. Response received was '" +
                 error.response.statusText +
                 "'.";
+                }
             } else if (error.request) {
-                this.errorMsg =
-                "Error " + verb + " Landmark. Server could not be reached.";
+                this.errorMessage = "Error " + verb + " landmark. Server could not be reached.";
             } else {
-                this.errorMsg =
-                "Error " + verb + " Landmark. Request could not be created.";
+                this.errorMessage = "Error " + verb + " landmark. Request could not be created.";
             }
         }
             
@@ -210,6 +213,21 @@ h2 {
     color: #F3FCED;
     font-family: 'Montserrat Alternates', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial', 'sans-serif';
     cursor: pointer;
+}
+
+.status-message {
+  border-radius: 5px;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+  width: 350px;
+  margin: 0 auto 10px;
+}
+.status-message.success {
+  background-color: #90EE90;
+}
+.status-message.error {
+  background-color: #F08080;
 }
 
 </style>
