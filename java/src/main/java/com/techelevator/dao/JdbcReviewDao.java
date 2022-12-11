@@ -18,6 +18,20 @@ public class JdbcReviewDao implements ReviewDao{
     }
 
     @Override
+    public List<Review> listReviews(){
+        List<Review> reviews = new ArrayList<>();
+        String sql = " SELECT reviews.id, landmark_id, reviews.user_id, title, is_liked, description, users.username " +
+                " FROM reviews " +
+                " JOIN users ON users.user_id = reviews.user_id ";
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
+        while (result.next()){
+            Review review = mapRowToReview(result);
+            reviews.add(review);
+        }
+        return reviews;
+    }
+
+    @Override
     public List<Review> listReviews(int landmarkId){
         List<Review> reviews = new ArrayList<>();
         String sql = " SELECT reviews.id, landmark_id, reviews.user_id, title, is_liked, description, users.username " +

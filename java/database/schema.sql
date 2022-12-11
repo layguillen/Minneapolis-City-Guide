@@ -55,9 +55,10 @@ CREATE TABLE reviews(
     id serial PRIMARY KEY,
     landmark_id int REFERENCES landmarks(id),
     user_id int REFERENCES users(user_id),
+    username varchar NULL,
     title varchar NOT NULL,
     is_liked boolean NOT NULL,
-    description varchar
+    description varchar NULL
 );
 
 COMMIT TRANSACTION;

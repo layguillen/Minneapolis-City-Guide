@@ -2,6 +2,9 @@ package com.techelevator.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Landmark {
 
     @JsonProperty("id")
@@ -18,11 +21,21 @@ public class Landmark {
     private int likes;
     @JsonProperty("img_URL")
     private String imgUrl;
-    @JsonProperty("pending")
+    @JsonProperty("is_pending")
     private boolean isPending;
+    @JsonProperty("reviews")
+    private List<Review> reviews = new ArrayList<>();
 
 
     private Address address;
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
+    }
 
     public Landmark(){};
     public boolean isPending() {
@@ -92,4 +105,6 @@ public class Landmark {
     public void setAddress(Address address) { this.address = address; }
 
     public Address getAddress(){ return this.address; }
+
+    public void addReview(Review review){ reviews.add(review); }
 }

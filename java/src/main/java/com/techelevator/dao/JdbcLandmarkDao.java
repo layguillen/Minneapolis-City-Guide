@@ -2,6 +2,7 @@ package com.techelevator.dao;
 
 import com.techelevator.model.Address;
 import com.techelevator.model.Landmark;
+import com.techelevator.model.Review;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -29,14 +30,25 @@ public class JdbcLandmarkDao implements LandmarkDao{
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
         while(result.next()){
             Landmark landmark = mapRowToLandmark(result);
+
+            //add appropriate address to each landmark
             String addressSql = " SELECT id, long_lat, street, city, state, zip " +
                 " FROM addresses " +
                 " WHERE id = ?";
             SqlRowSet addressResult = jdbcTemplate.queryForRowSet(addressSql, landmark.getAddressId());
-
             if (addressResult.next()){
                 landmark.setAddress(mapRowToAddress(addressResult));
             }
+
+            //add appropriate reviews to each landmark
+            String reviewSql = " SELECT id, title, description, landmark_id, is_liked, user_id, username " +
+                    " FROM reviews " +
+                    " WHERE landmark_id = ?";
+            SqlRowSet reviewResult = jdbcTemplate.queryForRowSet(reviewSql, landmark.getLandmarkId());
+            while (reviewResult.next()){
+                landmark.addReview(mapRowToReview(reviewResult));
+            }
+
             list.add(landmark);
         }
         return list;
@@ -44,7 +56,8 @@ public class JdbcLandmarkDao implements LandmarkDao{
 
     @Override
     public Landmark getLandmark(int landmarkId){
-        for(Landmark landmark: listLandmarks()){
+        List<Landmark> landmarks = listLandmarks();
+        for(Landmark landmark: landmarks){
             if(landmark.getLandmarkId() == landmarkId){
                 return landmark;
             }
@@ -108,4 +121,16 @@ public class JdbcLandmarkDao implements LandmarkDao{
         return address;
     }
 
+    private Review mapRowToReview(SqlRowSet results){
+        Review review = new Review();
+        review.setReviewId(results.getInt("id"));
+        review.setTitle(results.getString("title"));
+        review.setDescription(results.getString("description"));
+        review.setLandmarkId(results.getInt("landmark_id"));
+        review.setLiked(results.getBoolean("is_liked"));
+        review.setUserId(results.getInt("user_id"));
+        review.setUsername(results.getString("username"));
+
+        return review;
+    }
 }
