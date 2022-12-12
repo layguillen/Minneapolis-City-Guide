@@ -29,7 +29,7 @@ public class ItineraryController {
         return itineraryDao.listItinerary();
     }
 
-    @RequestMapping(path="/Itinerary/{id}", method= RequestMethod.GET)
+    @RequestMapping(path="/itinerary/{id}", method= RequestMethod.GET)
     public Itinerary getItinerary(@Valid @PathVariable("id") int itineraryId){
         Itinerary result = itineraryDao.getItinerary(itineraryId);
         if(result == null){

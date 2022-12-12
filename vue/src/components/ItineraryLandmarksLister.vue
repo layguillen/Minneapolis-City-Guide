@@ -22,7 +22,7 @@
       </div>
       <div id="hotel-selection">
           <label for="hotel-search">Hotel</label>
-          <select class="hotel-search" id="hotel-search" v-model="id" v-on:click="retrieveCurrentHotel">
+          <select class="hotel-search" id="hotel-search" v-model="hotelId" v-on:click="retrieveCurrentHotel">
               <option value="">--- Select your hotel ---</option>
               <option value="1">The Marquette Hotel</option>
               <option value="2">Hyatt Place Minneapolis/Downtown</option>
@@ -55,8 +55,10 @@
             </p>  
          </div>
       </div>
-      <div id="delete-btn-container">
+      <div class="itinerary-saved success" v-show="itinerarySaved">Itinerary successfully saved</div>
+      <div id="delete-save-container">
           <button id="deleteBtn" v-on:click="deleted()">Delete Itinerary</button>
+          <button id="save-itinerary-btn" v-on:click="saveItinerary">Save Itinerary</button>
       </div>
   </div>
 </template>
@@ -64,6 +66,7 @@
 <script>
  import Map from '../components/Map.vue'
 import HotelService from '../services/HotelService'
+import ItineraryService from '../services/ItineraryService'
 
 export default {
     name: "itinerary-landmarks-lister",
@@ -72,11 +75,17 @@ export default {
     },
     data(){
         return {
-            id: "",
+            hotelId: "",
             hotelSelected: false,
             landmarkDeleted: false,
             itineraryDeleted: false,
-            isLoading: true
+            itinerarySaved: false,
+            isLoading: true,
+            itinerary: {
+                userId: this.$store.state.user.id,
+                hotelId: this.hotelId
+            },
+            landmarks: this.$store.state.itineraryLandmarks,
         }
     },
     created() {
@@ -95,6 +104,14 @@ export default {
             this.itineraryDeleted = true;
             this.id = ""
         },
+        saveItinerary(){
+            //pass in landmarks to send to back in
+            ItineraryService.saveItinerary(this.itinerary, this.landmarks)
+            .then((response) => {
+                this.$store.commit("SET_ITINERARIES", response.data);
+                this.itinerarySaved = true;
+            })
+        },
         retrieveHotels(){
             HotelService.listHotels()
             .then((response)=> {
@@ -104,7 +121,7 @@ export default {
         },
         retrieveCurrentHotel(){
             this.isLoading = true;
-            HotelService.getHotel(this.id)
+            HotelService.getHotel(this.hotelId)
             .then((response)=>{
                 this.$store.commit("SET_CURRENT_HOTEL", response.data)
             });
@@ -182,7 +199,7 @@ h1{
     color: #004E64;
 }
 
-#delete-btn-container{
+#delete-save-container{
     display: flex;
     justify-content: center;
     align-items: center; 
@@ -202,6 +219,20 @@ h1{
     cursor: pointer;
 }
 
+#save-itinerary-btn{
+    font-family: 'Montserrat Alternates', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial';
+    border: 5px solid;
+    padding: 8px;
+    background-color: #004E64;
+    color: #F3FCED;
+    border-radius: 12px;
+    margin-top: 10px;
+}
+
+#save-itinerary-btn:hover{
+    cursor: pointer;
+}
+
 .remove-status{
    border-radius: 5px;
   font-weight: bold;
@@ -216,6 +247,19 @@ h1{
 
 .remove-status.success{
     background-color: #90EE90;
+}
+
+.itinerary-saved.success{
+    border-radius: 5px;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+  width: 350px;
+  margin: 10px auto 10px;
+  font-family: 'Montserrat Alternates', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial';
+  color: #004E64;
+  background-color: #90EE90;
+
 }
 
 .loading{

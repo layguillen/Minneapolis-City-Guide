@@ -29,6 +29,7 @@ export default new Vuex.Store({
     reviews: [],
     hotels: [],
     currentHotel: [],
+    itineraries: []
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -46,6 +47,9 @@ export default new Vuex.Store({
       state.token = '';
       state.user = {};
       axios.defaults.headers.common = {};
+    },
+    SET_ITINERARIES(state, list){
+      state.itineraries = list;
     },
     SET_LANDMARKS(state, list)  {
       state.landmarks = list.filter(landmark => {
