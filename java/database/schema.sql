@@ -37,18 +37,16 @@ CREATE TABLE hotels (
     name varchar
 );
 
-CREATE TABLE routes (
+CREATE TABLE itinerary (
     id serial PRIMARY KEY,
     user_id int REFERENCES users(user_id),
-    start_id int REFERENCES addresses(id),
-    created_date date NOT NULL,
-	name varchar
+    start_id int REFERENCES addresses(id)
 );
 
-CREATE TABLE routes_landmarks(
-    route_id int NOT NULL,
-    landmark_id int NOT NULL,
-    PRIMARY KEY(route_id, landmark_id)
+CREATE TABLE landmarks_itinerary(
+    itinerary_id int NOT NULL REFERENCES itinerary(id),
+    landmark_id int NOT NULL REFERENCES landmarks(id),
+    CONSTRAINT landmarks_itinerary_pk PRIMARY KEY(itinerary_id, landmark_id)
 );
 
 CREATE TABLE reviews(

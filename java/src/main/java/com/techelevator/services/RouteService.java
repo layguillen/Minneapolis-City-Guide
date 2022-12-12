@@ -1,14 +1,9 @@
 package com.techelevator.services;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.techelevator.model.Coordinates;
 import com.techelevator.model.Landmark;
-import com.techelevator.model.Route;
 import com.techelevator.routeModels.Root;
 import com.techelevator.routeModels.RouteAPI;
-import com.techelevator.util.BasicLogger;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -19,7 +14,6 @@ import org.springframework.web.client.RestClientResponseException;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
-import java.util.List;
 
 @Component
 public class RouteService implements iRouteService{
