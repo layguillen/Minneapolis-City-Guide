@@ -92,7 +92,8 @@ const router = new Router({
       }
     },
     {
-        path: "/newReview/:id",
+        // path: "/newReview/:id",
+        path: "/review/new/:landmarkId",
         name: "NewReview",
         component: NewReview,
         meta: {

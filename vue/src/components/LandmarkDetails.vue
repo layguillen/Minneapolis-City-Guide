@@ -59,7 +59,7 @@
             id="reviewLink"
             :to="{
               name: 'NewReview',
-              params: { id: this.$store.state.currentLandmark.id },
+              params: { landmarkId: this.$store.state.currentLandmark.id },
             }"
             >leave a review</router-link
           >
@@ -79,9 +79,7 @@
 import landmarkservice from "../services/LandmarkService.js";
 export default {
   name: "landmark-details",
-  props: {
-    id: Number
-  },
+  props: ["landmarkId"],
   data() {
     return {
       landmarkAddedSuccess: false,

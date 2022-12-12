@@ -27,7 +27,7 @@
     </fieldset>
     </div>
     <div id="landmark-list">
-    <div id="container" v-for="landmark in filteredList" v-bind:key="landmark.id">
+    <div id="container" v-for="landmark in filteredList" v-bind:key="landmark.id" :landmarkId="landmark.id">
       
         <div id="landmark-container" v-on:click="routeToDetails(landmark.id)">
         <h3>{{landmark.name}}</h3>
