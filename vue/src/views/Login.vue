@@ -1,6 +1,8 @@
 <template>
   <div id="login" class="text-center">
+     <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Montserrat Alternates'>
     <form id="form-signin" class="form-signin" @submit.prevent="login">
+      
       <div
         class="alert alert-danger form-element"
         role="alert"
@@ -31,8 +33,10 @@
       <button class="form-element login-button" type="submit">login</button>
       <button class="register-button"> <router-link class="form-element routerstyle" :to="{ name: 'register' }">join the club</router-link></button>
     </form>
-     
-    <img class="logo" src="../assets/Glider-1.png">
+    
+    <h2 class="main-glider">Glider<img class="logo" src="../assets/Glider-1.png"></h2>
+    
+
     
   
   </div>
@@ -93,8 +97,8 @@ div#login.text-center{
 
 img{
   grid-area: img;
-  height: 80vh;
-  justify-self: center;
+  height: 10vh;
+  justify-self: block-start;
 }
 
 #form-signin{
@@ -110,6 +114,7 @@ img{
   width: 300px;
   height: 275px;
   margin-right: 50px;
+  margin-top:21vh;
 }
 
 .form-element {
@@ -124,25 +129,34 @@ button.login-button{
   border-radius: 12px;
   color: #F3FCED;
   font-family: 'Montserrat Alternates', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial', 'sans-serif';
-  font-size: 30px;
-  margin-left: 20%;
-  margin-right: 20%;
-
+  font-size: 25px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 200px;
 }
 
 button.register-button{
   background-color: #1fd6c1;
   border-radius: 12px;
   color: #F3FCED;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', 'Arial', 'sans-serif';
-  font-size: 30px;
-  margin-left: 20%;
-  margin-right: 20%;
+  font-family: 'Montserrat Alternates', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial', 'sans-serif';
+  font-size: 25px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 200px;
 }
 .routerstyle{
   color: #F3FCED;
   text-decoration: none;
 }
+.main-glider{
+  font-size: 20vh;
+  display: flex;
+  justify-content: center;
+  margin-top:33vh;
+}
+
+
 
 
 

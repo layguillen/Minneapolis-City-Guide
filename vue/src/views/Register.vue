@@ -1,5 +1,6 @@
 <template>
   <div id="register" class="text-center">
+    <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Montserrat Alternates'>
     <form class="form-register" @submit.prevent="register">
       <h1 class="h3 mb-3 font-weight-normal" id="createaccount">sign up</h1>
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
@@ -147,7 +148,7 @@ div#register.text-center{
   margin-left: 15%;
 
   text-decoration: none;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', 'Arial', 'sans-serif';
+  font-family: 'Montserrat Alternates', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial', 'sans-serif';
   }
 
 button.createButton{
@@ -161,7 +162,7 @@ button.createButton{
   background-color: #004E64;
   color: #F3FCED;
 
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', 'Arial', 'sans-serif';
+  font-family: 'Montserrat Alternates', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial', 'sans-serif';
   font-size: 150%;
   
 }
