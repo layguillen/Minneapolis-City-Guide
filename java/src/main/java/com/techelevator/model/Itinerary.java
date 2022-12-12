@@ -1,9 +1,6 @@
 package com.techelevator.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.techelevator.routeModels.RouteAPI;
-
-import java.util.ArrayList;
 
 public class Itinerary {
 
@@ -11,8 +8,8 @@ public class Itinerary {
     private int itineraryId;
     @JsonProperty("user_id")
     private int userId;
-    @JsonProperty("start_id")
-    private int startId;
+    @JsonProperty("hotel_id")
+    private int hotelId;
 
     public Itinerary(){
     };
@@ -33,14 +30,12 @@ public class Itinerary {
         this.userId = userId;
     }
 
-    public int getStartId() {
-        return startId;
+    public int getHotelId() {
+        return hotelId;
     }
 
-    public void setStartId(int startId) {
-        this.startId = startId;
+    public void setHotelId(int hotelId) {
+        this.hotelId = hotelId;
     }
-
-
 
 }

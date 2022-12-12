@@ -40,7 +40,7 @@ CREATE TABLE hotels (
 CREATE TABLE itinerary (
     id serial PRIMARY KEY,
     user_id int REFERENCES users(user_id),
-    start_id int REFERENCES addresses(id)
+    hotel_id int REFERENCES addresses(id)
 );
 
 CREATE TABLE landmarks_itinerary(

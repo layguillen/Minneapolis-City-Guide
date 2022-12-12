@@ -46,10 +46,10 @@ public class JdbcItineraryDao implements ItineraryDao {
 
         int lengthBefore = listItinerary().size();
 
-        String sql = " INSERT INTO itinerary(user_id, start_id) " +
+        String sql = " INSERT INTO itinerary(user_id, hotel_id) " +
                 " VALUES(?, ?) RETURNING id ";
 
-        jdbcTemplate.update(sql, itinerary.getUserId(), itinerary.getStartId());
+        jdbcTemplate.update(sql, itinerary.getUserId(), itinerary.getHotelId());
 
         int lengthAfter = listItinerary().size();
 
@@ -109,7 +109,7 @@ public class JdbcItineraryDao implements ItineraryDao {
 
         itinerary.setItineraryId(results.getInt("id"));
         itinerary.setUserId(results.getInt("user_id"));
-        itinerary.setStartId(results.getInt("start_id"));
+        itinerary.setHotelId(results.getInt("hotel_id"));
 
         return itinerary;
     }
