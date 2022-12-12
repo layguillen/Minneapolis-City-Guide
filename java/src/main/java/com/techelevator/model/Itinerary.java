@@ -15,7 +15,6 @@ public class Itinerary {
     private int startId;
 
     public Itinerary(){
-
     };
 
     public int getItineraryId() {

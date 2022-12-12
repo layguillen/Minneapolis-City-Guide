@@ -59,6 +59,26 @@ public class JdbcItineraryDao implements ItineraryDao {
         return true;
     }
 
+    //deletes the itinerary
+    @Override
+    public boolean deleteItinerary(int itineraryId){
+
+        int lengthBefore = listItinerary().size();
+
+        String sql = " DELETE FROM itinerary " +
+                " WHERE id = ? ";
+
+        jdbcTemplate.update(sql, itineraryId);
+
+        int lengthAfter = listItinerary().size();
+
+        if(lengthBefore == lengthAfter){
+            return false;
+        }
+        return true;
+
+    }
+
 
     //adds landmark to itinerary
     @Override

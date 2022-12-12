@@ -13,6 +13,8 @@ public interface ItineraryDao {
 
     boolean createItinerary(Itinerary itinerary);
 
+    boolean deleteItinerary(int itineraryId);
+
     void addLandmarkToItinerary(Itinerary itinerary, int landmarkId);
 
     void removeLandmarkToItinerary(Landmark landmark, int itineraryId);
