@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <AdminHeader></AdminHeader>
+    <HomeHeader></HomeHeader>
     <div id="filter" class="home-element">
       <h2 id="filter-names">Minneapolis Attractions</h2>
     </div>
@@ -13,14 +13,14 @@
 </template>
 
 <script>
-  import AdminHeader from "../components/AdminHeader.vue";
+import HomeHeader from '../components/HomeHeader.vue';
   import Landmarks from '../components/Landmarks.vue'
 
   export default {
     name: "home",
     components: {
-      AdminHeader,
-      Landmarks
+      Landmarks,
+      HomeHeader
   }
 };
 </script>
