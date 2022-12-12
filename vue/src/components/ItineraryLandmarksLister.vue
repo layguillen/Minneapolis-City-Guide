@@ -84,7 +84,7 @@ export default {
                 userId: this.$store.state.user.id,
                 hotelId: parseInt(""),
             },
-            landmarks: this.$store.state.itineraryLandmarks,
+            landmarks: '',
         }
     },
     created() {
@@ -129,7 +129,11 @@ export default {
         },
         itineraryLandmarks() {
             this.$store.commit('SET_ITINERARY_LANDMARKS');
+            this.landmarks = this.$store.state.itineraryLandmarks;
         },
+        addToLandmarks(landmark){
+            this.landmarks.push(landmark)
+        }
     },
     
 }

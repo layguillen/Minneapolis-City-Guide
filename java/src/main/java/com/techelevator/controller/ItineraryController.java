@@ -40,7 +40,7 @@ public class ItineraryController {
 
 
     @RequestMapping(path= "/itinerary/new", method= RequestMethod.POST)
-    public Itinerary createItinerary(@Valid @RequestBody Itinerary itinerary, List<Landmark> landmarks){
+    public Itinerary createItinerary(@Valid @RequestBody Itinerary itinerary, @RequestBody List<Landmark> landmarks){
         boolean success = itineraryDao.createItinerary(itinerary, landmarks);
         if(!success){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Itinerary to be added was not found", null);
