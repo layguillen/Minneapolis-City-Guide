@@ -54,12 +54,12 @@ public class JdbcReviewDao implements ReviewDao{
 
 
     @Override
-    public Review createReview(Review review){
+    public Review createReview(Review review, int landmarkId){
 
         String sql = " INSERT INTO reviews(landmark_id, user_id, title, is_liked, description) " +
                 " VALUES (?, ?, ?, ?, ?) RETURNING id; ";
 
-        int newId = jdbcTemplate.queryForObject(sql, int.class, review.getLandmarkId(),
+        int newId = jdbcTemplate.queryForObject(sql, int.class, landmarkId,
                 review.getUserId(), review.getTitle(), review.getIsLiked(),
                 review.getDescription());
 

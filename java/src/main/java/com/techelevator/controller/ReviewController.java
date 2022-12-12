@@ -38,13 +38,13 @@ public class ReviewController {
 
 
     @RequestMapping(path= "/review/new/{landmarkId}", method= RequestMethod.POST)
-    public Review newReview(@Valid @RequestBody Review review){
+    public Review newReview(@Valid @RequestBody Review review, @PathVariable("landmarkId") int landmarkId){
 //        boolean success = reviewDao.createReview(review);
 //        if(!success){
 //            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Review to be added was not found", null);
 //        }
 
-        return reviewDao.createReview(review);
+        return reviewDao.createReview(review, landmarkId);
     }
 
 

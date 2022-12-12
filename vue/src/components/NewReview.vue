@@ -77,7 +77,7 @@ export default {
             //if it's a zero we know it's an insert
             //if(this.id === 0){
                 //add
-                ReviewService.addReview(this.newReview)
+                ReviewService.addReview(this.newReview, parseInt(this.$route.params.landmarkId))
                 .then(response => {
                     //expect a 201 meaning created
                     if(response.status === 201){
