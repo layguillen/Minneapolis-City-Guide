@@ -11,6 +11,7 @@ import Itinerary from '../views/Itinerary.vue'
 import Routes from '../views/Routes.vue'
 import NewReview from '../views/NewReview.vue'
 import PendingLandmarks from '../views/PendingLandmarks.vue'
+import AdminHome from '../views/AdminHome.vue'
 
 Vue.use(Router)
 
@@ -31,6 +32,14 @@ const router = new Router({
       path: '/home',
       name: 'home',
       component: Home,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/home/admin',
+      name: 'adminHome',
+      component: AdminHome,
       meta: {
         requiresAuth: true
       }

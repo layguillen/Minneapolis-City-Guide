@@ -66,7 +66,19 @@ export default {
           if (response.status == 200) {
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
             this.$store.commit("SET_USER", response.data.user);
-            this.$router.push("/home");
+
+            //if user role is USER will route to home page
+            if(this.$store.state.user.authorities[0].name === "ROLE_USER"){
+                this.$router.push("/home");
+            }
+            //if user role is ADMIN will route to home page with pending landmark tab
+            if (this.$store.state.user.authorities[0].name === "ROLE_ADMIN"){
+              this.$router.push("/home/admin")
+            } 
+            else {
+              this.$router.push("/home");
+            }
+            
           }
         })
         .catch(error => {
