@@ -135,8 +135,8 @@ public class JdbcLandmarkDao implements LandmarkDao{
 
     private Type mapRowToType(SqlRowSet results){
         Type type = new Type();
-        type.setName(results.getString("name"));
-        type.setTypeId(results.getInt("id"));
+        type.setName(results.getString("type_name"));
+        type.setTypeId(results.getInt("type"));
         return type;
     }
 
