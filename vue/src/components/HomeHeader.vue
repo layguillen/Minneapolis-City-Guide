@@ -22,7 +22,7 @@
             <button class="button" id="itinerary">View Itinerary</button>
           </router-link>
 
-          <router-link v-if="$store.state.showAddLandmark" v-bind:to="{name: 'addLandmark'}">
+          <router-link v-bind:to="{name: 'addLandmark'}">
             <button class="button" id="addLandmark">Add Landmark</button>
           </router-link>
 

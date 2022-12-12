@@ -29,7 +29,6 @@ export default new Vuex.Store({
     reviews: [],
     hotels: [],
     currentHotel: [],
-    showAddLandmark: true,
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
