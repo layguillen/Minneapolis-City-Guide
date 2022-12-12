@@ -12,7 +12,8 @@
           </div>
           <div class="form-group">
             <label for="type">Type</label>  
-            <select class="form-control" id="type" v-model= "newLandmark.type">
+            <select class="form-control" id="type" v-on:click="setType" v-model="typeId">
+                <!-- v-model= "newLandmark.type" -->
                 <option value="">--- Select a type ---</option>
                 <option value="5">Amusement</option>
                 <option value="1">Art</option>
@@ -71,9 +72,13 @@ export default {
     // props: ["id"],
     data(){
         return {
+            typeId: '',
             newLandmark: {
                 name: '',
-                type: '',
+                type: {
+                    id: '',
+                    name: ''
+                },
                 imgUrl: '',
                 description: '',
                 address: {
@@ -90,6 +95,40 @@ export default {
         }
     },
     methods: {
+        setType(){
+            if(parseInt(this.typeId) === 1){
+                this.newLandmark.type.id = 1;
+                this.newLandmark.type.name = "Art";
+            } else if (parseInt(this.typeId) === 2){
+                this.newLandmark.type.id = 2;
+                this.newLandmark.type.name = "Educational";
+            } 
+            else if (parseInt(this.typeId) === 3){
+                this.newLandmark.type.id = 3;
+                this.newLandmark.type.name = "Shopping";
+            }
+            else if (parseInt(this.typeId) === 4){
+                this.newLandmark.type.id = 4;
+                this.newLandmark.type.name = "Outdoor";
+            }
+            else if (parseInt(this.typeId) === 5){
+                this.newLandmark.type.id = 5;
+                this.newLandmark.type.name = "Amusement";
+            }
+            else if (parseInt(this.typeId) === 6){
+                this.newLandmark.type.id = 6;
+                this.newLandmark.type.name = "Venue";
+            }
+            else if (parseInt(this.typeId) === 7){
+                this.newLandmark.type.id = 7;
+                this.newLandmark.type.name = "Historic";
+            }
+            else if (parseInt(this.typeId) === 8){
+                this.newLandmark.type.id = 8;
+                this.newLandmark.type.name = "Restaurant";
+            }
+
+        },
         saveLandmark(){
             // const landmarkToAdd = {
             //     name: this.newLandmark.name,
@@ -106,10 +145,12 @@ export default {
             // }
             //if new landmark id is 0, we know it's an insert
             //if(this.id === 0){
+                
                 LandmarkService.addLandmark(this.newLandmark)
+
                 .then(response => {
                     //expect a 201 meaning created
-                    if(response.status === 201){
+                    if(response.status === 200){
                         this.resetForm();
                         this.formAddedSuccess = true;
                         this.$router.push('/add');
