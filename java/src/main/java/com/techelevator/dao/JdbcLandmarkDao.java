@@ -74,9 +74,9 @@ public class JdbcLandmarkDao implements LandmarkDao{
         String addressSql = " INSERT INTO addresses (street, city, state, zip) " +
                             " VALUES(?, ?, ?, ?) RETURNING id; ";
 
-        //int addressId = jdbcTemplate.queryForObject(addressSql, int.class, landmark.getAddress().getStreet(), landmark.getAddress().getCity(), landmark.getAddress().getStateAbbrev(), landmark.getAddress().getZipCode());
+        int addressId = jdbcTemplate.queryForObject(addressSql, int.class, landmark.getAddress().getStreet(), landmark.getAddress().getCity(), landmark.getAddress().getStateAbbrev(), landmark.getAddress().getZipCode());
 
-        int addressId = jdbcAddressDao.listOfAddresses().size();
+        //int addressId = jdbcAddressDao.listOfAddresses().size();
 
         String sql = "INSERT INTO landmarks (address_id, name, type, description, likes, img_URL, is_pending) " +
                     " VALUES(?, ?, ?, ?, ?, ?, ?); ";
