@@ -10,25 +10,32 @@
         </div>
       </router-link>
 
-      <router-link v-if="isAdmin" :to="{ name: 'pending' }">
-        <button class="header-item" id="pending-landmarks">Pending Landmarks</button>
-      </router-link>
+      <div id="right-side">
 
-      <router-link v-bind:to="{name: 'itinerary'}">
-        <button class="header-item" id="itinerary">View Itinerary</button>
-      </router-link>
+        <div id="buttons">
 
-      <router-link v-if="$store.state.showAddLandmark" v-bind:to="{name: 'addLandmark'}">
-        <button class="header-item" id="addLandmark">Add Landmark</button>
-      </router-link>
+          <router-link v-if="isAdmin" :to="{ name: 'pendingLandmarks' }">
+            <button class="button" id="pending-landmarks">Pending Landmarks</button>
+          </router-link>
 
-      <div id="dropdown" class="dropdown">
-        <img src="https://i.ibb.co/TK8GSbw/Screenshot-28.png" alt="Profile" id="profile-img">
-        <router-link id="router-link" v-bind:to="{ name: 'logout' }" >
-          <div class="dropdown-content">
-          Logout
+          <router-link v-bind:to="{name: 'itinerary'}">
+            <button class="button" id="itinerary">View Itinerary</button>
+          </router-link>
+
+          <router-link v-bind:to="{name: 'addLandmark'}">
+            <button class="button" id="addLandmark">Add Landmark</button>
+          </router-link>
+
         </div>
-        </router-link>
+
+        <div id="dropdown" class="dropdown">
+          <img src="https://i.ibb.co/TK8GSbw/Screenshot-28.png" alt="Profile" id="profile-img">
+          <router-link id="router-link" v-bind:to="{ name: 'logout' }" >
+            <div class="dropdown-content">
+            Logout
+          </div>
+          </router-link>
+        </div>
       </div>
     </div>
     
@@ -41,7 +48,7 @@
 export default {
   computed: {
     isAdmin() {
-      return this.$store.state.user.authorities.name === 'ROLE_ADMIN';
+      return this.$store.state.user.authorities[0].name === 'ROLE_ADMIN';
     }
   }
 }
@@ -80,7 +87,7 @@ export default {
   cursor: pointer;
 }
 
-.header-item{
+.button{
   border: 5px solid;
   padding: 8px;
   background-color: #004E64;
@@ -125,5 +132,9 @@ export default {
   text-decoration: none;
 }
 
+#right-side {
+  display: flex;
+  align-items: center;
+}
 
 </style>

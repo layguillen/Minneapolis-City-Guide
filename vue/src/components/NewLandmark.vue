@@ -25,6 +25,10 @@
             </select>
           </div>
           <div class="form-group">
+            <label for="imgUrl">Image URL</label>
+            <input class="form-control" id="imgUrl" type= "test" placeholder="Enter Image Address" v-model="newLandmark.imgUrl">
+          </div>
+          <div class="form-group">
             <label for="description">Description</label>
             <textarea class="form-control" id="description" rows="3" v-model= "newLandmark.description"></textarea>
           </div>    
@@ -37,19 +41,19 @@
           <div id="address" class="form-group">
               <div>
                 <label for="street">Street</label>
-                <input id="street" type="text" placeholder="street" v-model= "newLandmark.street">
+                <input id="street" type="text" placeholder="street" v-model= "newLandmark.address.street">
               </div>
               <div>
                 <label for="city">City</label>
-                <input type="text" id="city" placeholder="city" v-model= "newLandmark.city">
+                <input type="text" id="city" placeholder="city" v-model= "newLandmark.address.city">
               </div>
               <div>
                 <label for="state">State Abbreviation (ex: MN)</label>
-                <input type="text" id="state" placeholder="ex: MN" v-model= "newLandmark.state">
+                <input type="text" id="state" placeholder="ex: MN" v-model= "newLandmark.address.state">
               </div>
               <div>
                 <label for="zip">Zip Code</label>
-                <input type="number" id="zip" placeholder="ex: 55401" v-model= "newLandmark.zip">
+                <input type="number" id="zip" placeholder="ex: 55401" v-model= "newLandmark.address.zip">
               </div>
           </div>
           
@@ -70,11 +74,15 @@ export default {
             newLandmark: {
                 name: '',
                 type: '',
+                imgUrl: '',
                 description: '',
-                street: '',
-                city: '',
-                state: '',
-                zip: ''
+                address: {
+                    street: '',
+                    city: '',
+                    state: '',
+                    zip: ''
+                },
+                pending: true
             },
             formAddedSuccess: false,
             formAddedFailure: false,
@@ -83,33 +91,37 @@ export default {
     },
     methods: {
         saveLandmark(){
-            const landmarkToAdd = {
-                name: this.newLandmark.name,
-                //trying to convert string to number
-                type: parseInt(this.newLandmark.type),
-                description: this.newLandmark.description,
-                street: this.newLandmark.street,
-                city: this.newLandmark.city,
-                state: this.newLandmark.state,
-                zip: this.newLandmark.zip,
-                pending: true
-            }
+            // const landmarkToAdd = {
+            //     name: this.newLandmark.name,
+            //     //trying to convert string to number
+            //     type: parseInt(this.newLandmark.type),
+            //     description: this.newLandmark.description,
+            //     address: {
+            //         street: this.newLandmark.address.street,
+            //         city: this.newLandmark.address.city,
+            //         state: this.newLandmark.address.state,
+            //         zip: this.newLandmark.address.zip,
+            //     },
+            //     pending: true
+            // }
             //if new landmark id is 0, we know it's an insert
-            if(this.id === 0){
-                LandmarkService.addLandmark(landmarkToAdd)
+            //if(this.id === 0){
+                LandmarkService.addLandmark(this.newLandmark)
                 .then(response => {
                     //expect a 201 meaning created
                     if(response.status === 201){
                         this.resetForm();
                         this.formAddedSuccess = true;
-                        this.$router.push()
+                        this.$router.push('/add');
                     }
                 })
                 .catch(error => {
                     this.handleErrorResponse(error, "submitting")
                     this.formAddedFailure = true;
                 })
-            }
+
+                //this.$router.push(`/details/${this.newLandmark.type}`)
+            //}
         },
         resetForm(){
           this.newLandmark = {};  
