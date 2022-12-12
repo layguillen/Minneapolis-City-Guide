@@ -166,7 +166,7 @@ body {
 
 .imgDiv {
   height: 500px;
-  width: 600px;
+  width: 850px;
 }
 
 #imgId {
