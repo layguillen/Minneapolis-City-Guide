@@ -100,7 +100,10 @@ export default {
       });
     },
     addToItinerary() {
-      if (this.$store.state.itineraryLandmarks.indexOf(this.$store.state.currentLandmark) === -1) {
+      const itinerary = (this.$store.state.itineraryLandmarks.filter(element => {
+        return element.id === this.$store.state.currentLandmark.id;
+      }));
+      if (itinerary.length === 0) {
         this.$store.commit("SET_ITINERARY_LANDMARK",this.$store.state.currentLandmark);
         this.landmarkAddedSuccess = true;
       } else {
