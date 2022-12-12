@@ -3,6 +3,7 @@ package com.techelevator.dao;
 import com.techelevator.model.Address;
 import com.techelevator.model.Landmark;
 import com.techelevator.model.Review;
+import com.techelevator.model.Type;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -24,8 +25,9 @@ public class JdbcLandmarkDao implements LandmarkDao{
     @Override
     public List<Landmark> listLandmarks(){
         List<Landmark> list = new ArrayList<>();
-        String sql = "SELECT landmarks.id, address_id, landmarks.name, landmarks.type, description, likes, img_URL, is_pending" +
+        String sql = "SELECT landmarks.id, address_id, landmarks.name, landmarks.type, types.name AS type_name, description, likes, img_URL, is_pending" +
                 " FROM landmarks " +
+                " JOIN types ON landmarks.type = types.id " +
                 " ORDER BY landmarks.name ";
 
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
@@ -112,7 +114,7 @@ public class JdbcLandmarkDao implements LandmarkDao{
         landmark.setLandmarkId(results.getInt("id"));
         landmark.setAddressId(results.getInt("address_id"));
         landmark.setName(results.getString("name"));
-        landmark.setType(results.getInt("type"));
+        landmark.setType(mapRowToType(results));
         landmark.setDescription(results.getString("description"));
         landmark.setLikes(results.getInt("likes"));
         landmark.setImgUrl(results.getString("img_url"));
@@ -129,6 +131,13 @@ public class JdbcLandmarkDao implements LandmarkDao{
         address.setStateAbbrev(results.getString("state"));
         address.setZipCode(results.getInt("zip"));
         return address;
+    }
+
+    private Type mapRowToType(SqlRowSet results){
+        Type type = new Type();
+        type.setName(results.getString("name"));
+        type.setTypeId(results.getInt("id"));
+        return type;
     }
 
     private Review mapRowToReview(SqlRowSet results){

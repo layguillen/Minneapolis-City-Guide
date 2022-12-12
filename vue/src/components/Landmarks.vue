@@ -34,7 +34,7 @@
         <div id= "img-container">
             <img class="display-img" :src="landmark.img_URL" />
         </div>
-        <p>{{ landmark.type }}</p>
+        <p>{{ landmark.type.name }}</p>
       </div>
       
     </div>
@@ -74,7 +74,7 @@ export default {
       filterByType(){
           const filteredLandmarks = this.$store.state.landmarks;
           return filteredLandmarks.filter((landmark)=> {
-              if(!landmark.type.indexOf(this.type)){
+              if(!landmark.type.name.indexOf(this.type)){
                   return true;
               }
               return false;
