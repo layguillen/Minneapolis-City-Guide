@@ -63,15 +63,33 @@ export default new Vuex.Store({
       state.hotels = list;
     },
     SET_ITINERARY_LANDMARK(state, landmark) {
-      state.itineraryLandmarks.push(landmark);
+      // state.itineraryLandmarks.push(landmark);
+      if (localStorage.getItem('itineraryLandmarks') === null) {
+        localStorage.setItem('itineraryLandmarks', JSON.stringify(state.itineraryLandmarks));
+      }
+      const iLandmarks = JSON.parse(localStorage.getItem('itineraryLandmarks'));
+      iLandmarks.push(landmark);
+      localStorage.setItem('itineraryLandmarks', JSON.stringify(iLandmarks));
+      state.itineraryLandmarks = iLandmarks;
     },
     REMOVE_ITINERARY_LANDMARK(state, landmarkId) {
-     state.itineraryLandmarks = state.itineraryLandmarks.filter(landmark => {
+     const iLandmarks = JSON.parse(localStorage.getItem('itineraryLandmarks'));
+     iLandmarks.filter(landmark => {
             return landmark.id != landmarkId;
       })
+      localStorage.setItem('itineraryLandmarks', JSON.stringify(iLandmarks));
+      state.itineraryLandmarks = iLandmarks;
     },
     EMPTY_ITINERARY_LANDMARKS(state) {
+      localStorage.removeItem('itineraryLandmarks');
       state.itineraryLandmarks = [];
+    },
+    SET_ITINERARY_LANDMARKS(state) {
+      if (localStorage.getItem('itineraryLandmarks') === null) {
+        state.itineraryLandmarks = [];
+      } else {
+        state.itineraryLandmarks = JSON.parse(localStorage.getItem('itineraryLandmarks'));
+      }
     },
     SET_ROUTES(state, list){
       state.routes = list;

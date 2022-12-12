@@ -81,6 +81,7 @@ export default {
     },
     created() {
         this.retrieveHotels();
+        this.itineraryLandmarks();
     },
     methods: {
         removeFromItinerary(id){
@@ -109,7 +110,10 @@ export default {
             });
             this.hotelSelected = true;
             this.isLoading = false;
-        }
+        },
+        itineraryLandmarks() {
+            this.$store.commit('SET_ITINERARY_LANDMARKS');
+        },
     },
     
 }
