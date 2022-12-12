@@ -14,7 +14,7 @@ public class Landmark {
     @JsonProperty("name")
     private String name;
     @JsonProperty("type")
-    private String type;
+    private int type;
     @JsonProperty("description")
     private String description;
     @JsonProperty("likes")
@@ -23,7 +23,7 @@ public class Landmark {
     private String imgUrl;
     @JsonProperty("is_pending")
     private boolean isPending;
-    @JsonProperty("reviews")
+
     private List<Review> reviews = new ArrayList<>();
 
 
@@ -70,11 +70,11 @@ public class Landmark {
         this.name = name;
     }
 
-    public String getType() {
+    public int getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(int type) {
         this.type = type;
     }
 

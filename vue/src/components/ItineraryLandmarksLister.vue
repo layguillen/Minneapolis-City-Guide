@@ -76,7 +76,11 @@ export default {
             hotelSelected: false,
             landmarkDeleted: false,
             itineraryDeleted: false,
-            isLoading: true
+            isLoading: true,
+            newItinerary: {
+                userId: this.$store.state.user.id,
+                landmarkList: ''
+            }
         }
     },
     created() {

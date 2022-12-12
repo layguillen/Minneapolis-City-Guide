@@ -14,17 +14,18 @@ import java.util.List;
 public class JdbcLandmarkDao implements LandmarkDao{
 
     private JdbcTemplate jdbcTemplate;
+    private JdbcAddressDao jdbcAddressDao;
 
-    public JdbcLandmarkDao(JdbcTemplate jdbcTemplate) {
+    public JdbcLandmarkDao(JdbcTemplate jdbcTemplate, JdbcAddressDao jdbcAddressDao) {
         this.jdbcTemplate = jdbcTemplate;
+        this.jdbcAddressDao = jdbcAddressDao;
     }
 
     @Override
     public List<Landmark> listLandmarks(){
         List<Landmark> list = new ArrayList<>();
-        String sql = "SELECT landmarks.id, address_id, landmarks.name, types.name AS type, description, likes, img_URL, is_pending" +
+        String sql = "SELECT landmarks.id, address_id, landmarks.name, landmarks.type, description, likes, img_URL, is_pending" +
                 " FROM landmarks " +
-                " JOIN types ON landmarks.type = types.id " +
                 " ORDER BY landmarks.name ";
 
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
@@ -68,11 +69,18 @@ public class JdbcLandmarkDao implements LandmarkDao{
     //TODO: check sql
     @Override
     public boolean createLandmark(Landmark landmark){
+        String addressSql = " INSERT INTO addresses (street, city, state, zip) " +
+                            " VALUES(?, ?, ?, ?) RETURNING id; ";
+
+        //int addressId = jdbcTemplate.queryForObject(addressSql, int.class, landmark.getAddress().getStreet(), landmark.getAddress().getCity(), landmark.getAddress().getStateAbbrev(), landmark.getAddress().getZipCode());
+
+        int addressId = jdbcAddressDao.listOfAddresses().size();
+
         String sql = "INSERT INTO landmarks (address_id, name, type, description, likes, img_URL, is_pending) " +
                     " VALUES(?, ?, ?, ?, ?, ?, ?); ";
 
         return jdbcTemplate.update(sql,
-                                    landmark.getAddressId(),
+                                    addressId,
                                     landmark.getName(),
                                     landmark.getType(),
                                     landmark.getDescription(),
@@ -104,7 +112,7 @@ public class JdbcLandmarkDao implements LandmarkDao{
         landmark.setLandmarkId(results.getInt("id"));
         landmark.setAddressId(results.getInt("address_id"));
         landmark.setName(results.getString("name"));
-        landmark.setType(results.getString("type"));
+        landmark.setType(results.getInt("type"));
         landmark.setDescription(results.getString("description"));
         landmark.setLikes(results.getInt("likes"));
         landmark.setImgUrl(results.getString("img_url"));

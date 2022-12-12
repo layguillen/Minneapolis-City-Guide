@@ -11,7 +11,7 @@ CREATE TABLE users (
 );
 CREATE TABLE addresses (
     id serial PRIMARY KEY,
-    long_lat varchar,
+    long_lat varchar NULL,
     street varchar,
     city varchar,
     state varchar,
@@ -28,7 +28,7 @@ CREATE TABLE landmarks (
 	name varchar,
     type int REFERENCES types(id),
 	description varchar NOT NULL,
-    img_URL varchar NOT NULL,
+    img_URL varchar,
     is_pending boolean NULL
 );
 CREATE TABLE hotels (
