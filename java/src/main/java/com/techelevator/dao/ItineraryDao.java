@@ -11,7 +11,7 @@ public interface ItineraryDao {
 
     Itinerary getItinerary(int itineraryId);
 
-    boolean createItinerary(Itinerary itinerary);
+    boolean createItinerary(Itinerary itinerary, List<Landmark> landmarks);
 
     boolean deleteItinerary(int itineraryId);
 

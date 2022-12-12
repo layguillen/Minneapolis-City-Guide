@@ -22,7 +22,7 @@
       </div>
       <div id="hotel-selection">
           <label for="hotel-search">Hotel</label>
-          <select class="hotel-search" id="hotel-search" v-model="hotelId" v-on:click="retrieveCurrentHotel">
+          <select class="hotel-search" id="hotel-search" v-model="itinerary.hotelId" v-on:click="retrieveCurrentHotel">
               <option value="">--- Select your hotel ---</option>
               <option value="1">The Marquette Hotel</option>
               <option value="2">Hyatt Place Minneapolis/Downtown</option>
@@ -75,7 +75,6 @@ export default {
     },
     data(){
         return {
-            hotelId: "",
             hotelSelected: false,
             landmarkDeleted: false,
             itineraryDeleted: false,
@@ -83,7 +82,7 @@ export default {
             isLoading: true,
             itinerary: {
                 userId: this.$store.state.user.id,
-                hotelId: this.hotelId
+                hotelId: parseInt(""),
             },
             landmarks: this.$store.state.itineraryLandmarks,
         }
@@ -121,7 +120,7 @@ export default {
         },
         retrieveCurrentHotel(){
             this.isLoading = true;
-            HotelService.getHotel(this.hotelId)
+            HotelService.getHotel(this.itinerary.hotelId)
             .then((response)=>{
                 this.$store.commit("SET_CURRENT_HOTEL", response.data)
             });

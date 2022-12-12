@@ -41,8 +41,7 @@ public class JdbcItineraryDao implements ItineraryDao {
 
     //insert new itinerary into database
     @Override
-    public boolean createItinerary(Itinerary itinerary){
-
+    public boolean createItinerary(Itinerary itinerary, List<Landmark> landmarks){
 
         int lengthBefore = listItinerary().size();
 
@@ -50,6 +49,13 @@ public class JdbcItineraryDao implements ItineraryDao {
                 " VALUES(?, ?) RETURNING id ";
 
         jdbcTemplate.update(sql, itinerary.getUserId(), itinerary.getHotelId());
+        int itineraryId = listItinerary().size();
+
+        for(Landmark landmark: landmarks){
+            String landmarkSql = " INSERT INTO landmarks_itinerary " +
+                                " VALUES(?, ?) ";
+            jdbcTemplate.update(landmarkSql, itineraryId, landmark.getLandmarkId());
+        }
 
         int lengthAfter = listItinerary().size();
 
