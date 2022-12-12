@@ -13,7 +13,7 @@ export default {
             return http.get(`/landmark/${id}`);
         },
         addLandmark(landmark){
-            console.log(JSON.stringify(landmark));
+            //console.log(JSON.stringify(landmark));
             return axios.post('/landmark/new', landmark);
         },
         updateLandmarkLikes(landmark){

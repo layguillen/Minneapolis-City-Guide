@@ -95,6 +95,42 @@ export default {
         }
     },
     methods: {
+        saveLandmark(){
+            // const landmarkToAdd = {
+            //     name: this.newLandmark.name,
+            //     //trying to convert string to number
+            //     type: parseInt(this.newLandmark.type),
+            //     description: this.newLandmark.description,
+            //     address: {
+            //         street: this.newLandmark.address.street,
+            //         city: this.newLandmark.address.city,
+            //         state: this.newLandmark.address.state,
+            //         zip: this.newLandmark.address.zip,
+            //     },
+            //     pending: true
+            // }
+                
+            LandmarkService.addLandmark(this.newLandmark)
+
+            .then(response => {
+                //expect a 201 meaning created
+                //changed to 200 based on what was being returned
+                if(response.status === 200){
+                    this.resetForm();
+                    this.formAddedSuccess = true;
+                    this.$router.push('/add');
+                }
+            })
+            .catch(error => {
+                this.handleErrorResponse(error, "submitting")
+                this.formAddedFailure = true;
+            })
+
+
+        },
+        resetForm(){
+          this.newLandmark = {};  
+        },
         setType(){
             if(parseInt(this.typeId) === 1){
                 this.newLandmark.type.id = 1;
@@ -128,44 +164,6 @@ export default {
                 this.newLandmark.type.name = "Restaurant";
             }
 
-        },
-        saveLandmark(){
-            // const landmarkToAdd = {
-            //     name: this.newLandmark.name,
-            //     //trying to convert string to number
-            //     type: parseInt(this.newLandmark.type),
-            //     description: this.newLandmark.description,
-            //     address: {
-            //         street: this.newLandmark.address.street,
-            //         city: this.newLandmark.address.city,
-            //         state: this.newLandmark.address.state,
-            //         zip: this.newLandmark.address.zip,
-            //     },
-            //     pending: true
-            // }
-            //if new landmark id is 0, we know it's an insert
-            //if(this.id === 0){
-                
-                LandmarkService.addLandmark(this.newLandmark)
-
-                .then(response => {
-                    //expect a 201 meaning created
-                    if(response.status === 200){
-                        this.resetForm();
-                        this.formAddedSuccess = true;
-                        this.$router.push('/add');
-                    }
-                })
-                .catch(error => {
-                    this.handleErrorResponse(error, "submitting")
-                    this.formAddedFailure = true;
-                })
-
-                //this.$router.push(`/details/${this.newLandmark.type}`)
-            //}
-        },
-        resetForm(){
-          this.newLandmark = {};  
         },
         handleErrorResponse(error, verb) {
             if (error.response) {

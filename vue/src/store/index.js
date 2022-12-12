@@ -52,6 +52,11 @@ export default new Vuex.Store({
         return landmark.pending === false;
       });
     },
+    SET_PENDING_LANDMARKS(state, list){
+      state.landmarks = list.filter(landmark => {
+        return landmark.pending === true;
+      });
+    },
     SET_PENDING_LANDMARK(state, landmark){
       state.pendingLandmarks.push(landmark);
     },

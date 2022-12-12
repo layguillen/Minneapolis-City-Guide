@@ -1,8 +1,15 @@
 <template>
   <div id="pending-landmarks-container">
       <h3>Pending Landmarks</h3>
-      <div id="" v-for="landmark in this.$store.state.pendingLandmarks" :key="landmark.name">
-
+      <div id="pending-landmark" v-for="landmark in this.$store.state.pendingLandmarks" :key="landmark.id">
+          <h3>{{landmark.name}}</h3>
+          <p>{{landmark.type.name}}</p>
+          <p>{{landmark.description}}</p>
+          <p>{{landmark.address.street}}
+              {{landmark.address.city}},
+              {{landmark.address.state}}
+              {{landmark.address.zip}}
+          </p>
       </div>
   </div>
 </template>
@@ -16,7 +23,10 @@ export default {
     },
     methods: {
         listPendingLandmarks() {
-            return this.$store.state.pendingLandmarks;
+            landmarkService.list()
+            .then((response) => {
+                this.$store.commit("SET_PENDING_LANDMARKS", response.data);
+            })
         },
         addLandmarkToDb(){
             landmarkService.addLandmark();
