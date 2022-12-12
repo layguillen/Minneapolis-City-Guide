@@ -83,10 +83,6 @@ export default {
   padding-right: 10px;
 }
 
-#addLandmark:hover {
-  cursor: pointer;
-}
-
 .button{
   border: 5px solid;
   padding: 8px;
@@ -96,7 +92,7 @@ export default {
   font-family: 'Montserrat Alternates', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial';
 }
 
-#itinerary:hover {
+.button:hover {
   cursor: pointer;
 }
 
