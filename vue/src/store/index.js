@@ -79,11 +79,5 @@ export default new Vuex.Store({
     SET_REVIEWS(state, list){
       state.reviews = list;
     },
-    ADD_LANDMARK_TRUE(state) {
-      state.showAddLandmark = true;
-    },
-    ADD_LANDMARK_FALSE(state) {
-      state.showAddLandmark = false;
-    }
   }
 })
