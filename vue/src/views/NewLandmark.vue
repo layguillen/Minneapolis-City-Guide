@@ -14,12 +14,12 @@ export default {
         NewLandmark,
         HomeHeader
     },
-    created() {
-      this.$store.commit('ADD_LANDMARK_FALSE');
-    },
-    beforeDestroy() {
-      this.$store.commit('ADD_LANDMARK_TRUE');
-    }
+    // created() {
+    //   this.$store.commit('ADD_LANDMARK_FALSE');
+    // },
+    // beforeDestroy() {
+    //   this.$store.commit('ADD_LANDMARK_TRUE');
+    // }
 }
 </script>
 

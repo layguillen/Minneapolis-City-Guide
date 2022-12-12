@@ -84,14 +84,13 @@ public class JdbcLandmarkDao implements LandmarkDao{
         return jdbcTemplate.update(sql,
                                     addressId,
                                     landmark.getName(),
-                                    landmark.getType(),
+                                    landmark.getType().getTypeId(),
                                     landmark.getDescription(),
                                     landmark.getLikes(),
                                     landmark.getImgUrl(),
                                     landmark.isPending()) == 1;
     }
 
-    //TODO: fix sql so that it adds one to the likes count (int)
     @Override
     public Landmark updateLandmark(Landmark landmark, int landmarkId){
         Landmark result = landmark;
