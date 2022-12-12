@@ -47,8 +47,10 @@ export default new Vuex.Store({
       state.user = {};
       axios.defaults.headers.common = {};
     },
-    SET_LANDMARKS(state, list) {
-      state.landmarks = list;
+    SET_LANDMARKS(state, list)  {
+      state.landmarks = list.filter(landmark => {
+        return landmark.pending === false;
+      });
     },
     SET_PENDING_LANDMARK(state, landmark){
       state.pendingLandmarks.push(landmark);
