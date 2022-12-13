@@ -159,7 +159,7 @@ public class JdbcItineraryDao implements ItineraryDao {
       landmark.setLandmarkId(results.getInt("id"));
       landmark.setAddressId(results.getInt("address_id"));
       landmark.setLikes(results.getInt("likes"));
-      landmark.setName("name");
+      landmark.setName(results.getString("name"));
       landmark.setType(mapRowToType(results));
       landmark.setDescription(results.getString("description"));
       landmark.setImgUrl(results.getString("img_url"));
