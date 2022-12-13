@@ -78,7 +78,6 @@ export default {
                 imgUrl: '',
                 description: '',
                 address: {
-                    longLat: '',
                     street: '',
                     city: '',
                     state: '',
