@@ -6,6 +6,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,18 +14,26 @@ import java.util.List;
 public class JdbcItineraryDao implements ItineraryDao {
 
     private JdbcTemplate jdbcTemplate;
+    private JdbcUserDao jdbcUserDao;
 
-    public JdbcItineraryDao(JdbcTemplate jdbcTemplate) {
+    public JdbcItineraryDao(JdbcTemplate jdbcTemplate, JdbcUserDao jdbcUserDao) {
+
         this.jdbcTemplate = jdbcTemplate;
+        this.jdbcUserDao = jdbcUserDao;
     }
 
+    //TODO fix join in sql to the associative table to retrieve the landmarks
     //gets itinerary from database
     @Override
-    public List<Itinerary> listItinerary(){
+    public List<Itinerary> listItinerary(Principal principal){
+        int userId = jdbcUserDao.findIdByUsername(principal.getName());
+
         List<Itinerary> list = new ArrayList<>();
-        String sql = "SELECT * " +
-                " FROM itinerary ";
-        SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
+        String sql = "SELECT itinerary.id, user_id, hotel_id, landmarks_itinerary.landmark_id " +
+                " FROM itinerary " +
+                " JOIN landmarks_itinerary ON landmarks_itinerary.itinerary_id = itinerary.id " +
+                " WHERE user_id = ?; ";
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sql, userId);
 
         while(result.next()){
             list.add(mapRowToIntinerary(result));
@@ -34,54 +43,54 @@ public class JdbcItineraryDao implements ItineraryDao {
 
     //gets specific itinerary from database
     @Override
-    public Itinerary getItinerary(int itineraryId){
-        return listItinerary().get(itineraryId-1);
+    public Itinerary getItinerary(int itineraryId, Principal principal){
+        return listItinerary(principal).get(itineraryId-1);
 
     }
 
     //insert new itinerary into database
     @Override
-    public boolean createItinerary(Itinerary itinerary, List<Landmark> landmarks){
+    public int createItinerary(Itinerary itinerary, Principal principal){
 
-        int lengthBefore = listItinerary().size();
+        int userId = jdbcUserDao.findIdByUsername(principal.getName());
 
         String sql = " INSERT INTO itinerary(user_id, hotel_id) " +
                 " VALUES(?, ?) RETURNING id ";
 
-        jdbcTemplate.update(sql, itinerary.getUserId(), itinerary.getHotelId());
-        int itineraryId = listItinerary().size();
+        int itineraryId = jdbcTemplate.queryForObject(sql, int.class, userId, itinerary.getHotelId());
 
-        for(Landmark landmark: landmarks){
-            String landmarkSql = " INSERT INTO landmarks_itinerary " +
-                                " VALUES(?, ?) ";
-            jdbcTemplate.update(landmarkSql, itineraryId, landmark.getLandmarkId());
-        }
-
-        int lengthAfter = listItinerary().size();
-
-        if(lengthBefore == lengthAfter){
-            return false;
-        }
-        return true;
+        return itineraryId;
     }
 
-    //deletes the itinerary
+    //inserts itinerary id and landmark ids into associative table
     @Override
-    public boolean deleteItinerary(int itineraryId){
+    public void insertItineraryIntoAssociative(int itineraryId, Landmark[] landmarks){
+        for(Landmark landmark: landmarks){
+            String sql = " INSERT INTO landmarks_itinerary (itinerary_id, landmark_id) " +
+                    " VALUES(?, ?) ";
+            jdbcTemplate.update(sql, itineraryId, landmark.getLandmarkId());
+        }
+    }
 
-        int lengthBefore = listItinerary().size();
+    //deletes the itinerary from landmarks_itinerary table
+    @Override
+    public void deleteItineraryFromAssociative(int itineraryId){
+
+        String sql = " DELETE FROM landmarks_itinerary " +
+                " WHERE id = ? ";
+
+        jdbcTemplate.update(sql, itineraryId);
+
+    }
+
+    //deletes the itinerary from itinerary table
+    @Override
+    public void deleteItinerary(int itineraryId){
 
         String sql = " DELETE FROM itinerary " +
                 " WHERE id = ? ";
 
         jdbcTemplate.update(sql, itineraryId);
-
-        int lengthAfter = listItinerary().size();
-
-        if(lengthBefore == lengthAfter){
-            return false;
-        }
-        return true;
 
     }
 
@@ -119,5 +128,9 @@ public class JdbcItineraryDao implements ItineraryDao {
 
         return itinerary;
     }
+
+//    private Landmark mapRowToLandmark(SqlRowSet results){
+//
+//    }
 
 }

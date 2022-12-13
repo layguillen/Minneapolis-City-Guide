@@ -2,7 +2,11 @@ package com.techelevator.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.List;
+
 public class Itinerary {
+
+    //TODO: add list of landmarks to itinerary properties, then fix mapper in Jdbc class
 
     @JsonProperty("id")
     private int itineraryId;
@@ -11,8 +15,18 @@ public class Itinerary {
     @JsonProperty("hotel_id")
     private int hotelId;
 
+    private List<Landmark> landmarks;
+
     public Itinerary(){
     };
+
+    public List<Landmark> getLandmarks() {
+        return landmarks;
+    }
+
+    public void setLandmarks(List<Landmark> landmarks) {
+        this.landmarks = landmarks;
+    }
 
     public int getItineraryId() {
         return itineraryId;
