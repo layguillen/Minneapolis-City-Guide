@@ -121,13 +121,9 @@ export default {
     reloadPage(){
       window.location.reload();
     },
-    setItineraryLandmarks() {
-      this.$store.commit('SET_ITINERARY_LANDMARKS');
-    }
   },
   mounted() {
     this.setDetails();
-    this.setItineraryLandmarks();
   },
 };
 </script>

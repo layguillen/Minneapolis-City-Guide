@@ -127,10 +127,6 @@ export default {
             this.hotelSelected = true;
             this.isLoading = false;
         },
-        itineraryLandmarks() {
-            this.$store.commit('SET_ITINERARY_LANDMARKS');
-            //this.landmarks = this.$store.state.itineraryLandmarks;
-        },
         // addToLandmarks(landmark){
         //     this.landmarks.push(landmark)
         // }
