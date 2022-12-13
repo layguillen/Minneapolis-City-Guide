@@ -1,6 +1,6 @@
 package com.techelevator.services;
 
-import com.techelevator.model.Coordinates;
+
 import com.techelevator.model.Landmark;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;

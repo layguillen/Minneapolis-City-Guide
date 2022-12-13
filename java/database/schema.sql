@@ -11,7 +11,6 @@ CREATE TABLE users (
 );
 CREATE TABLE addresses (
     id serial PRIMARY KEY,
-    long_lat varchar NULL,
     street varchar,
     city varchar,
     state varchar,

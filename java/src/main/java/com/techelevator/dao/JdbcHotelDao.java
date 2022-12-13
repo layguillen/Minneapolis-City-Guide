@@ -29,7 +29,7 @@ public class JdbcHotelDao implements HotelDao{
 
         while(result.next()){
             Hotel hotel = mapRowToHotel(result);
-            String addressSql = " SELECT id, long_lat, street, city, state, zip " +
+            String addressSql = " SELECT id, street, city, state, zip " +
                                 " FROM addresses " +
                                 " WHERE id = ?";
             SqlRowSet addressResult = jdbcTemplate.queryForRowSet(addressSql, hotel.getAddressId());
@@ -60,7 +60,6 @@ public class JdbcHotelDao implements HotelDao{
     private Address mapRowToAddress(SqlRowSet results){
         Address address = new Address();
         address.setAddressId(results.getInt("id"));
-        address.setLongLat(results.getString("long_lat"));
         address.setStreet(results.getString("street"));
         address.setCity(results.getString("city"));
         address.setStreet(results.getString("street"));

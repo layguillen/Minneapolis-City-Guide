@@ -21,7 +21,7 @@ public class JdbcAddressDao implements AddressDao{
     public List<Address> listOfAddresses(){
         List<Address> list = new ArrayList<>();
 
-        String sql = " SELECT id, long_lat, street, city, state, zip" +
+        String sql = " SELECT id, street, city, state, zip" +
                 " FROM addresses ";
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
         while(result.next()){
@@ -35,7 +35,7 @@ public class JdbcAddressDao implements AddressDao{
     public Address getAddress(int id){
         if(id == 0) throw new IllegalArgumentException("Address ID cannot be null.");
 
-        String sql = " SELECT id, long_lat, street, city, state, zip " +
+        String sql = " SELECT id, street, city, state, zip " +
                      " FROM addresses " +
                      " WHERE id = ?";
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql, id);
@@ -62,7 +62,6 @@ public class JdbcAddressDao implements AddressDao{
     private Address mapRowToAddress(SqlRowSet results){
         Address address = new Address();
         address.setAddressId(results.getInt("id"));
-        address.setLongLat(results.getString("long_lat"));
         address.setStreet(results.getString("street"));
         address.setCity(results.getString("city"));
         address.setStreet(results.getString("street"));

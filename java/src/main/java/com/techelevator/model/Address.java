@@ -14,12 +14,6 @@ public class Address {
     private String stateAbbrev;
     @JsonProperty("zip")
     private int zipCode;
-    @JsonProperty("long_lat")
-    private String longLat;
-    @JsonProperty("longitude")
-    private double longitude;
-    @JsonProperty("latitude")
-    private double latitude;
 
     public Address(){};
 
@@ -71,20 +65,4 @@ public class Address {
         this.zipCode = zipCode;
     }
 
-    public String getLongLat() {
-        return longLat;
-    }
-
-    public void setLongLat(String longLat) {
-        this.longLat = longLat;
-        this.latitude = Double.parseDouble(longLat.split(",")[1]);
-        this.longitude = Double.parseDouble(longLat.split(",")[0]);
-    }
-
-    public double getLatitude(){
-        return this.latitude;
-    }
-    public double getLongitude(){
-        return this.longitude;
-    }
 }

@@ -36,7 +36,7 @@ public class JdbcLandmarkDao implements LandmarkDao{
             Landmark landmark = mapRowToLandmark(result);
 
             //add appropriate address to each landmark
-            String addressSql = " SELECT id, long_lat, street, city, state, zip " +
+            String addressSql = " SELECT id, street, city, state, zip " +
                 " FROM addresses " +
                 " WHERE id = ?";
             SqlRowSet addressResult = jdbcTemplate.queryForRowSet(addressSql, landmark.getAddressId());
@@ -111,13 +111,12 @@ public class JdbcLandmarkDao implements LandmarkDao{
     @Override
     public Landmark updatePendingStatus(Landmark landmark){
         Landmark result = landmark;
-        boolean approved = true;
 
         String sql = " UPDATE landmarks " +
                 " SET is_pending = ? " +
                 " WHERE id = ? ";
 
-        int num = jdbcTemplate.update(sql, approved, landmark.getLandmarkId());
+        int num = jdbcTemplate.update(sql, false, landmark.getLandmarkId());
 
         if(num != 1){
             return null;
@@ -165,7 +164,6 @@ public class JdbcLandmarkDao implements LandmarkDao{
     private Address mapRowToAddress(SqlRowSet results){
         Address address = new Address();
         address.setAddressId(results.getInt("id"));
-        address.setLongLat(results.getString("long_lat"));
         address.setStreet(results.getString("street"));
         address.setCity(results.getString("city"));
         address.setStreet(results.getString("street"));

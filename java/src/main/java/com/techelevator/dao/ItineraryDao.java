@@ -12,7 +12,7 @@ public interface ItineraryDao {
 
     Itinerary getItinerary(int itineraryId, Principal principal);
 
-    int createItinerary(Itinerary itinerary, Principal principal);
+    int createItinerary(int hotelId, Itinerary itinerary, Principal principal);
 
     void insertItineraryIntoAssociative(int itineraryId, List<Landmark> landmarks);
 

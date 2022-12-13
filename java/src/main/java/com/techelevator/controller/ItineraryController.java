@@ -39,9 +39,9 @@ public class ItineraryController {
     }
 
     //TODO: get landmarks off of itinerary
-    @RequestMapping(path= "/itinerary/new", method= RequestMethod.POST)
-    public void createItinerary(@Valid @RequestBody Itinerary itinerary, Principal principal){
-        int itineraryId = itineraryDao.createItinerary(itinerary, principal);
+    @RequestMapping(path= "/itinerary/new/{hotelId}", method= RequestMethod.POST)
+    public void createItinerary(@Valid @PathVariable("hotelId") int hotelId, @RequestBody Itinerary itinerary, Principal principal){
+        int itineraryId = itineraryDao.createItinerary(hotelId, itinerary, principal);
         itineraryDao.insertItineraryIntoAssociative(itineraryId, itinerary.getLandmarks());
     }
 

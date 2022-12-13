@@ -16,11 +16,13 @@ public class JdbcItineraryDao implements ItineraryDao {
 
     private JdbcTemplate jdbcTemplate;
     private JdbcUserDao jdbcUserDao;
+    private JdbcAddressDao jdbcAddressDao;
 
-    public JdbcItineraryDao(JdbcTemplate jdbcTemplate, JdbcUserDao jdbcUserDao) {
+    public JdbcItineraryDao(JdbcTemplate jdbcTemplate, JdbcUserDao jdbcUserDao, JdbcAddressDao jdbcAddressDao) {
 
         this.jdbcTemplate = jdbcTemplate;
         this.jdbcUserDao = jdbcUserDao;
+        this.jdbcAddressDao = jdbcAddressDao;
     }
 
     //TODO fix sql
@@ -45,7 +47,7 @@ public class JdbcItineraryDao implements ItineraryDao {
             SqlRowSet associativeResults = jdbcTemplate.queryForRowSet(associativeSql, itinerary.getItineraryId());
 
             while(associativeResults.next()){
-                int landmarkId = jdbcTemplate.queryForObject(associativeSql, int.class, itinerary.getItineraryId());
+                int landmarkId = associativeResults.getInt("landmark_id");
 
                 String landmarkSql = "SELECT landmarks.id, address_id, landmarks.name, landmarks.type, types.name AS type_name, description, likes, img_URL, is_pending" +
                                     " FROM landmarks " +
@@ -73,14 +75,14 @@ public class JdbcItineraryDao implements ItineraryDao {
 
     //insert new itinerary into database
     @Override
-    public int createItinerary(Itinerary itinerary, Principal principal){
+    public int createItinerary(int hotelId, Itinerary itinerary, Principal principal){
 
         int userId = jdbcUserDao.findIdByUsername(principal.getName());
 
         String sql = " INSERT INTO itinerary(user_id, hotel_id) " +
                 " VALUES(?, ?) RETURNING id ";
 
-        int itineraryId = jdbcTemplate.queryForObject(sql, int.class, userId, itinerary.getHotelId());
+        int itineraryId = jdbcTemplate.queryForObject(sql, int.class, userId, hotelId);
 
         return itineraryId;
     }
@@ -159,11 +161,12 @@ public class JdbcItineraryDao implements ItineraryDao {
       landmark.setLandmarkId(results.getInt("id"));
       landmark.setAddressId(results.getInt("address_id"));
       landmark.setLikes(results.getInt("likes"));
-      landmark.setName("name");
+      landmark.setName(results.getString("name"));
       landmark.setType(mapRowToType(results));
       landmark.setDescription(results.getString("description"));
       landmark.setImgUrl(results.getString("img_url"));
       landmark.setPending(results.getBoolean("is_pending"));
+      landmark.setAddress(jdbcAddressDao.getAddress(results.getInt("address_id")));
 
       return landmark;
     }
