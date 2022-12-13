@@ -10,7 +10,7 @@ public interface LandmarkDao {
 
     Landmark getLandmark(int landmarkId);
 
-    boolean createLandmark(Landmark landmark);
+    boolean createLandmark(Landmark landmark, int addressId);
 
     Landmark updateLandmarkLikes(Landmark landmark, int landmarkId);
 

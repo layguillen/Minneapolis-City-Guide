@@ -10,5 +10,5 @@ public interface AddressDao {
 
     Address getAddress(int id);
 
-    boolean createAddress(Address address);
+    int createAddress(Address address);
 }

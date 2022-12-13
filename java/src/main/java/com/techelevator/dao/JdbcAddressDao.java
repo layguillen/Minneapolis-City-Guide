@@ -47,17 +47,16 @@ public class JdbcAddressDao implements AddressDao{
     }
 
     @Override
-    public boolean createAddress(Address address){
-        String sql = "INSERT INTO landmarks (id, long_lat, street, city, state, zip) " +
-                " VALUES(?, ?, ?, ?, ?, ?); ";
+    public int createAddress(Address address){
+        String sql = "INSERT INTO addresses (street, city, state, zip) " +
+                " VALUES(?, ?, ?, ?) RETURNING id; ";
 
-        return jdbcTemplate.update(sql,
-                address.getAddressId(),
-                address.getLongLat(),
-                address.getStreet(),
-                address.getCity(),
-                address.getStateAbbrev(),
-                address.getZipCode()) == 1;
+        int addressId = jdbcTemplate.queryForObject(sql, int.class, address.getStreet(),
+                                                                    address.getCity(),
+                                                                    address.getStateAbbrev(),
+                                                                    address.getZipCode());
+
+        return addressId;
     }
 
     private Address mapRowToAddress(SqlRowSet results){

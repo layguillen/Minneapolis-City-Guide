@@ -27,16 +27,12 @@
           </div>
           <div class="form-group">
             <label for="imgUrl">Image URL</label>
-            <input class="form-control" id="imgUrl" type= "test" placeholder="Enter Image Address" v-model="newLandmark.imgUrl">
+            <input class="form-control" id="imgUrl" type= "url" placeholder="Enter Image Address" v-model="newLandmark.imgUrl">
           </div>
           <div class="form-group">
             <label for="description">Description</label>
             <textarea class="form-control" id="description" rows="3" v-model= "newLandmark.description"></textarea>
           </div>    
-          <!-- <div class="form-group">
-              <label for="imgURL">Image URL</label>
-              <input class="form-control" id="imgURL" type= "url" placeholder="Landmark Image URL" v-model= "newLandmark.imgUrl">
-          </div> -->
           
           <label id="addressLabel" for="address">Landmark Address:</label>
           <div id="address" class="form-group">
@@ -82,6 +78,7 @@ export default {
                 imgUrl: '',
                 description: '',
                 address: {
+                    longLat: '',
                     street: '',
                     city: '',
                     state: '',

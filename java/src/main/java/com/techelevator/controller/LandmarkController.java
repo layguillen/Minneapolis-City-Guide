@@ -1,5 +1,6 @@
 package com.techelevator.controller;
 
+import com.techelevator.dao.AddressDao;
 import com.techelevator.dao.LandmarkDao;
 import com.techelevator.model.Landmark;
 import org.springframework.http.HttpStatus;
@@ -14,9 +15,12 @@ import java.util.List;
 public class LandmarkController {
 
     private LandmarkDao landmarkDao;
+    private AddressDao addressDao;
 
-    public LandmarkController(LandmarkDao landmarkDao) {
+    public LandmarkController(LandmarkDao landmarkDao, AddressDao addressDao) {
+
         this.landmarkDao = landmarkDao;
+        this.addressDao = addressDao;
     }
 
     @RequestMapping(path="/landmark/list", method= RequestMethod.GET)
@@ -54,13 +58,14 @@ public class LandmarkController {
     }
 
     @RequestMapping(path= "/landmark/new", method= RequestMethod.POST)
-    public Landmark newLandmark(@Valid @RequestBody Landmark landmark){
-        boolean success = landmarkDao.createLandmark(landmark);
-        if(!success){
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Landmark to be added was not found", null);
-        }
+    public void newLandmark(@Valid @RequestBody Landmark landmark){
+        //call create address method and assign to int addressId
+        int addressId = addressDao.createAddress(landmark.getAddress());
 
-        return landmark;
+        //use addressId to insert into landmark table
+        landmarkDao.createLandmark(landmark, addressId);
+
+        //don't need to return anything
     }
 
     @RequestMapping(path= "/landmark/{id}/delete", method= RequestMethod.DELETE)
