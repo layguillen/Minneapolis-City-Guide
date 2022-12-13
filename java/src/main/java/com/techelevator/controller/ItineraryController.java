@@ -4,8 +4,6 @@ import com.techelevator.dao.ItineraryDao;
 import com.techelevator.dao.UserDao;
 import com.techelevator.model.Itinerary;
 import com.techelevator.model.Landmark;
-import com.techelevator.routeModels.RouteAPI;
-import com.techelevator.services.iRouteService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;

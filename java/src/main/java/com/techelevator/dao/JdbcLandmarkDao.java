@@ -94,7 +94,7 @@ public class JdbcLandmarkDao implements LandmarkDao{
     }
 
     @Override
-    public Landmark updateLandmark(Landmark landmark, int landmarkId){
+    public Landmark updateLandmarkLikes(Landmark landmark, int landmarkId){
         Landmark result = landmark;
         int likeCount = landmark.getLikes() + 1;
 
@@ -106,6 +106,24 @@ public class JdbcLandmarkDao implements LandmarkDao{
         if(num != 1){
             return null;
         }
+        return result;
+    }
+
+    @Override
+    public Landmark updatePendingStatus(Landmark landmark){
+        Landmark result = landmark;
+        boolean approved = true;
+
+        String sql = " UPDATE landmarks " +
+                " SET is_pending = ? " +
+                " WHERE id = ? ";
+
+        int num = jdbcTemplate.update(sql, approved, landmark.getLandmarkId());
+
+        if(num != 1){
+            return null;
+        }
+
         return result;
     }
 

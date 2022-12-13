@@ -35,11 +35,21 @@ public class LandmarkController {
 
     //used to update likes count (int)
     @RequestMapping(path = "/landmark/{id}", method= RequestMethod.PUT)
-    public Landmark updateLandmark(@Valid @RequestBody Landmark landmark, @PathVariable("id") int landmarkId){
-        Landmark result = landmarkDao.updateLandmark(landmark, landmarkId);
+    public Landmark updateLandmarkLikes(@Valid @RequestBody Landmark landmark, @PathVariable("id") int landmarkId){
+        Landmark result = landmarkDao.updateLandmarkLikes(landmark, landmarkId);
         if(result == null){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Landmark not found", null);
         }
+        return result;
+    }
+
+    @RequestMapping(path ="/pending/approve", method=RequestMethod.PUT)
+    public Landmark approvePendingLandmark(@Valid @RequestBody Landmark landmark){
+        Landmark result = landmarkDao.updatePendingStatus(landmark);
+        if(result == null){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Landmark not found", null);
+        }
+
         return result;
     }
 

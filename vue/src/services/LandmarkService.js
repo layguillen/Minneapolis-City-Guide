@@ -17,6 +17,9 @@ export default {
             return axios.post('/landmark/new', landmark);
         },
         updateLandmarkLikes(landmark){
-            return axios.put(`/landmark/${landmark.id}`, landmark)
+            return axios.put(`/landmark/${landmark.id}`, landmark);
+        },
+        setPendingToTrue(landmark){
+            return axios.put('/pending/approve', landmark);
         }
 }
