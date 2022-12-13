@@ -62,4 +62,15 @@ public class LandmarkController {
 
         return landmark;
     }
+
+    @RequestMapping(path= "/landmark/{id}/delete", method= RequestMethod.DELETE)
+    public boolean deleteLandmark(@Valid @PathVariable("id") int landmarkId){
+        boolean success = landmarkDao.deleteLandmark(landmarkId);
+        if(!success){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Itinerary to be added was not found", null);
+        }else{
+            return success;
+        }
+
+    }
 }

@@ -15,4 +15,6 @@ public interface LandmarkDao {
     Landmark updateLandmarkLikes(Landmark landmark, int landmarkId);
 
     Landmark updatePendingStatus(Landmark landmark);
+
+    boolean deleteLandmark(int landmarkId);
 }

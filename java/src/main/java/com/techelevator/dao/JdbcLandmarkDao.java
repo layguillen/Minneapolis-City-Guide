@@ -127,6 +127,29 @@ public class JdbcLandmarkDao implements LandmarkDao{
         return result;
     }
 
+
+    @Override
+    public boolean deleteLandmark(int landmarkId){
+
+        int lengthBefore = listLandmarks().size();
+
+        String sql = " DELETE FROM landmarks " +
+                " WHERE id = ? ";
+
+        jdbcTemplate.update(sql, landmarkId);
+
+        int lengthAfter = listLandmarks().size();
+
+        if(lengthBefore == lengthAfter){
+            return false;
+        }
+        return true;
+
+    }
+
+
+
+
     private Landmark mapRowToLandmark(SqlRowSet results){
         Landmark landmark = new Landmark();
 

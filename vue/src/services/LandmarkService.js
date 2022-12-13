@@ -21,5 +21,8 @@ export default {
         },
         setPendingToTrue(landmark){
             return axios.put('/pending/approve', landmark);
+        }, 
+        deleteLandmark(id){
+            return http.delete(`/landmark/${id}/delete`);
         }
 }

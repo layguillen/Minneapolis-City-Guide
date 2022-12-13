@@ -15,7 +15,7 @@
           <img :src="landmark.img_URL" alt="landmark image">
           <div class="approve-reject-btns">
             <button class="approve-btn" v-on:click="approveLandmark(landmark)">Approve Landmark</button>
-            <button class="reject-btn">Reject Landmark</button>
+            <button class="reject-btn" v-on:click="rejectLandmark(landmark.id)">Reject Landmark</button>
            </div>
       </div>
   </div>
@@ -40,7 +40,14 @@ export default {
             .then((response)=> {
                 if(response.status === 200){
                     alert("Landmark approved!");
-                    this.$router.push({name: 'pendingLandmarks'});
+                }
+            })
+        },
+        rejectLandmark(id){
+            landmarkService.deleteLandmark(id)
+            .then((response)=> {
+                if(response.status === 200){
+                    alert("Landmark deleted.");
                 }
             })
         }
