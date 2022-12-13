@@ -4,7 +4,8 @@
       <div id="review-container" v-for="review in this.$store.state.reviews" v-bind:key="review.id">
           <h3>{{review.title}}</h3>
           <h4>Reviewer: {{review.username}}</h4>
-          <p>Liked?: {{review.is_liked}}</p>
+          <p v-if="review.is_liked">Liked</p>
+          <p v-else>Disliked</p>
           <p>{{review.description}}</p>
       </div>
   </div>
