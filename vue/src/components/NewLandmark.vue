@@ -27,7 +27,7 @@
           </div>
           <div class="form-group">
             <label for="imgUrl">Image URL</label>
-            <input class="form-control" id="imgUrl" type= "url" placeholder="Enter Image Address" v-model="newLandmark.img_url">
+            <input class="form-control" id="imgUrl" type= "url" placeholder="Enter Image Address" v-model="newLandmark.imgUrl">
           </div>
           <div class="form-group">
             <label for="description">Description</label>
@@ -111,16 +111,14 @@ export default {
             .then(response => {
                 //expect a 201 meaning created
                 //changed to 200 based on what was being returned
-                if (response.status == 200) {
+                if(response.status === 200){
                     this.resetForm();
                     this.formAddedSuccess = true;
                 }
             })
             .catch(error => {
                 this.handleErrorResponse(error, "submitting")
-                // this.formAddedFailure = true;
-                this.resetForm();
-                    this.formAddedSuccess = true;
+                this.formAddedFailure = true;
             })
 
 
