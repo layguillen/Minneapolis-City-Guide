@@ -53,14 +53,14 @@ export default {
       .then((response)=> {
         if(response.status === 200){
           this.itineraryDeleted = true;
-          alert("Itinerary deleted. Status code 200");
-        } else if (response.status === 201){
-          this.itineraryDeleted = true;
-          alert("Itinerary deleted. Status code 201")
         } else {
           alert("Itinerary was not deleted.")
         }
+        this.reloadPage();
       })
+    },
+    reloadPage(){
+      window.location.reload();
     },
     setHotel(){
       if(this.hotelId === 1){

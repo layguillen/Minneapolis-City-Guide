@@ -102,7 +102,7 @@ public class JdbcItineraryDao implements ItineraryDao {
     public void deleteItineraryFromAssociative(int itineraryId){
 
         String sql = " DELETE FROM landmarks_itinerary " +
-                " WHERE id = ? ";
+                " WHERE itinerary_id = ? ";
 
         jdbcTemplate.update(sql, itineraryId);
 
