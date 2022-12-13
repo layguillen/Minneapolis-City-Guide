@@ -17,7 +17,7 @@
 
         <div class="form-element">
             <label for="rating">Rating:</label>
-            <select id="rating" v-model="newReview.isLiked">
+            <select id="rating" v-model="newReview.is_liked">
                 <option value="">--- Select Rating ---</option>
                 <option value="true">Liked</option>
                 <option value="false">Disliked</option>
