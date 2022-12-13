@@ -10,8 +10,8 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 class JdbcAddressDaoTest extends BaseDaoTests{
-    protected static final Address ADDRESS_1 = new Address(1, "2400 3rd Ave", "Minneapolis", "MN", 55404, "-93.274040,44.958500");
-    protected static final Address ADDRESS_2 = new Address(2,"60 E Broadway", "Bloomington", "MN", 55425, "-93.239449,44.856529");
+    protected static final Address ADDRESS_1 = new Address(1, "2400 3rd Ave", "Minneapolis", "MN", 55404);
+    protected static final Address ADDRESS_2 = new Address(2,"60 E Broadway", "Bloomington", "MN", 55425);
 
     private JdbcAddressDao sut;
 
