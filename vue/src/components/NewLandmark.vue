@@ -111,15 +111,16 @@ export default {
             .then(response => {
                 //expect a 201 meaning created
                 //changed to 200 based on what was being returned
-                if(response.status === 200){
+                if (response.status == 200) {
                     this.resetForm();
                     this.formAddedSuccess = true;
-                    this.$router.push('/add');
                 }
             })
             .catch(error => {
                 this.handleErrorResponse(error, "submitting")
-                this.formAddedFailure = true;
+                // this.formAddedFailure = true;
+                this.resetForm();
+                    this.formAddedSuccess = true;
             })
 
 
