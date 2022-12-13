@@ -16,11 +16,13 @@ public class JdbcItineraryDao implements ItineraryDao {
 
     private JdbcTemplate jdbcTemplate;
     private JdbcUserDao jdbcUserDao;
+    private JdbcAddressDao jdbcAddressDao;
 
-    public JdbcItineraryDao(JdbcTemplate jdbcTemplate, JdbcUserDao jdbcUserDao) {
+    public JdbcItineraryDao(JdbcTemplate jdbcTemplate, JdbcUserDao jdbcUserDao, JdbcAddressDao jdbcAddressDao) {
 
         this.jdbcTemplate = jdbcTemplate;
         this.jdbcUserDao = jdbcUserDao;
+        this.jdbcAddressDao = jdbcAddressDao;
     }
 
     //TODO fix sql
@@ -164,6 +166,7 @@ public class JdbcItineraryDao implements ItineraryDao {
       landmark.setDescription(results.getString("description"));
       landmark.setImgUrl(results.getString("img_url"));
       landmark.setPending(results.getBoolean("is_pending"));
+      landmark.setAddress(jdbcAddressDao.getAddress(results.getInt("address_id")));
 
       return landmark;
     }
