@@ -1,10 +1,13 @@
 <template>
   <div>
       <h2>Itineraries</h2>
+      <router-link v-bind:to="{name: 'home' }" >
+      <h1>Go home</h1>
+      </router-link>
       <div class="itinerary-container" v-for="itinerary in this.$store.state.itineraries" :key="itinerary.id">
         <h3>{{itinerary.id}}</h3>
         <p>{{itinerary.userId}}</p>
-        <div class="landmark-container" v-for="landmark in this.$store.state.itineraries.landmarks" :key="landmark.id">
+        <div class="landmark-container" v-for="landmark in itinerary.landmarks" :key="landmark.id">
           <h4>{{landmark.name}}</h4>
         </div>
       </div>
@@ -16,9 +19,6 @@ import ItineraryService from '../services/ItineraryService'
 
 export default {
   name: 'saved-itineraries',
-  data(){
-
-  },
   created(){
     this.listItineraries();
   },
