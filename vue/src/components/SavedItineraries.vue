@@ -3,8 +3,8 @@
       <h2>Itineraries</h2>
       <div class="landmark-status success" v-show="itineraryDeleted">Itinerary deleted.</div>
       <div class="itinerary-container" v-for="itinerary in this.$store.state.itineraries" :key="itinerary.id">
-        <div class="title-remove-container">
-          <h3>Itinerary Number: {{itinerary.id}}</h3>
+        <div class="title-remove-container" >
+          <h3>Itinerary Number: {{counter(itinerary)}}</h3>
           <button class="delete-itinerary-btn" v-on:click="deleteItinerary(itinerary.id)">Delete Itinerary</button>
         </div>
         <p v-bind:value="hotelId">Hotel ID: {{itinerary.hotel_id}}</p>
@@ -17,8 +17,9 @@
                       {{landmark.address.state}}
                       {{landmark.address.zip}}
           </p>
-          <img v-bind:src="landmark.img_URL" alt="Landmark photo">
-          
+          <div class="img-div">
+            <img v-bind:src="landmark.img_URL" alt="Landmark photo">
+          </div>
         </div>
       </div>
   </div>
@@ -39,7 +40,6 @@ export default {
   },
   created(){
     this.listItineraries();
-    this.setHotel();
   },
   methods: {
     listItineraries(){
@@ -58,6 +58,10 @@ export default {
         }
         this.reloadPage();
       })
+    },
+    counter(itinerary){
+      let itineraries = this.$store.state.itineraries;
+      return itineraries.indexOf(itinerary) + 1;
     },
     reloadPage(){
       window.location.reload();
@@ -117,6 +121,10 @@ export default {
 
 .landmark-container{
   margin: 20px 50px;
+}
+
+.img-div img{
+  height: 200px;
 }
 
 </style>

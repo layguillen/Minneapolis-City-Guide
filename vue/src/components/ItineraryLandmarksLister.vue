@@ -113,6 +113,7 @@ export default {
             .then((response) => {
                 this.$store.commit("SET_ITINERARIES", response.data);
                 this.itinerarySaved = true;
+                this.reset();
             })
         },
         retrieveHotels(){
