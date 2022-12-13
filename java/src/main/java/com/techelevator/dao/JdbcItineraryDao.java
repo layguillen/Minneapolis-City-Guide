@@ -17,12 +17,14 @@ public class JdbcItineraryDao implements ItineraryDao {
     private JdbcTemplate jdbcTemplate;
     private JdbcUserDao jdbcUserDao;
     private JdbcAddressDao jdbcAddressDao;
+    private JdbcHotelDao jdbcHotelDao;
 
-    public JdbcItineraryDao(JdbcTemplate jdbcTemplate, JdbcUserDao jdbcUserDao, JdbcAddressDao jdbcAddressDao) {
+    public JdbcItineraryDao(JdbcTemplate jdbcTemplate, JdbcUserDao jdbcUserDao, JdbcAddressDao jdbcAddressDao, JdbcHotelDao jdbcHotelDao) {
 
         this.jdbcTemplate = jdbcTemplate;
         this.jdbcUserDao = jdbcUserDao;
         this.jdbcAddressDao = jdbcAddressDao;
+        this.jdbcHotelDao = jdbcHotelDao;
     }
 
     //TODO fix sql
@@ -149,7 +151,7 @@ public class JdbcItineraryDao implements ItineraryDao {
 
         itinerary.setItineraryId(results.getInt("id"));
         itinerary.setUserId(results.getInt("user_id"));
-        itinerary.setHotelId(results.getInt("hotel_id"));
+        itinerary.setHotel(jdbcHotelDao.getHotel(results.getInt("hotel_id")));
 
 
         return itinerary;

@@ -13,8 +13,8 @@ public class Itinerary {
     private int itineraryId;
     @JsonProperty("user_id")
     private int userId;
-    @JsonProperty("hotel_id")
-    private int hotelId;
+    @JsonProperty("hotel")
+    private Hotel hotel;
 
     private List<Landmark> landmarks = new ArrayList<>();
 
@@ -49,12 +49,12 @@ public class Itinerary {
         this.userId = userId;
     }
 
-    public int getHotelId() {
-        return hotelId;
+    public Hotel getHotel() {
+        return hotel;
     }
 
-    public void setHotelId(int hotelId) {
-        this.hotelId = hotelId;
+    public void setHotel(Hotel hotel) {
+        this.hotel = hotel;
     }
 
 }
