@@ -7,7 +7,12 @@
           <h3>Itinerary Number: {{counter(itinerary)}}</h3>
           <button class="delete-itinerary-btn" v-on:click="deleteItinerary(itinerary.id)">Delete Itinerary</button>
         </div>
-        <p v-bind:value="hotelId">Hotel ID: {{itinerary.hotel_id}}</p>
+        <h4 >Hotel: {{itinerary.hotel.name}}</h4>
+        <p> Hotel Address: {{itinerary.hotel.address.street}}
+                      {{itinerary.hotel.address.city}},
+                      {{itinerary.hotel.address.state}}
+                      {{itinerary.hotel.address.zip}}
+        </p>
         <div class="landmark-container" v-for="landmark in itinerary.landmarks" :key="landmark.id">
           <h4>Landmark Name: {{landmark.name}}</h4>
           <h5>Type: {{landmark.type.name}}</h5>
@@ -91,19 +96,25 @@ export default {
   align-items: left;
 
   border-radius:7px;
-  padding: 10px;
+  padding: 10px 40px;
   border: 2px #004E64 solid;
   margin: 10px 10px;
-
   color: #004E64;
-
-  margin: 20px 50px;
+  margin: 0px 50px;
   font-family: 'Montserrat Alternates', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial';
 }
 
 .title-remove-container{
   display: flex;
   justify-content: space-between;
+}
+
+.title-remove-container h3{
+  text-decoration: underline;
+}
+
+.landmark-container{
+  margin: 2px 50px;
 }
 
 .delete-itinerary-btn{
@@ -119,9 +130,7 @@ export default {
   cursor: pointer;
 }
 
-.landmark-container{
-  margin: 20px 50px;
-}
+
 
 .img-div img{
   height: 200px;
