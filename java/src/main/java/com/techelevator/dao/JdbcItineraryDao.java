@@ -45,7 +45,7 @@ public class JdbcItineraryDao implements ItineraryDao {
             SqlRowSet associativeResults = jdbcTemplate.queryForRowSet(associativeSql, itinerary.getItineraryId());
 
             while(associativeResults.next()){
-                int landmarkId = jdbcTemplate.queryForObject(associativeSql, int.class, itinerary.getItineraryId());
+                int landmarkId = associativeResults.getInt("landmark_id");
 
                 String landmarkSql = "SELECT landmarks.id, address_id, landmarks.name, landmarks.type, types.name AS type_name, description, likes, img_URL, is_pending" +
                                     " FROM landmarks " +
