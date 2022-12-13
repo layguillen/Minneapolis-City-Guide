@@ -111,13 +111,12 @@ public class JdbcLandmarkDao implements LandmarkDao{
     @Override
     public Landmark updatePendingStatus(Landmark landmark){
         Landmark result = landmark;
-        boolean approved = true;
 
         String sql = " UPDATE landmarks " +
                 " SET is_pending = ? " +
                 " WHERE id = ? ";
 
-        int num = jdbcTemplate.update(sql, approved, landmark.getLandmarkId());
+        int num = jdbcTemplate.update(sql, false, landmark.getLandmarkId());
 
         if(num != 1){
             return null;
