@@ -59,6 +59,9 @@
       <div id="delete-save-container">
           <button id="resetBtn" v-on:click="reset()">Reset Itinerary</button>
           <button id="save-itinerary-btn" v-on:click="saveItinerary">Save Itinerary</button>
+          <router-link class="saved-itineraries-router" v-bind:to="{name: 'savedItineraries'}">
+            <button id="go-itinerary-btn">Go to Saved Itinerary</button>
+          </router-link>
       </div>
   </div>
 </template>
@@ -294,6 +297,20 @@ h1{
 }
 
 #save-itinerary-btn:hover{
+    cursor: pointer;
+}
+
+#go-itinerary-btn{
+    font-family: 'Montserrat Alternates', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial';
+    border: 5px solid;
+    padding: 8px;
+    background-color: #004E64;
+    color: #F3FCED;
+    border-radius: 12px;
+    margin-top: 10px;
+}
+
+#go-itinerary-btn:hover{
     cursor: pointer;
 }
 

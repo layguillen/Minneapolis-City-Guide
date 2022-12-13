@@ -12,6 +12,7 @@ import Routes from '../views/Routes.vue'
 import NewReview from '../views/NewReview.vue'
 import PendingLandmarks from '../views/PendingLandmarks.vue'
 import AdminHome from '../views/AdminHome.vue'
+import SavedItineraries from '../views/SavedItineraries.vue'
 
 Vue.use(Router)
 
@@ -115,8 +116,16 @@ const router = new Router({
       component: PendingLandmarks,
       meta: {
       requiresAuth: false
-      },
-    }
+      }
+    },
+      {
+        path: "/itineraries/saved",
+        name: "savedItineraries",
+        component: SavedItineraries,
+        meta: {
+        requiresAuth: false
+        },
+      }
   ]
 })
 
