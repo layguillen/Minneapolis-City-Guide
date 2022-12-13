@@ -27,7 +27,7 @@
           </div>
           <div class="form-group">
             <label for="imgUrl">Image URL</label>
-            <input class="form-control" id="imgUrl" type= "url" placeholder="Enter Image Address" v-model="newLandmark.imgUrl">
+            <input class="form-control" id="imgUrl" type= "url" placeholder="Enter Image Address" v-model="newLandmark.img_url">
           </div>
           <div class="form-group">
             <label for="description">Description</label>
