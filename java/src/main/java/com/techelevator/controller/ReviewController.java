@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -38,13 +39,13 @@ public class ReviewController {
 
 
     @RequestMapping(path= "/review/new/{landmarkId}", method= RequestMethod.POST)
-    public Review newReview(@Valid @RequestBody Review review, @PathVariable("landmarkId") int landmarkId){
+    public Review newReview(@Valid @RequestBody Review review, @PathVariable("landmarkId") int landmarkId, Principal principal){
 //        boolean success = reviewDao.createReview(review);
 //        if(!success){
 //            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Review to be added was not found", null);
 //        }
 
-        return reviewDao.createReview(review, landmarkId);
+        return reviewDao.createReview(review, landmarkId, principal);
     }
 
 

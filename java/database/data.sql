@@ -125,7 +125,7 @@ INSERT INTO hotels (address_id, name) VALUES (50, 'Renaissance Minneapolis Hotel
 INSERT INTO hotels (address_id, name) VALUES (51, 'Hampton Inn & Suites Minneapolis/Downtown');
 
 INSERT INTO landmarks(address_id, type, likes, is_pending, name, description, img_url) VALUES (52, 6, 5, false, 'U.S. Bank Stadium', 'U.S. Bank Stadium is an enclosed stadium located in downtown Minneapolis, Minnesota. Built on the former site of the Hubert H. Humphrey Metrodome, the indoor stadium opened in 2016 and is the home of the Minnesota Vikings of the National Football League (NFL); it also hosts early season college baseball games of the University of Minnesota Golden Gophers', 'https://saint-paul-2022.s3.amazonaws.com/imager/files_idss_com/C17/515c21dd-ef6f-480f-b8d6-9c9e7c0e4ba9/196175c2-c904-4a79-b552-06dd50398481_e45adf5f6bc0c5c2a30a39868f44eab6.jpg');
-INSERT INTO landmarks(address_id, type, likes, is_pending, name, description, img_url) VALUES (53, 2, 5, false, 'University of Northwestern', 'University of Northwestern is a private university in St. Paul, MN.', 'https://d13b2ieg84qqce.cloudfront.net/c4d1f8310ff1fa5bc1356185fcd255de1118cd29.jpg');
+INSERT INTO landmarks(address_id, type, likes, is_pending, name, description, img_url) VALUES (53, 2, 5, true, 'University of Northwestern', 'University of Northwestern is a private university in St. Paul, MN.', 'https://d13b2ieg84qqce.cloudfront.net/c4d1f8310ff1fa5bc1356185fcd255de1118cd29.jpg');
 
 INSERT INTO reviews (landmark_id, user_id, is_liked, title, description) VALUES (1, 1, true, 'Awesome Place', 'This was an awesome place. My family loved it');
 INSERT INTO reviews (landmark_id, user_id, is_liked, title, description) VALUES (2, 1, true, 'Great Vibes', 'I loved the atmosphere');

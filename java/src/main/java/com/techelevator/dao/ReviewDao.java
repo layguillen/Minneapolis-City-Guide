@@ -2,6 +2,7 @@ package com.techelevator.dao;
 
 import com.techelevator.model.Review;
 
+import java.security.Principal;
 import java.util.List;
 
 public interface ReviewDao {
@@ -11,5 +12,5 @@ public interface ReviewDao {
 
 //    Review getReview(int id);
 
-    Review createReview(Review review, int landmarkId);
+    Review createReview(Review review, int landmarkId, Principal principal);
 }

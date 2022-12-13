@@ -13,9 +13,12 @@ import java.util.List;
 public class JdbcReviewDao implements ReviewDao{
 
     private JdbcTemplate jdbcTemplate;
+    private JdbcUserDao jdbcUserDao;
 
-    public JdbcReviewDao(JdbcTemplate jdbcTemplate) {
+    public JdbcReviewDao(JdbcTemplate jdbcTemplate, JdbcUserDao jdbcUserDao) {
+
         this.jdbcTemplate = jdbcTemplate;
+        this.jdbcUserDao = jdbcUserDao;
     }
 
     @Override
@@ -55,7 +58,9 @@ public class JdbcReviewDao implements ReviewDao{
 
 
     @Override
-    public Review createReview(Review review, int landmarkId){
+    public Review createReview(Review review, int landmarkId, Principal principal){
+
+        review.setUserId(jdbcUserDao.findIdByUsername(principal.getName()));
 
         String sql = " INSERT INTO reviews(landmark_id, user_id, title, is_liked, description) " +
                 " VALUES (?, ?, ?, ?, ?) RETURNING id; ";

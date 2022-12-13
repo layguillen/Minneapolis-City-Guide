@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -71,6 +72,7 @@ public class JdbcLandmarkDao implements LandmarkDao{
     //TODO: check sql
     @Override
     public boolean createLandmark(Landmark landmark){
+
         String addressSql = " INSERT INTO addresses (street, city, state, zip) " +
                             " VALUES(?, ?, ?, ?) RETURNING id; ";
 

@@ -44,9 +44,6 @@ import ReviewService from '../services/ReviewService';
 
 export default {
     name: "review-form",
-    components: {
-        //N/A
-    },
     props: ["id"],
     data(){
         return {
@@ -65,37 +62,18 @@ export default {
     },
     methods: {
         saveReview(){
-            // const reviewToAdd = {
-            //     landmarkId: this.newReview.landmarkId,
-            //     userId: this.$store.state.user.id,
-            //     username: this.$store.state.user.username,
-            //     title: this.newReview.title,
-            //     isLiked: this.newReview.isLiked,
-            //     description: this.newReview.description
-                
-            // };
-            //if it's a zero we know it's an insert
-            //if(this.id === 0){
-                //add
-                ReviewService.addReview(this.newReview, parseInt(this.$route.params.landmarkId))
-                .then(response => {
-                    //expect a 201 meaning created
-                    if(response.status === 201){
-                        this.resetForm();
-                        this.formAddedSuccess = true;
-                        this.$router.push(`/details/${this.newReview.landmarkId}`);
-                        
-                    }
-                })
-                .catch(error => {
-                    this.handleErrorResponse(error, "submitting");
-                    this.formAddedFailure = true;
-                })
-
-            //}
-             //this.$router.push(`/details/${this.newReview.landmarkId}`);
-
-            
+            ReviewService.addReview(this.newReview, parseInt(this.$route.params.landmarkId))
+            .then(response => {
+                //expect a 201 meaning created but it's actually returning 200 code
+                if (response.status === 200){
+                    this.formAddedSuccess = true;
+                    this.$router.push(`/details/${this.$route.params.landmarkId}`);
+                }
+            })
+            .catch(error => {
+                this.handleErrorResponse(error, "submitting");
+                this.formAddedFailure = true;
+            })
         }, 
         resetForm(){
             this.newReview = {};
