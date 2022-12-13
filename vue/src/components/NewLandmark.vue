@@ -2,9 +2,9 @@
   <section id="new-landmark-container">
       <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Montserrat Alternates'>
       <h2 id="page-title">Submit a New Landmark for Consideration</h2>
-
+      <p class="note">Note: All text input must be typed.</p>  
       <form class="form" v-on:submit.prevent= "saveLandmark">
-          <div class="status-message success" v-show="formAddedSuccess">Review successfully submitted</div> 
+        <div class="status-message success" v-show="formAddedSuccess">Review successfully submitted</div> 
         <div class="status-message error" v-show="formAddedFailure">{{errorMessage}}</div>
           <div class="form-group">
             <label for="name">Name</label>
@@ -207,7 +207,12 @@ h2 {
     text-align: center;
 }
 
-
+.note{
+    padding: 10px;
+    background-color: #004E64;
+    border-radius: 8px;
+    color: #F3FCED;
+}
 
 .form {
     display: flex;

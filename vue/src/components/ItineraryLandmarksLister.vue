@@ -3,7 +3,7 @@
       <h1>Your Itinerary</h1>
       <Map />
       <div class="remove-status success" v-show="landmarkDeleted">Landmark successfully removed</div>
-      <div class="remove-status success" v-show="itineraryDeleted">Itinerary successfully deleted</div>
+      <div class="remove-status success" v-show="itineraryDeleted">Itinerary successfully reset</div>
       <div class="loading" v-if="isLoading">
           <img src="../assets/paper-plane.gif" />
       </div>
@@ -57,7 +57,7 @@
       </div>
       <div class="itinerary-saved success" v-show="itinerarySaved">Itinerary successfully saved</div>
       <div id="delete-save-container">
-          <button id="deleteBtn" v-on:click="deleted()">Delete Itinerary</button>
+          <button id="resetBtn" v-on:click="reset()">Reset Itinerary</button>
           <button id="save-itinerary-btn" v-on:click="saveItinerary">Save Itinerary</button>
       </div>
   </div>
@@ -96,7 +96,7 @@ export default {
            this.$store.commit("REMOVE_ITINERARY_LANDMARK", id);
            this.landmarkDeleted = true;
         },
-        deleted() {
+        reset() {
             
             this.$store.commit('EMPTY_ITINERARY_LANDMARKS');
             this.landmarkDeleted = false;
@@ -208,7 +208,7 @@ h1{
     align-items: center; 
 }
 
-#deleteBtn{
+#resetBtn{
     font-family: 'Montserrat Alternates', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial';
     border: 5px solid;
     padding: 8px;
@@ -218,7 +218,7 @@ h1{
     margin-top: 10px;
 }
 
-#deleteBtn:hover{
+#resetBtn:hover{
     cursor: pointer;
 }
 

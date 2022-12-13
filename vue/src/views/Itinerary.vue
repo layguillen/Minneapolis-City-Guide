@@ -2,12 +2,14 @@
   <div id="itinerary-page">
       <HomeHeader id="homeHeader" />
       <itinerary-landmarks-lister />
+      <SavedItineraries />
   </div>
 </template>
 
 <script>
 import HomeHeader from '../components/HomeHeader.vue'
 import ItineraryLandmarksLister from '../components/ItineraryLandmarksLister.vue'
+import SavedItineraries from '../components/SavedItineraries.vue'
 
 
 export default {
@@ -15,6 +17,7 @@ export default {
     components: {
         HomeHeader,
         ItineraryLandmarksLister,
+        SavedItineraries
     }
 }
 </script>
