@@ -14,7 +14,7 @@ public interface ItineraryDao {
 
     int createItinerary(Itinerary itinerary, Principal principal);
 
-    void insertItineraryIntoAssociative(int itineraryId, Landmark[] landmarks);
+    void insertItineraryIntoAssociative(int itineraryId, List<Landmark> landmarks);
 
     void deleteItinerary(int itineraryId);
 

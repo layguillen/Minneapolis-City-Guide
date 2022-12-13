@@ -38,11 +38,11 @@ public class ItineraryController {
         return result;
     }
 
-    //TODO: check if Landmark[] landmarks is the correct way to pass this in
+    //TODO: get landmarks off of itinerary
     @RequestMapping(path= "/itinerary/new", method= RequestMethod.POST)
-    public void createItinerary(@Valid @RequestBody Itinerary itinerary, @RequestBody Landmark[] landmarks, Principal principal){
+    public void createItinerary(@Valid @RequestBody Itinerary itinerary, Principal principal){
         int itineraryId = itineraryDao.createItinerary(itinerary, principal);
-        itineraryDao.insertItineraryIntoAssociative(itineraryId, landmarks);
+        itineraryDao.insertItineraryIntoAssociative(itineraryId, itinerary.getLandmarks());
     }
 
     @RequestMapping(path= "/itinerary/{id}", method= RequestMethod.DELETE)

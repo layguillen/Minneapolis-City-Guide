@@ -2,6 +2,7 @@ package com.techelevator.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Itinerary {
@@ -15,13 +16,17 @@ public class Itinerary {
     @JsonProperty("hotel_id")
     private int hotelId;
 
-    private List<Landmark> landmarks;
+    private List<Landmark> landmarks = new ArrayList<>();
 
     public Itinerary(){
     };
 
     public List<Landmark> getLandmarks() {
         return landmarks;
+    }
+
+    public void addLandmark(Landmark landmark){
+        landmarks.add(landmark);
     }
 
     public void setLandmarks(List<Landmark> landmarks) {

@@ -83,8 +83,8 @@ export default {
             itinerary: {
                 userId: this.$store.state.user.id,
                 hotelId: parseInt(""),
+                landmarks: this.$store.state.itineraryLandmarks
             },
-            // landmarks: '',
         }
     },
     created() {
@@ -105,7 +105,7 @@ export default {
         },
         saveItinerary(){
             //pass in landmarks to send to back in
-            ItineraryService.saveItinerary(this.itinerary, this.landmarks)
+            ItineraryService.saveItinerary(this.itinerary)
             .then((response) => {
                 this.$store.commit("SET_ITINERARIES", response.data);
                 this.itinerarySaved = true;
