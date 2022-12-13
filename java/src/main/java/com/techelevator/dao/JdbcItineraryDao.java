@@ -73,14 +73,14 @@ public class JdbcItineraryDao implements ItineraryDao {
 
     //insert new itinerary into database
     @Override
-    public int createItinerary(Itinerary itinerary, Principal principal){
+    public int createItinerary(int hotelId, Itinerary itinerary, Principal principal){
 
         int userId = jdbcUserDao.findIdByUsername(principal.getName());
 
         String sql = " INSERT INTO itinerary(user_id, hotel_id) " +
                 " VALUES(?, ?) RETURNING id ";
 
-        int itineraryId = jdbcTemplate.queryForObject(sql, int.class, userId, itinerary.getHotelId());
+        int itineraryId = jdbcTemplate.queryForObject(sql, int.class, userId, hotelId);
 
         return itineraryId;
     }

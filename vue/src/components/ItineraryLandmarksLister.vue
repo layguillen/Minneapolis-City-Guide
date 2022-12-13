@@ -22,7 +22,7 @@
       </div>
       <div id="hotel-selection">
           <label for="hotel-search">Hotel</label>
-          <select class="hotel-search" id="hotel-search" v-model="itinerary.hotelId" v-on:click="retrieveCurrentHotel">
+          <select class="hotel-search" id="hotel-search" v-model="hotelStringId" v-on:click="setHotelId">
               <option value="">--- Select your hotel ---</option>
               <option value="1">The Marquette Hotel</option>
               <option value="2">Hyatt Place Minneapolis/Downtown</option>
@@ -75,6 +75,7 @@ export default {
     },
     data(){
         return {
+            hotelStringId: '',
             hotelSelected: false,
             landmarkDeleted: false,
             itineraryDeleted: false,
@@ -82,7 +83,7 @@ export default {
             isLoading: true,
             itinerary: {
                 userId: this.$store.state.user.id,
-                hotelId: parseInt(""),
+                hotelId: 0,
                 landmarks: this.$store.state.itineraryLandmarks
             },
         }
@@ -105,7 +106,7 @@ export default {
         },
         saveItinerary(){
             //pass in landmarks to send to back in
-            ItineraryService.saveItinerary(this.itinerary)
+            ItineraryService.saveItinerary(this.itinerary.hotelId, this.itinerary)
             .then((response) => {
                 this.$store.commit("SET_ITINERARIES", response.data);
                 this.itinerarySaved = true;
@@ -127,9 +128,73 @@ export default {
             this.hotelSelected = true;
             this.isLoading = false;
         },
-        // addToLandmarks(landmark){
-        //     this.landmarks.push(landmark)
-        // }
+        setHotelId(){
+            if(this.hotelStringId === "1"){
+                this.itinerary.hotelId = 1;
+            }
+            else if (this.hotelStringId === "2"){
+                this.itinerary.hotelId = 2;
+            }
+            else if (this.hotelStringId === "3"){
+                this.itinerary.hotelId = 3;
+            }
+            else if (this.hotelStringId === "4"){
+                this.itinerary.hotelId = 4;
+            }
+            else if (this.hotelStringId === "5"){
+                this.itinerary.hotelId = 5;
+            }
+            else if (this.hotelStringId === "6"){
+                this.itinerary.hotelId = 6;
+            }
+            else if (this.hotelStringId === "7"){
+                this.itinerary.hotelId = 7;
+            }
+            else if (this.hotelStringId === "8"){
+                this.itinerary.hotelId = 8;
+            }
+            else if (this.hotelStringId === "9"){
+                this.itinerary.hotelId = 9;
+            }
+            else if (this.hotelStringId === "10"){
+                this.itinerary.hotelId = 10;
+            }
+            else if (this.hotelStringId === "11"){
+                this.itinerary.hotelId = 11;
+            }
+            else if (this.hotelStringId === "12"){
+                this.itinerary.hotelId = 12;
+            }
+            else if (this.hotelStringId === "13"){
+                this.itinerary.hotelId = 13;
+            }
+            else if (this.hotelStringId === "14"){
+                this.itinerary.hotelId = 14;
+            }
+            else if (this.hotelStringId === "15"){
+                this.itinerary.hotelId = 15;
+            }
+            else if (this.hotelStringId === "16"){
+                this.itinerary.hotelId = 16;
+            }
+            else if (this.hotelStringId === "17"){
+                this.itinerary.hotelId = 17;
+            }
+            else if (this.hotelStringId === "18"){
+                this.itinerary.hotelId = 18;
+            }
+            else if (this.hotelStringId === "19"){
+                this.itinerary.hotelId = 19;
+            }
+            else if (this.hotelStringId === "20"){
+                this.itinerary.hotelId = 20;
+            }
+            else if (this.hotelStringId === "21"){
+                this.itinerary.hotelId = 21;
+            }
+
+            this.retrieveCurrentHotel();
+        }
     },
     
 }

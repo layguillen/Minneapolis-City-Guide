@@ -7,8 +7,8 @@ export default{
     getItinerary(id){
         return axios.get(`/itinerary/${id}`);
     },
-    saveItinerary(itinerary){
-        return axios.post('/itinerary/new', itinerary);
+    saveItinerary(hotelId, itinerary){
+        return axios.post(`/itinerary/new/${hotelId}`, itinerary);
     },
     removeItinerary(id){
         return axios.delete(`/itinerary/${id}`);
