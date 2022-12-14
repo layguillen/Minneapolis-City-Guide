@@ -18,6 +18,10 @@
             <button class="button" id="pending-landmarks">Pending Landmarks</button>
           </router-link>
 
+          <router-link :to="{ name: 'savedItineraries' }">
+            <button class="button" id="saved-itineraries">Saved Itineraries</button>
+          </router-link>
+
           <router-link v-bind:to="{name: 'itinerary'}">
             <button class="button" id="itinerary">View Itinerary</button>
           </router-link>
