@@ -7,12 +7,9 @@
     <div id="itinerary-container">
       <h1>Your Itinerary</h1>
       <Map />
-      <div class="remove-status success" v-show="landmarkDeleted">
-        Landmark successfully removed
-      </div>
-      <div class="remove-status success" v-show="itineraryDeleted">
-        Itinerary successfully reset
-      </div>
+      <div class="remove-status success" v-show="landmarkDeleted">Landmark successfully removed</div>
+      <div class="remove-status success" v-show="itineraryDeleted">Itinerary successfully reset</div>
+      
       <div class="loading" v-if="isLoading">
         <img src="../assets/paper-plane.gif" />
       </div>
@@ -78,15 +75,13 @@
           </p>
         </div>
       </div>
-      <!-- <div class="itinerary-saved success" v-show="itinerarySaved">Itinerary successfully saved</div> -->
+      <div class="saved-itinerary-status failure" v-show="noHotelSelected">
+        Itinerary was not saved. Please select a hotel.</div>
       <div id="delete-save-container">
         <button id="resetBtn" v-on:click="reset()">Reset Itinerary</button>
         <button id="save-itinerary-btn" v-on:click="saveItinerary">
           Save Itinerary
         </button>
-        <!-- <router-link class="saved-itineraries-router" v-bind:to="{name: 'savedItineraries'}">
-            <button id="go-itinerary-btn">Go to Saved Itinerary</button>
-          </router-link> -->
       </div>
     </div>
   </div>
@@ -111,7 +106,7 @@ export default {
       hotelSelected: false,
       landmarkDeleted: false,
       itineraryDeleted: false,
-      // itinerarySaved: false,
+      noHotelSelected: false,
       isLoading: true,
       itinerary: {
         userId: this.$store.state.user.id,
@@ -138,15 +133,18 @@ export default {
     },
     saveItinerary() {
       //pass in landmarks to send to back in
-      ItineraryService.saveItinerary(
+      if (this.hotelSelected === true){
+        ItineraryService.saveItinerary(
         this.itinerary.hotelId,
         this.itinerary
       ).then((response) => {
         this.$store.commit("SET_ITINERARIES", response.data);
         this.isSuccessful = true;
-        // this.itinerarySaved = true;
         this.reset();
-      });
+      })
+      } else if (this.hotelSelected === false){
+        this.noHotelSelected = true;
+      }
     },
     retrieveHotels() {
       HotelService.listHotels().then((response) => {
@@ -347,6 +345,22 @@ h1 {
 
 .remove-status.success {
   background-color: #90ee90;
+}
+
+.saved-itinerary-status{
+  border-radius: 5px;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+  width: 350px;
+  margin: 10px auto 10px;
+  font-family: "Montserrat Alternates", "Franklin Gothic Medium", "Arial Narrow",
+    "Arial";
+  color: #004e64;
+}
+
+.saved-itinerary-status.failure{
+  background-color: rgb(228, 104, 104);
 }
 
 .itinerary-saved.success {
