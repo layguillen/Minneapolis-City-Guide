@@ -1,21 +1,17 @@
 <template>
   <div>
+    <base-modal v-if="isSuccessful">
+      <h3>Itinerary Deleted</h3>
+      <button class="modal-button" @click="reloadPage()">Okay</button>
+    </base-modal>
     <div class="saved-itineraries-page">
       <h1>Itineraries</h1>
-      <div class="landmark-status success" v-show="itineraryDeleted">
-        Itinerary deleted.
-      </div>
-      <div
-        class="itinerary-container"
-        v-for="itinerary in this.$store.state.itineraries"
-        :key="itinerary.id"
-      >
+      <div class="landmark-status success" v-show="itineraryDeleted">Itinerary deleted.</div>
+      
+      <div class="itinerary-container" v-for="itinerary in this.$store.state.itineraries" :key="itinerary.id">
         <div class="title-remove-container">
           <h2>Itinerary: {{ counter(itinerary) }}</h2>
-          <button
-            class="delete-itinerary-btn"
-            v-on:click="deleteItinerary(itinerary.id)"
-          >
+          <button class="delete-itinerary-btn" v-on:click="deleteItinerary(itinerary.id)">
             Delete Itinerary
           </button>
         </div>
@@ -28,11 +24,7 @@
             {{ itinerary.hotel.address.zip }}
           </p>
         </div>
-        <div
-          class="landmark-container"
-          v-for="landmark in itinerary.landmarks"
-          :key="landmark.id"
-        >
+        <div class="landmark-container" v-for="landmark in itinerary.landmarks" :key="landmark.id">
           <div class="img-div">
             <img v-bind:src="landmark.img_URL" alt="Landmark photo" />
           </div>
@@ -49,17 +41,23 @@
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </template>
 
 <script>
 import ItineraryService from "../services/ItineraryService";
+import BaseModal from "../components/BaseModal.vue";
 
 export default {
   name: "saved-itineraries",
+  components: {
+    BaseModal,
+  },
   data() {
     return {
+      isSuccessful: false,
       itineraryDeleted: false,
       hotelId: 0,
       hotelName: "",
@@ -78,11 +76,10 @@ export default {
     deleteItinerary(id) {
       ItineraryService.removeItinerary(id).then((response) => {
         if (response.status === 200) {
-          this.itineraryDeleted = true;
+          this.isSuccessful = true;
         } else {
           alert("Itinerary was not deleted.");
         }
-        this.reloadPage();
       });
     },
     counter(itinerary) {
@@ -136,7 +133,6 @@ export default {
 }
 
 .title-remove-container h2 {
-  /* text-decoration: underline; */
   color: #f3fced;
 }
 
@@ -178,5 +174,26 @@ export default {
 
 .img-div img {
   height: 100%;
+}
+
+button.modal-button {
+  width: 200px;
+  height: 4rem;
+  padding: 0.75rem 1.5rem;
+  background-color: transparent;
+  border-radius: 10px;
+  font-family: inherit;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 0 10px #333;
+  overflow: hidden;
+  transition: 0.3s;
+  border: 2px solid #004e64;
+}
+button:hover.modal-button {
+  background-color: #1fd6c1;
+  transform: scale(1.2);
+  box-shadow: 0 0 4px #111;
+  transition: 0.3s;
 }
 </style>
