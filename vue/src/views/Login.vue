@@ -77,6 +77,7 @@ export default {
   }
 };
 </script>
+
 <style>
 
 body{
@@ -93,14 +94,12 @@ div#login.text-center{
 }
 
 img{
-  grid-area: img;
   height: 90vh;
   justify-self: center;
   align-self: center;
 }
 
 #form-signin{
-  grid-area: login;
   display: flex;
   flex-direction: column;
   justify-content: center;

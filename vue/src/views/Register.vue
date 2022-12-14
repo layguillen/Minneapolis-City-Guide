@@ -73,7 +73,6 @@ export default {
             if (response.status == 201) {
               this.$router.push({
                 path: '/',
-                query: { registration: 'success' },
               });
             }
           })
