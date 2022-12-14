@@ -1,20 +1,22 @@
 <template>
   <div class="saved-itineraries-page">
-      <h2>Itineraries</h2>
+      <h1>Itineraries</h1>
       <div class="landmark-status success" v-show="itineraryDeleted">Itinerary deleted.</div>
       <div class="itinerary-container" v-for="itinerary in this.$store.state.itineraries" :key="itinerary.id">
         <div class="title-remove-container" >
-          <h3>Itinerary Number: {{counter(itinerary)}}</h3>
+          <h2>Itinerary: {{counter(itinerary)}}</h2>
           <button class="delete-itinerary-btn" v-on:click="deleteItinerary(itinerary.id)">Delete Itinerary</button>
         </div>
-        <h4 >Hotel: {{itinerary.hotel.name}}</h4>
-        <p> Hotel Address: {{itinerary.hotel.address.street}}
-                      {{itinerary.hotel.address.city}},
-                      {{itinerary.hotel.address.state}}
-                      {{itinerary.hotel.address.zip}}
-        </p>
+        <div class="hotel-container">
+          <h3 >Hotel: {{itinerary.hotel.name}}</h3>
+          <p> Hotel Address: {{itinerary.hotel.address.street}}
+                        {{itinerary.hotel.address.city}},
+                        {{itinerary.hotel.address.state}}
+                        {{itinerary.hotel.address.zip}}
+          </p>
+        </div>
         <div class="landmark-container" v-for="landmark in itinerary.landmarks" :key="landmark.id">
-          <h4>Landmark Name: {{landmark.name}}</h4>
+          <h3>{{landmark.name}}</h3>
           <h5>Type: {{landmark.type.name}}</h5>
           <p>{{landmark.description}}</p>
           <p>Address: {{landmark.address.street}}
@@ -99,9 +101,14 @@ export default {
   padding: 10px 40px;
   border: 2px #004E64 solid;
   margin: 10px 10px;
-  color: #004E64;
-  margin: 0px 50px;
+  color: #F3FCED;
+  margin: 20px 50px;
   font-family: 'Montserrat Alternates', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial';
+
+  background-color: #004E64;
+
+  box-shadow:  10px 10px 20px #bebebe,
+             -10px -10px 20px #ffffff;
 }
 
 .title-remove-container{
@@ -109,16 +116,23 @@ export default {
   justify-content: space-between;
 }
 
-.title-remove-container h3{
-  text-decoration: underline;
+.title-remove-container h2{
+  /* text-decoration: underline; */
+  color: #F3FCED;
+}
+
+.hotel-container{
+  margin: 2px 50px;
 }
 
 .landmark-container{
   margin: 2px 50px;
+  padding: 15px 1px;
+  border-top: 1px solid;
 }
 
 .delete-itinerary-btn{
-  border: 5px solid;
+  border: 5px rgb(228, 96, 96) solid;
   padding: 8px;
   background-color: rgb(228, 96, 96);
   color: #F3FCED;
@@ -133,7 +147,7 @@ export default {
 
 
 .img-div img{
-  height: 200px;
+  height: 175px;
 }
 
 </style>

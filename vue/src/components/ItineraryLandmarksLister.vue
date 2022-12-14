@@ -105,7 +105,8 @@ export default {
             this.$store.commit('EMPTY_ITINERARY_LANDMARKS');
             this.landmarkDeleted = false;
             this.itineraryDeleted = true;
-            this.id = ""
+            this.hotelStringId = "";
+            this.hotelSelected = false;
         },
         saveItinerary(){
             //pass in landmarks to send to back in
