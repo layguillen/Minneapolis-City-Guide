@@ -16,16 +16,18 @@
           </p>
         </div>
         <div class="landmark-container" v-for="landmark in itinerary.landmarks" :key="landmark.id">
-          <h3>{{landmark.name}}</h3>
-          <h5>Type: {{landmark.type.name}}</h5>
-          <p>{{landmark.description}}</p>
-          <p>Address: {{landmark.address.street}}
-                      {{landmark.address.city}},
-                      {{landmark.address.state}}
-                      {{landmark.address.zip}}
-          </p>
           <div class="img-div">
             <img v-bind:src="landmark.img_URL" alt="Landmark photo">
+          </div>
+          <div class="landmark-text-container">
+            <h3>{{landmark.name}}</h3>
+            <h5>Type: {{landmark.type.name}}</h5>
+            <p>{{landmark.description}}</p>
+            <p>Address: {{landmark.address.street}}
+                        {{landmark.address.city}},
+                        {{landmark.address.state}}
+                        {{landmark.address.zip}}
+            </p>
           </div>
         </div>
       </div>
@@ -96,6 +98,7 @@ export default {
   flex-direction: column;
   justify-content: left;
   align-items: left;
+  overflow: hidden;
 
   border-radius:7px;
   padding: 10px 40px;
@@ -126,9 +129,17 @@ export default {
 }
 
 .landmark-container{
+  display: flex;
+  gap: 3rem;
+  flex-wrap: wrap;
+
   margin: 2px 50px;
   padding: 15px 1px;
   border-top: 1px solid;
+}
+
+.landmark-text-container{
+ max-width: 900px;
 }
 
 .delete-itinerary-btn{
@@ -144,10 +155,12 @@ export default {
   cursor: pointer;
 }
 
-
+.img-div{
+  height: 300px;
+}
 
 .img-div img{
-  height: 175px;
+  height: 100%;
 }
 
 </style>
