@@ -43,7 +43,10 @@ div.home {
 
 #filter {
   grid-area: filter;
-  border-top: #1fd6c1 5px solid;
+}
+
+#filter-names {
+  width: 100%;
 }
 
 #main {

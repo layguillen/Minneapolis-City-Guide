@@ -8,7 +8,7 @@ import java.util.List;
 public interface ReviewDao {
 
     List<Review> listReviews(int landmarkId);
-    List<Review> listReviews();
+    List<Review> listAllReviews();
 
 //    Review getReview(int id);
 

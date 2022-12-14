@@ -22,7 +22,7 @@ public class JdbcReviewDao implements ReviewDao{
     }
 
     @Override
-    public List<Review> listReviews(){
+    public List<Review> listAllReviews(){
         List<Review> reviews = new ArrayList<>();
         String sql = " SELECT reviews.id, landmark_id, reviews.user_id, title, is_liked, description, users.username " +
                 " FROM reviews " +
@@ -41,7 +41,8 @@ public class JdbcReviewDao implements ReviewDao{
         String sql = " SELECT reviews.id, landmark_id, reviews.user_id, title, is_liked, description, users.username " +
                 " FROM reviews " +
                 " JOIN users ON users.user_id = reviews.user_id " +
-                " WHERE landmark_id = ? ";
+                " WHERE landmark_id = ?" +
+                " ORDER BY reviews.id DESC ";
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql, landmarkId);
         while (result.next()){
             Review review = mapRowToReview(result);
