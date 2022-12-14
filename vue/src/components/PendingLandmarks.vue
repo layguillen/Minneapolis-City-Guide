@@ -103,10 +103,11 @@ export default {
 #pending-landmark {
   display: flex;
   flex-wrap: wrap;
-  gap: 5rem;
+  justify-content: space-between;
+  gap: 3rem;
   border-top: 1px #004e64 solid;
 
-  margin: 10px 100px;
+  margin: 5px 150px;
 }
 
 .approve-reject-btns {
@@ -133,7 +134,8 @@ export default {
 }
 
 .pending-landmark-img {
-  height: 100px;
+  margin-top: 10px;
+  height: 150px;
 }
 
 button.modal-button {
