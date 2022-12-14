@@ -1,8 +1,7 @@
 <template>
   <div id="login" class="text-center">
-     <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Montserrat Alternates'>
+    <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Montserrat Alternates'>
     <form id="form-signin" class="form-signin" @submit.prevent="login">
-      
       <div
         class="alert alert-danger form-element"
         role="alert"
@@ -33,10 +32,8 @@
       <button class="form-element login-button" type="submit">login</button>
       <button class="register-button"> <router-link class="form-element routerstyle" :to="{ name: 'register' }">join the club</router-link></button>
     </form>
-    
-    <h2 class="main-glider">Glider<img class="logo" src="../assets/Glider-1.png"></h2>
-    
-
+     
+    <img class="logo" src="../assets/Glider-3.png">
     
   
   </div>
@@ -66,19 +63,7 @@ export default {
           if (response.status == 200) {
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
             this.$store.commit("SET_USER", response.data.user);
-
-            //if user role is USER will route to home page
-            if(this.$store.state.user.authorities[0].name === "ROLE_USER"){
-                this.$router.push("/home");
-            }
-            //if user role is ADMIN will route to home page with pending landmark tab
-            if (this.$store.state.user.authorities[0].name === "ROLE_ADMIN"){
-              this.$router.push("/home/admin")
-            } 
-            else {
-              this.$router.push("/home");
-            }
-            
+            this.$router.push("/home");
           }
         })
         .catch(error => {
@@ -101,16 +86,17 @@ div#login.text-center{
   height: 100vh;
   width: 100vw;
   margin: 0;
-  display: grid;
-  grid-template-areas: 
-  "img login";
-  grid-template-rows: 1fr 1fr;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-evenly;
+  flex-wrap: wrap-reverse;
 }
 
 img{
   grid-area: img;
-  height: 10vh;
-  justify-self: block-start;
+  height: 90vh;
+  justify-self: center;
+  align-self: center;
 }
 
 #form-signin{
@@ -121,12 +107,11 @@ img{
   align-self: center;
   border: 5px #004E64 solid;
   border-radius: 10%;
-  padding: 10%;
+  padding: 2%;
   background: rgb(246, 242, 242);
   width: 300px;
   height: 275px;
   margin-right: 50px;
-  margin-top:21vh;
 }
 
 .form-element {
@@ -141,34 +126,25 @@ button.login-button{
   border-radius: 12px;
   color: #F3FCED;
   font-family: 'Montserrat Alternates', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial', 'sans-serif';
-  font-size: 25px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 200px;
+  font-size: 30px;
+  margin-left: 20%;
+  margin-right: 20%;
+
 }
 
 button.register-button{
   background-color: #1fd6c1;
   border-radius: 12px;
   color: #F3FCED;
-  font-family: 'Montserrat Alternates', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial', 'sans-serif';
-  font-size: 25px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 200px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', 'Arial Narrow', 'sans-serif';
+  font-size: 30px;
+  margin-left: 20%;
+  margin-right: 20%;
 }
 .routerstyle{
   color: #F3FCED;
   text-decoration: none;
 }
-.main-glider{
-  font-size: 20vh;
-  display: flex;
-  justify-content: center;
-  margin-top:33vh;
-}
-
-
 
 
 
