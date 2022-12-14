@@ -1,15 +1,17 @@
 <template>
-
+  <div>
+    <base-modal v-if="isSuccessful">
+      <h3>Review Submitted</h3>
+      <!-- route to landmark details  -->
+      <button class="modal-button" @click="routeToDetails()">Okay</button>
+    </base-modal>
   <section id="new-review-container">
     <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Montserrat Alternates'>
       <form v-on:submit.prevent= "saveReview" class="form">
-          <h1>Leave a Review</h1>
-        <!-- <div class="form-element">
-            <label for="username">Username:</label>
-            <input id="username" type="text" />
-        </div> -->
-        <div class="status-message success" v-show="formAddedSuccess">Review successfully submitted</div> 
+        <h1>Leave a Review</h1>
+
         <div class="status-message error" v-show="formAddedFailure">{{errorMessage}}</div>
+
         <div class="form-element">
             <label for="title">Title:</label>
             <input id="title" type="text" v-model="newReview.title" />
@@ -33,20 +35,24 @@
             <button id="submit-btn" type="submit">Submit</button>
             <button id="cancel-btn" v-on:click= "resetForm" type="button">Cancel</button>
         </div>
-
       </form>
-
   </section>
+  </div>
 </template>
 
 <script>
 import ReviewService from '../services/ReviewService';
+import BaseModal from "../components/BaseModal.vue";
 
 export default {
     name: "review-form",
-    props: ["id"],
+    // props: ["id"],
+    components: {
+        BaseModal
+    },
     data(){
         return {
+            isSuccessful: false,
             newReview: {
                 landmarkId: parseInt(this.$route.params.landmarkId),
                 userId: this.$store.state.user.id,
@@ -55,7 +61,6 @@ export default {
                 isLiked: '',
                 description: ''
             },
-            formAddedSuccess: false,
             formAddedFailure: false,
             errorMessage: ''
         }
@@ -66,8 +71,7 @@ export default {
             .then(response => {
                 //expect a 201 meaning created but it's actually returning 200 code
                 if (response.status === 200){
-                    this.formAddedSuccess = true;
-                    this.$router.push(`/details/${this.$route.params.landmarkId}`);
+                    this.isSuccessful = true;
                 }
             })
             .catch(error => {
@@ -77,6 +81,9 @@ export default {
         }, 
         resetForm(){
             this.newReview = {};
+        },
+        routeToDetails(){
+            this.$router.push(`/details/${this.$route.params.landmarkId}`)
         },
         handleErrorResponse(error, verb) {
             if (error.response) {
@@ -105,8 +112,11 @@ export default {
 .form{
     display: flex;
     flex-direction: column;
-    width: 500px;
     margin: 20px;
+    border: 5px #004e64 solid;
+    border-radius: 15%;
+    background: rgb(246, 242, 242);
+    width: 300px;
 }
 #new-review-container {
     border-top: #1fd6c1 5px solid;
@@ -116,8 +126,6 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    
 }
 h1{
     text-align: center;
@@ -141,16 +149,21 @@ label{
     border-radius:7px;
     color:#004E64;
     border-color: #004E64;
+    padding: 10px 10px;
+    width: 40%;
 }
 #review{
     border-radius: 7px;
     border-color: #004E64;
     color:#004E64;
+    width: 50%;
+    padding: 10px 10px;
 }
 #rating{
     border-radius: 7px;
     border-color: #004E64;
     color:#004E64;
+    padding: 10px 10px;
 }
 
 #submit-btn{
@@ -187,11 +200,29 @@ border: 5px solid;
   width: 350px;
   margin: 0 auto 10px;
 }
-.status-message.success {
-  background-color: #90EE90;
-}
 .status-message.error {
   background-color: #F08080;
+}
+
+button.modal-button {
+  width: 200px;
+  height: 4rem;
+  padding: 0.75rem 1.5rem;
+  background-color: transparent;
+  border-radius: 10px;
+  font-family: inherit;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 0 10px #333;
+  overflow: hidden;
+  transition: 0.3s;
+  border: 2px solid #004E64;
+}
+button:hover.modal-button {
+  background-color: #1fd6c1;
+  transform: scale(1.2);
+  box-shadow: 0 0 4px #111;
+  transition: 0.3s;
 }
 
 </style>
