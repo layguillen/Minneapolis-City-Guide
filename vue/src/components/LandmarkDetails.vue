@@ -85,6 +85,7 @@ export default {
       landmarkAddedSuccess: false,
       itineraryContains: false,
       isLoading: true,
+      
     };
   },
   computed: {
