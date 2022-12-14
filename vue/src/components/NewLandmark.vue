@@ -1,8 +1,8 @@
 <template>
   <section id="new-landmark-container">
       <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Montserrat Alternates'>
-      <h2 id="page-title">Submit a New Landmark for Consideration</h2>
-      <p class="note">Note: All text input must be typed.</p>  
+      <div><h2 id="page-title">Submit a New Landmark for Consideration</h2></div>
+      <div class="form-container">
       <form class="form" v-on:submit.prevent= "saveLandmark">
         <div class="status-message success" v-show="formAddedSuccess">Review successfully submitted</div> 
         <div class="status-message error" v-show="formAddedFailure">{{errorMessage}}</div>
@@ -14,7 +14,7 @@
             <label for="type">Type</label>  
             <select class="form-control" id="type" v-on:click="setType" v-model="typeId">
                 <!-- v-model= "newLandmark.type" -->
-                <option value="">--- Select a type ---</option>
+                <option value="">Select Type</option>
                 <option value="5">Amusement</option>
                 <option value="1">Art</option>
                 <option value="2">Educational</option>
@@ -38,19 +38,19 @@
           <div id="address" class="form-group">
               <div>
                 <label for="street">Street</label>
-                <input id="street" type="text" placeholder="street" v-model= "newLandmark.address.street">
+                <input class="form-control" id="street" type="text" placeholder="street" v-model= "newLandmark.address.street">
               </div>
               <div>
                 <label for="city">City</label>
-                <input type="text" id="city" placeholder="city" v-model= "newLandmark.address.city">
+                <input class="form-control" type="text" id="city" placeholder="city" v-model= "newLandmark.address.city">
               </div>
               <div>
-                <label for="state">State Abbreviation (ex: MN)</label>
-                <input type="text" id="state" placeholder="ex: MN" v-model= "newLandmark.address.state">
+                <label for="state">State</label>
+                <input class="form-control" type="text" id="state" placeholder="ex: MN" v-model= "newLandmark.address.state">
               </div>
               <div>
-                <label for="zip">Zip Code</label>
-                <input type="number" id="zip" placeholder="ex: 55401" v-model= "newLandmark.address.zip">
+                <label id="zip-title" for="zip">Zip Code</label>
+                <input class="form-control" type="number" id="zip" placeholder="ex: 55401" v-model= "newLandmark.address.zip">
               </div>
           </div>
           
@@ -58,6 +58,7 @@
             <button id="btnAddLandmark" type="submit">Add Landmark</button>
           </div>
       </form>
+      </div>
   </section>
 </template>
 
@@ -191,18 +192,21 @@ body{
   background-color: #F3FCED;
 }
 
+
 #new-landmark-container {
     border-top: #1fd6c1 5px solid;
     font-family: 'Montserrat Alternates', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial', 'sans-serif';
     color: #004E64;
+    
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
 }
 
 h2 {
     text-align: center;
+    width: 100vw;
+    justify-self: center;
 }
 
 .note{
@@ -212,18 +216,10 @@ h2 {
     color: #F3FCED;
 }
 
-.form {
-    display: flex;
-    flex-direction: column;
-    width: 500px;
-    margin: 20px;
-}
 
 .form div {
     display: flex;
     justify-content: center;
-    align-content: center;
-    
 }
 
 #description{
@@ -253,12 +249,14 @@ h2 {
     /* margin-top: 2%;
     margin-left: 10%;
     margin-right: 10%; */
+    
     padding: 10px;
     background-color: #004E64;
     border-radius: 12px;
     color: #F3FCED;
     font-family: 'Montserrat Alternates', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial', 'sans-serif';
     cursor: pointer;
+    border: #004E64;
 }
 
 .status-message {
@@ -275,5 +273,26 @@ h2 {
 .status-message.error {
   background-color: #F08080;
 }
+.form-container {
+    border: 5px #004E64 solid;
+    border-radius: 15%;
+    background: rgb(246, 242, 242);
+    width: 650px;
+    display: grid;
+    grid-template-columns: repeat(36, 10px);
+    grid-template-rows: repeat(60, 10px);
+}
+
+.form{
+    grid-column-start:9;
+ grid-row-start: 2;
+
+}
+#zip-title{
+    width: 105px;
+}
+
+
+
 
 </style>

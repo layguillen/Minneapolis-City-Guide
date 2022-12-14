@@ -99,7 +99,6 @@ div#register.text-center{
   display: grid;
   grid-template-columns: repeat(11, .6fr);
   grid-template-rows: repeat(5, .6fr);
-
 }
 .text-center{
   height: 80vh;
@@ -122,9 +121,7 @@ div#register.text-center{
  
  border: 5px #004E64 solid;
  border-radius: 20%;
- background: rgb(246, 242, 242);
-
- 
+ background: rgb(246, 242, 242); 
 }
 
 /* styles input fields */
@@ -140,7 +137,6 @@ div#register.text-center{
 
 .inputFields {
   margin-top: 15px;
-  
 }
 
 
@@ -164,7 +160,6 @@ button.createButton{
 
   font-family: 'Montserrat Alternates', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial', 'sans-serif';
   font-size: 150%;
-  
 }
 
 
