@@ -49,6 +49,7 @@ export default {
 
 #reviews-title {
     color: #F3FCED;
+    width: 100%;
 }
 
 #review-container{

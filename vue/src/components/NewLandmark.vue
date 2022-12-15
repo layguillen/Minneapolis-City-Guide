@@ -17,7 +17,7 @@
       <div class="status-message error" v-show="formAddedFailure">{{errorMessage}}</div>
 
       <div class="form-container">
-        <form class="form" v-on:submit.prevent="saveLandmark">
+        <form class="landmark-form" v-on:submit.prevent="saveLandmark">
           <div class="form-group">
             <label for="name">Name</label>
             <input
@@ -257,7 +257,7 @@ h2 {
   color: #f3fced;
 }
 
-.form div {
+.landmark-form div {
   display: flex;
   justify-content: center;
 }
@@ -318,9 +318,11 @@ h2 {
   grid-template-rows: repeat(60, 10px);
 }
 
-.form {
-  grid-column-start: 9;
-  grid-row-start: 2;
+.landmark-form {
+  grid-column-start: 12;
+  grid-row-start: 8;
+  width: 500px;
+  text-align: center;
 }
 #zip-title {
   width: 105px;

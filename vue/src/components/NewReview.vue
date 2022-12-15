@@ -192,6 +192,13 @@ border: 5px solid;
     cursor: pointer;
 }
 
+.actions{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
 .status-message {
   border-radius: 5px;
   font-weight: bold;
